@@ -12,6 +12,7 @@ import ic2.core.ref.TeBlock.HarvestTool;
 import ic2.core.util.Util;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 
@@ -81,6 +82,16 @@ public enum TesRegistry implements ITeBlock {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        }
+    }
+    static {
+        for (TesRegistry e : values()) {
+            if (e.getTeClass() != null) {
+                TileEntity.register(
+                        new ResourceLocation(Reference.MODID, "te_" + e.getName()).toString(),
+                        (Class<? extends TileEntity>) e.getTeClass()
+                );
             }
         }
     }

@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "ic2additions:blocks/mfsu_front"
-  }
-}
