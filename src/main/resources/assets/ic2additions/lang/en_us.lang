@@ -1,9 +1,18 @@
 //ingots
 item.cobalt_ingot.name=Cobalt Ingot
+
 //tiles
+
 ic2additions.te.bettermfsu=Better MFSU
 //tab
+
 itemGroup.ic2additions.tab=IC2 Additions
 //crystals
+
 item.cobalt_crystal.name=Cobalt Crystal
+//armor
+item.ic2additions.better_nano_helmet=Better Nano Helmet
+item.ic2additions.better_nano_chestplate=Better Nano Chestplate
+item.ic2additions.better_nano_leggings=Better Nano Leggings
+item.ic2additions.better_nano_boots=Better Nano Boots
 
