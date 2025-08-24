@@ -1,4 +1,9 @@
+//ingots
 item.cobalt_ingot.name=Cobalt Ingot
+//tiles
 ic2additions.te.bettermfsu=Better MFSU
+//tab
 itemGroup.ic2additions.tab=IC2 Additions
+//crystals
+item.cobalt_crystal.name=Cobalt Crystal
 
