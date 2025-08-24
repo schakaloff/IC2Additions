@@ -17,8 +17,8 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
-        TesRegistry.buildDummies();
-        IC2AdditionsCreativeTabs.init();
+        //TesRegistry.buildDummies();
+        //IC2AdditionsCreativeTabs.init();
     }
 
     public void postinit(FMLPostInitializationEvent event) {

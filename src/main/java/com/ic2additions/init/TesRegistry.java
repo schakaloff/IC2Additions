@@ -2,25 +2,25 @@ package com.ic2additions.init;
 
 import java.util.Set;
 
-import com.ic2additions.tilentity.energystorage.TileEntityElectricBetterMFSU;
-import com.ic2additions.util.CustomResourceLocation;
+import com.ic2additions.tilentity.energystorage.TileEntityMFSUTWO; // use the class you actually have
 import com.ic2additions.util.Reference;
-import ic2.core.block.*;
-import ic2.core.ref.TeBlock.*;
+import ic2.core.block.ITeBlock;
+import ic2.core.block.TileEntityBlock;
+import ic2.core.ref.TeBlock;
+import ic2.core.ref.TeBlock.DefaultDrop;
+import ic2.core.ref.TeBlock.HarvestTool;
 import ic2.core.util.Util;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 
 public enum TesRegistry implements ITeBlock {
-    mfsu_doublecompressed(TileEntityElectricBetterMFSU.class, 12, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 5, 10, EnumRarity.RARE);
+    bettermfsu(TileEntityMFSUTWO.class, 12, false, Util.allFacings, true,
+            HarvestTool.Pickaxe, DefaultDrop.Machine, 5, 10, EnumRarity.RARE);
+
     public static final ResourceLocation IDENTITY = new ResourceLocation(Reference.MODID, "te");
-    static {
-        for (TesRegistry block : values()) {
-            TileEntity.register(new CustomResourceLocation(IDENTITY, "_" + block.getName()).toString(), block.getTeClass());
-        }
-    }
+
     private final Class<? extends TileEntityBlock> teClass;
     private final int itemMeta;
     private final boolean hasActive;
@@ -34,11 +34,12 @@ public enum TesRegistry implements ITeBlock {
     private final Material material;
     private final boolean isTransparent;
     private TileEntityBlock dummyTe;
-    private ITePlaceHandler placeHandler;
+    private TeBlock.ITePlaceHandler placeHandler;
 
     private TesRegistry(Class<? extends TileEntityBlock> teClass, int itemMeta, boolean hasActive, Set<EnumFacing> supportedFacings, boolean allowWrenchRotating, HarvestTool harvestTool, DefaultDrop defaultDrop, float hardness, float explosionResistance, EnumRarity rarity) {
         this(teClass, itemMeta, hasActive, supportedFacings, allowWrenchRotating, harvestTool, defaultDrop, hardness, explosionResistance, rarity, Material.IRON, false);
     }
+
     private TesRegistry(Class<? extends TileEntityBlock> teClass, int itemMeta, boolean hasActive, Set<EnumFacing> possibleFacings, boolean canBeWrenched, HarvestTool tool, DefaultDrop drop, float hardness, float explosionResistance, EnumRarity rarity, Material material, boolean isTransparent) {
         this.teClass = teClass;
         this.itemMeta = itemMeta;
@@ -53,90 +54,24 @@ public enum TesRegistry implements ITeBlock {
         this.material = material;
         this.isTransparent = isTransparent;
     }
-    @Override
-    public boolean hasItem() {
-        return teClass != null && itemMeta != -1;
-    }
 
-    @Override
-    public String getName() {
-        return name();
-    }
-
-    @Override
-    public ResourceLocation getIdentifier() {
-        return IDENTITY;
-    }
-
-    @Override
-    public Class<? extends TileEntityBlock> getTeClass() {
-        return teClass;
-    }
-
-    @Override
-    public boolean hasActive() {
-        return hasActive;
-    }
-
-    @Override
-    public int getId() {
-        return itemMeta;
-    }
-
-    @Override
-    public float getHardness() {
-        return hardness;
-    }
-
-    @Override
-    public HarvestTool getHarvestTool() {
-        return tool;
-    }
-
-    @Override
-    public DefaultDrop getDefaultDrop() {
-        return drop;
-    }
-
-    @Override
-    public float getExplosionResistance() {
-        return explosionResistance;
-    }
-
-    @Override
-    public boolean allowWrenchRotating() {
-        return canBeWrenched;
-    }
-
-    @Override
-    public Set<EnumFacing> getSupportedFacings() {
-        return possibleFacings;
-    }
-
-    @Override
-    public EnumRarity getRarity() {
-        return rarity;
-    }
-
-    @Override
-    public Material getMaterial() {
-        return material;
-    }
-
-    @Override
-    public boolean isTransparent() {
-        return isTransparent;
-    }
-
-    @Override
-    public void setPlaceHandler(ITePlaceHandler handler) {
-        this.placeHandler = handler;
-    }
-
-    @Override
-    public ITePlaceHandler getPlaceHandler() {
-        return placeHandler;
-    }
+    @Override public boolean hasItem() { return teClass != null && itemMeta != -1; }
+    @Override public String getName() { return name(); }
+    @Override public ResourceLocation getIdentifier() { return IDENTITY; }
+    @Override public Class<? extends TileEntityBlock> getTeClass() { return teClass; }
+    @Override public boolean hasActive() { return hasActive; }
+    @Override public int getId() { return itemMeta; }
+    @Override public float getHardness() { return hardness; }
+    @Override public HarvestTool getHarvestTool() { return tool; }
+    @Override public DefaultDrop getDefaultDrop() { return drop; }
+    @Override public float getExplosionResistance() { return explosionResistance; }
+    @Override public boolean allowWrenchRotating() { return canBeWrenched; }
+    @Override public Set<EnumFacing> getSupportedFacings() { return possibleFacings; }
+    @Override public EnumRarity getRarity() { return rarity; }
+    @Override public Material getMaterial() { return material; }
+    @Override public boolean isTransparent() { return isTransparent; }
+    @Override public void setPlaceHandler(TeBlock.ITePlaceHandler handler) { this.placeHandler = handler; }
+    @Override public TeBlock.ITePlaceHandler getPlaceHandler() { return placeHandler; }
 
     public static void buildDummies() {
         for (TesRegistry block : values()) {
@@ -149,8 +84,5 @@ public enum TesRegistry implements ITeBlock {
             }
         }
     }
-    @Override
-    public TileEntityBlock getDummyTe() {
-        return dummyTe;
-    }
+    @Override public TileEntityBlock getDummyTe() { return dummyTe; }
 }

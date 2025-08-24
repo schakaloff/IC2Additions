@@ -9,8 +9,9 @@ import ic2.core.ref.TeBlock;
 
 public class IC2AdditionsCreativeTabs {
     public static final UCreativeTab tab = new UCreativeTab(Reference.MODID, "tab");
-    public static void init(){
-        BlockTileEntity block = TeBlockRegistry.get(TesRegistry.IDENTITY);
+
+    // Called from the TeBlock event when the block exists
+    public static void setIcon(BlockTileEntity block) {
         tab.setIcon(block);
     }
 }
