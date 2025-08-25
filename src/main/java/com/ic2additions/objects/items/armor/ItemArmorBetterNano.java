@@ -1,4 +1,4 @@
-package com.ic2additions.objects.items;
+package com.ic2additions.objects.items.armor;
 
 import com.ic2additions.init.IC2AdditionsCreativeTabs;
 import com.ic2additions.init.ItemInit;
@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemArmorBetterNano extends ItemArmorElectric {
     public ItemArmorBetterNano(String name, EntityEquipmentSlot slot){
-        super(null, "better_nano", slot, 5_000_000, 4096D, 4);
+        super(null, "better_nano", slot, 3_000_000, 4096D, 4);
         setRegistryName(name);
         setUnlocalizedName(name);
         setCreativeTab(IC2AdditionsCreativeTabs.tab);
@@ -53,12 +53,12 @@ public class ItemArmorBetterNano extends ItemArmorElectric {
 
     @Override
     public double getDamageAbsorptionRatio() {
-        return 0.95;
+        return 0.70;
     }
 
     @Override
     public int getEnergyPerDamage() {
-        return 2500;
+        return 20000;
     }
 
     @SideOnly(Side.CLIENT)
