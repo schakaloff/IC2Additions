@@ -63,7 +63,6 @@ public class Recipes {
 	 * <p>No recipe meta.
 	 */
 	public static IBasicMachineRecipeManager compressor;
-
 	/**
 	 * Recipe manager for thermal centrifuge recipes.
 	 *

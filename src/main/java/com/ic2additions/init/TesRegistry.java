@@ -3,6 +3,10 @@ package com.ic2additions.init;
 import java.util.Set;
 
 import com.ic2additions.tilentity.energystorage.TileEntityMFSUTWO; // use the class you actually have
+import com.ic2additions.tilentity.solarpanels.TileEntityBetterSolarPanel;
+import com.ic2additions.tilentity.solarpanels.TileEntityHybridSolarPanel;
+import com.ic2additions.tilentity.solarpanels.TileEntityQuantumSolarPanel;
+import com.ic2additions.tilentity.solarpanels.TileEntityUltimateSolarPanel;
 import com.ic2additions.util.Reference;
 import ic2.core.block.ITeBlock;
 import ic2.core.block.TileEntityBlock;
@@ -17,8 +21,12 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 
 public enum TesRegistry implements ITeBlock {
-    bettermfsu(TileEntityMFSUTWO.class, 12, false, Util.allFacings, true,
-            HarvestTool.Pickaxe, DefaultDrop.Machine, 5, 10, EnumRarity.RARE);
+    bettermfsu(TileEntityMFSUTWO.class, 0, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Machine, 1, 10, EnumRarity.RARE),
+    better_solar_panel(TileEntityBetterSolarPanel.class, 1, false, Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Machine, 2F, 5F, EnumRarity.COMMON),
+    hybrid_solar_panel(TileEntityHybridSolarPanel.class, 2, false, Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Machine, 2F, 5F, EnumRarity.COMMON),
+    quantum_solar_panel(TileEntityQuantumSolarPanel .class, 3, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Machine, 2F, 5F,EnumRarity.COMMON),
+    ultimate_solar_panel(TileEntityUltimateSolarPanel .class, 4, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Machine, 2F, 5F,EnumRarity.COMMON);
+
 
     public static final ResourceLocation IDENTITY = new ResourceLocation(Reference.MODID, "te");
 
