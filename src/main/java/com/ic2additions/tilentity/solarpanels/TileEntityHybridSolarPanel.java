@@ -5,6 +5,6 @@ import com.ic2additions.tilentity.TileEntitySolarPanel;
 
 public class TileEntityHybridSolarPanel extends BaseSolarPanel {
     public TileEntityHybridSolarPanel() {
-        super(64.0D,2,100000);
+        super(64.0D,3,100000);
     }
 }

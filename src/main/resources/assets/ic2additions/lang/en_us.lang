@@ -3,6 +3,10 @@ item.cobalt_ingot.name=Cobalt Ingot
 
 //tiles
 ic2additions.te.bettermfsu=Better MFSU
+ic2additions.te.better_solar_panel=Better Solar Panel
+ic2additions.te.hybrid_solar_panel=Hybrid Solar Panel
+ic2additions.te.quantum_solar_panel=Quantum Solar Panel
+ic2additions.te.ultimate_solar_panel=Ultimate Solar Panel
 
 //tab
 itemGroup.ic2additions.tab=IC2 Additions

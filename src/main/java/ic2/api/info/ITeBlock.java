@@ -254,7 +254,7 @@ import ic2.api.tile.IWrenchable;
  *		<li><b>identifier</b>: The resource location associated with the <code>ITeBlock</code>.
  *								The language keys, translations and internal mappings all use this, so it's best to store it as a static final variable and use that.
  *		<li><b>hasActive</b>: If the tile entity has an active state too, which is based off whether <code>TileEntityBlock#getActive()</code> returns <code>true</code> or not.
- *							The models for that will be at name_active, you can check <code>te.json</code> for an example if you wish.</li>
+ *							The models for that will be at name_active, you can check <code>bettermfsu.json</code> for an example if you wish.</li>
  *		<li><b>supportedFacings</b>: A set of <code>EnumFacing</code>s that the block can face, used for rotating by the wrench for example.
  *									IC2 has some useful constants relating to that in <code>Util</code> (allFacings, horizontalFacings, downSideFacings and noFacings).</li>
  *		<li><b>allowWrenchRotating</b>: Whether the tile entity can be rotated with a wrench (for {@link IWrenchable}).</li>
