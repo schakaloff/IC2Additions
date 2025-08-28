@@ -21,11 +21,13 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 
 public enum TesRegistry implements ITeBlock {
-    bettermfsu(TileEntityMFSUTWO.class, 1, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Machine, 1, 10, EnumRarity.RARE),
-    better_solar_panel(TileEntityBetterSolarPanel.class, 2, false, Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Machine, 2F, 5F, EnumRarity.RARE),
-    hybrid_solar_panel(TileEntityHybridSolarPanel.class, 3, false, Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Machine, 2F, 5F, EnumRarity.RARE),
-    ultimate_solar_panel(TileEntityUltimateSolarPanel .class, 4, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Machine, 2F, 5F,EnumRarity.RARE),
-    quantum_solar_panel(TileEntityQuantumSolarPanel .class, 5, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Machine, 2F, 5F,EnumRarity.RARE);
+    bettermfsu(TileEntityMFSUTWO.class, 1, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.RARE),
+
+    better_solar_panel(TileEntityBetterSolarPanel.class, 2, false, Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F, EnumRarity.COMMON),
+    hybrid_solar_panel(TileEntityHybridSolarPanel.class, 3, false, Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F, EnumRarity.UNCOMMON),
+    ultimate_solar_panel(TileEntityUltimateSolarPanel .class, 4, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.RARE),
+    quantum_solar_panel(TileEntityQuantumSolarPanel .class, 5, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC);
+
     public static final ResourceLocation IDENTITY = new ResourceLocation(Reference.MODID, "te");
 
     private final Class<? extends TileEntityBlock> teClass;
