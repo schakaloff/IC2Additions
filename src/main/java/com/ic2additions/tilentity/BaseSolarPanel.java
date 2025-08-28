@@ -2,6 +2,7 @@ package com.ic2additions.tilentity;
 
 import ic2.core.block.generator.tileentity.TileEntitySolarGenerator;
 import ic2.core.block.generator.tileentity.TileEntityBaseGenerator;
+import ic2.core.gui.dynamic.IGuiValueProvider;
 import ic2.core.network.GuiSynced;
 
 public class BaseSolarPanel extends TileEntityBaseGenerator {
@@ -52,5 +53,10 @@ public class BaseSolarPanel extends TileEntityBaseGenerator {
     public boolean getGuiState(String name) {
         if ("sunlight".equals(name)) return this.skyLight > 0.0F;
         return super.getGuiState(name);
+    }
+
+    public double getEutNow() {
+        double raw = this.euAtFullSun * this.skyLight;
+        return Math.round(raw * 10.0) / 10.0;
     }
 }

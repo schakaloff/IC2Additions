@@ -2,7 +2,6 @@ package com.ic2additions.init;
 
 import java.util.Set;
 
-import com.ic2additions.tilentity.TileEntitySolarPanel;
 import com.ic2additions.tilentity.energystorage.TileEntityMFSUTWO; // use the class you actually have
 import com.ic2additions.tilentity.solarpanels.TileEntityBetterSolarPanel;
 import com.ic2additions.tilentity.solarpanels.TileEntityHybridSolarPanel;
@@ -25,9 +24,8 @@ public enum TesRegistry implements ITeBlock {
     bettermfsu(TileEntityMFSUTWO.class, 1, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Machine, 1, 10, EnumRarity.RARE),
     better_solar_panel(TileEntityBetterSolarPanel.class, 2, false, Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Machine, 2F, 5F, EnumRarity.RARE),
     hybrid_solar_panel(TileEntityHybridSolarPanel.class, 3, false, Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Machine, 2F, 5F, EnumRarity.RARE),
-    quantum_solar_panel(TileEntityQuantumSolarPanel .class, 4, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Machine, 2F, 5F,EnumRarity.RARE),
-    ultimate_solar_panel(TileEntityUltimateSolarPanel .class, 5, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Machine, 2F, 5F,EnumRarity.RARE);
-
+    ultimate_solar_panel(TileEntityUltimateSolarPanel .class, 4, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Machine, 2F, 5F,EnumRarity.RARE),
+    quantum_solar_panel(TileEntityQuantumSolarPanel .class, 5, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Machine, 2F, 5F,EnumRarity.RARE);
     public static final ResourceLocation IDENTITY = new ResourceLocation(Reference.MODID, "te");
 
     private final Class<? extends TileEntityBlock> teClass;

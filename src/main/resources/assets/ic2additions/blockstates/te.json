@@ -3,7 +3,11 @@
   "variants": {
     "type": {
       "invalid": { "model": "cube" },
-      "bettermfsu": { "model": "ic2additions:bettermfsu" }
+      "bettermfsu": { "model": "ic2additions:bettermfsu" },
+      "better_solar_panel":  { "model": "ic2additions:better_solar_panel" },
+      "hybrid_solar_panel":  { "model": "ic2additions:hybrid_solar_panel" },
+      "ultimate_solar_panel":  { "model": "ic2additions:ultimate_solar_panel" },
+      "quantum_solar_panel":  { "model": "ic2additions:quantum_solar_panel" }
     },
     "facing": {
       "down": { "x": 90 },

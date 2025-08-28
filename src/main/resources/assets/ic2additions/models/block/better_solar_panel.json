@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "side": "ic2additions:blocks/solar_generator_sides",
+    "bottom": "ic2additions:blocks/solar_generator_bottom",
+    "top": "ic2additions:blocks/better_solar_generator_top"
+  }
+}

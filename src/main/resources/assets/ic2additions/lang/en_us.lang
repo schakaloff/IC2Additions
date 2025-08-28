@@ -1,6 +1,9 @@
 //ingots
 item.cobalt_ingot.name=Cobalt Ingot
 
+//gui
+gui.ic2additions.output=Output: %s
+
 //tiles
 ic2additions.te.bettermfsu=Better MFSU
 ic2additions.te.better_solar_panel=Better Solar Panel
