@@ -1,6 +1,7 @@
 package com.ic2additions.main;
 
 import com.ic2additions.proxy.CommonProxy;
+import com.ic2additions.recipes.Recipes;
 import com.ic2additions.util.Reference;
 import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.*;
@@ -28,6 +29,8 @@ public class IC2Additions {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
+        Recipes.addCraftingRecipes();
+        Recipes.addMachineRecipe();
     }
 
     @EventHandler

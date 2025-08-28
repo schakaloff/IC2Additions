@@ -21,6 +21,10 @@ item.quantum_crystal.name=Quantum Crystal
 item.auraton_crystal.name=Auraton Crystal
 item.photon_crystal.name=Photon Crystal
 
+//tools
+ic2.advanced_drill=Advanced Drill
+
+
 //armor
 item.ic2additions.better_nano_helmet=Better Nano Helmet
 item.ic2additions.better_nano_chestplate=Better Nano Chestplate

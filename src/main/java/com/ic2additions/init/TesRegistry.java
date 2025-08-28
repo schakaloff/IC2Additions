@@ -2,6 +2,7 @@ package com.ic2additions.init;
 
 import java.util.Set;
 
+import com.ic2additions.tilentity.TileEntityMolecularAssembler;
 import com.ic2additions.tilentity.energystorage.TileEntityMFSUTWO; // use the class you actually have
 import com.ic2additions.tilentity.solarpanels.TileEntityBetterSolarPanel;
 import com.ic2additions.tilentity.solarpanels.TileEntityHybridSolarPanel;
@@ -26,7 +27,10 @@ public enum TesRegistry implements ITeBlock {
     better_solar_panel(TileEntityBetterSolarPanel.class, 2, false, Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F, EnumRarity.COMMON),
     hybrid_solar_panel(TileEntityHybridSolarPanel.class, 3, false, Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F, EnumRarity.UNCOMMON),
     ultimate_solar_panel(TileEntityUltimateSolarPanel .class, 4, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.RARE),
-    quantum_solar_panel(TileEntityQuantumSolarPanel .class, 5, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC);
+    quantum_solar_panel(TileEntityQuantumSolarPanel .class, 5, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC),
+
+    molecular_assembler(TileEntityMolecularAssembler .class, 6, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC);
+
 
     public static final ResourceLocation IDENTITY = new ResourceLocation(Reference.MODID, "te");
 
