@@ -1,8 +1,6 @@
 package com.ic2additions.init;
 
 import com.ic2additions.util.Reference;
-import com.ic2additions.util.UCreativeTab;
-import ic2.core.block.BlockTileEntity;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 

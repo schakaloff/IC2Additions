@@ -50,6 +50,8 @@ public class Recipes {
 	 */
 	public static IBasicMachineRecipeManager macerator;
 
+	//public static IBasicMachineRecipeManager molecularAssembler;
+
 	/**
 	 * Recipe manager for extractor recipes.
 	 *
@@ -57,7 +59,7 @@ public class Recipes {
 	 */
 	public static IBasicMachineRecipeManager extractor;
 
-	/**
+    /**
 	 * Recipe manager for compressor recipes.
 	 *
 	 * <p>No recipe meta.

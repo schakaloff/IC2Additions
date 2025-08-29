@@ -2,7 +2,8 @@
 item.cobalt_ingot.name=Cobalt Ingot
 
 //gui
-gui.ic2additions.output=Output: %s
+gui.ic2additions.output=Output: %s EU/t
+gui.ic2additions.progress=Progress: %s%%
 
 //tiles
 ic2additions.te.bettermfsu=Better MFSU

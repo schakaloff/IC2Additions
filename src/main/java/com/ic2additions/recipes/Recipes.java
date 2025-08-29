@@ -3,6 +3,7 @@ package com.ic2additions.recipes;
 import ic2.api.item.IC2Items;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.IRecipeInputFactory;
+import ic2.core.recipe.BasicMachineRecipeManager;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -24,6 +25,7 @@ public class Recipes {
         IRecipeInputFactory input = ic2.api.recipe.Recipes.inputFactory;
         addCompressorsRecipe(input.forStack(new ItemStack(Items.SLIME_BALL),9), new ItemStack(Block.getBlockById(165)));
         addMaceratorRecipe(input.forStack(plcar), IC2Items.getItem("dust", "coal"));
+
     }
 
     private static void addCompressorsRecipe(IRecipeInput input, ItemStack output){
@@ -33,4 +35,12 @@ public class Recipes {
     private static void addMaceratorRecipe(IRecipeInput input, ItemStack output){
         ic2.api.recipe.Recipes.compressor.addRecipe(input, (NBTTagCompound)null, false, new ItemStack[]{output});
     }
+//
+//    private static void addMolecularAssemblerRecipe(IRecipeInput input, ItemStack output){
+//        if(ic2.api.recipe.Recipes.molecularAssembler == null){
+//            ic2.api.recipe.Recipes.molecularAssembler = new BasicMachineRecipeManager();
+//        }else{
+//            ic2.api.recipe.Recipes.molecularAssembler.addRecipe(input, (NBTTagCompound)null, false, new ItemStack[]{output});
+//        }
+//    }
 }

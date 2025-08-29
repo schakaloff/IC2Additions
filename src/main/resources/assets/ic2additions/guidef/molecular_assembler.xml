@@ -2,12 +2,13 @@
 <gui width="176" height="166">
     <text y="6" align="center">%name%</text>
 
+    <slot name="input"  x="56"  y="25"/>
+    <slot name="output" x="116" y="25"/>
 
-    <image x="81" y="45" width="14" src="textures/gui/overlay/solar_sun"/>
 
 
-    <energygauge x="100" y="39" style="bar"/>
-
+    <text x="3" y="33">{gui.ic2additions.output,%base.getEutNow()%}</text>
+    <text x="3" y="45">{gui.ic2additions.progress,%base.getProgressPercent()%}</text>
 
     <playerInventory x="7" y="83"/>
 </gui>
