@@ -3,6 +3,8 @@ item.cobalt_ingot.name=Cobalt Ingot
 #items
 item.sanarium_shard.name=Sanarium Shard
 item.sanarium.name=Sanarium
+item.sanarium_alloy.name=Sanarium Alloy
+item.enrichted_sanarium_alloy.name=Enrichted Sanarium Alloy
 
 #gui
 gui.ic2additions.output=Input: %s EU/t

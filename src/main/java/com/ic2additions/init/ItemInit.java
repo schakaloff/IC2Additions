@@ -14,7 +14,9 @@ public class ItemInit {
     //ingots
     public static final Item COBALT_INGOT = new ItemBase("cobalt_ingot");
     public static final Item SANARIUM_SHARD = new ItemBase("sanarium_shard");
-    public static final Item SANARIUM= new ItemBase("sanarium");
+    public static final Item SANARIUM = new ItemBase("sanarium");
+    public static final Item SANARIUM_ALLOY = new ItemBase("sanarium_alloy");
+    public static final Item ENRICHTED_SANARIUM_ALLOY = new ItemBase("enrichted_sanarium_alloy");
     //items
     public static final Item PLASMATRON_CRYSTAL = new CrystalBase("plasmatron_crystal", 25_000_000, 4096D, 4, true);
     public static final Item AURATON_CRYSTAL = new CrystalBase("auraton_crystal", 50_000_000, 6144D, 5, true);
