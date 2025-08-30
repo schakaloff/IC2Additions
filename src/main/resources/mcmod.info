@@ -11,6 +11,6 @@
     "credits": "The Forge and FML guys, for making this example",
     "logoFile": "IndustrialCraft² team for the original mod",
     "screenshots": [],
-    "dependencies": ["ic2"]
+    "dependencies": ["required-after:ic2"]
   }
 ]
