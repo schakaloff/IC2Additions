@@ -1,6 +1,7 @@
 package com.ic2additions.main;
 
 import com.ic2additions.proxy.CommonProxy;
+import com.ic2additions.recipes.MolecularAssemblerRecipes;
 import com.ic2additions.recipes.Recipes;
 import com.ic2additions.util.Reference;
 import net.minecraftforge.fml.common.*;
@@ -31,6 +32,7 @@ public class IC2Additions {
         proxy.init(event);
         Recipes.addCraftingRecipes();
         Recipes.addMachineRecipe();
+        MolecularAssemblerRecipes.init();
     }
 
     @EventHandler

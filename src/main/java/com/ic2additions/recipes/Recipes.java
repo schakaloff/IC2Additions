@@ -35,12 +35,4 @@ public class Recipes {
     private static void addMaceratorRecipe(IRecipeInput input, ItemStack output){
         ic2.api.recipe.Recipes.compressor.addRecipe(input, (NBTTagCompound)null, false, new ItemStack[]{output});
     }
-//
-//    private static void addMolecularAssemblerRecipe(IRecipeInput input, ItemStack output){
-//        if(ic2.api.recipe.Recipes.molecularAssembler == null){
-//            ic2.api.recipe.Recipes.molecularAssembler = new BasicMachineRecipeManager();
-//        }else{
-//            ic2.api.recipe.Recipes.molecularAssembler.addRecipe(input, (NBTTagCompound)null, false, new ItemStack[]{output});
-//        }
-//    }
 }

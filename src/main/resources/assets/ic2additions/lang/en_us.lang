@@ -1,32 +1,31 @@
-//ingots
+#ingots
 item.cobalt_ingot.name=Cobalt Ingot
 
-//gui
+#gui
 gui.ic2additions.output=Output: %s EU/t
-gui.ic2additions.progress=Progress: %s%%
+gui.ic2additions.progress=Progress: %.0f%%
 
-//tiles
+#tiles
 ic2additions.te.bettermfsu=Better MFSU
 ic2additions.te.better_solar_panel=Better Solar Panel
 ic2additions.te.hybrid_solar_panel=Hybrid Solar Panel
 ic2additions.te.quantum_solar_panel=Quantum Solar Panel
 ic2additions.te.ultimate_solar_panel=Ultimate Solar Panel
 
-//tab
+#tab
 itemGroup.ic2additions.tab=IC2 Additions
 
 
-//crystals
+#crystals
 item.plasmatron_crystal.name=Plasmatron Crystal
 item.quantum_crystal.name=Quantum Crystal
 item.auraton_crystal.name=Auraton Crystal
 item.photon_crystal.name=Photon Crystal
 
-//tools
+#tools
 ic2.advanced_drill=Advanced Drill
 
-
-//armor
+#armor
 item.ic2additions.better_nano_helmet=Better Nano Helmet
 item.ic2additions.better_nano_chestplate=Better Nano Chestplate
 item.ic2additions.better_nano_leggings=Better Nano Leggings
