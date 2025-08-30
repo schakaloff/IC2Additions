@@ -25,8 +25,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraftforge.common.MinecraftForge;
 
-
-
 public class TileEntityMolecularAssembler extends TileEntityInventory implements IEnergySink, IHasGui, IGuiValueProvider {
     public final InvSlot input;
     public final InvSlotOutput output;
@@ -45,6 +43,14 @@ public class TileEntityMolecularAssembler extends TileEntityInventory implements
     @GuiSynced private double lastEnergyGiven;
     @GuiSynced private double energyUsed;
     private byte starveWait;
+
+    @GuiSynced private String currentInputName = "";
+    @GuiSynced private String currentOutputName = "";
+    @GuiSynced private int    currentRecipeCostEu = 0;
+
+    private static String nameOf(ItemStack s) {
+        return (s == null || s.isEmpty()) ? "-" : s.getDisplayName();
+    }
 
     public TileEntityMolecularAssembler() {
         super();
@@ -70,13 +76,11 @@ public class TileEntityMolecularAssembler extends TileEntityInventory implements
         }
     }
 
-
     @Override
     protected void updateEntityServer() {
         super.updateEntityServer();
         boolean shouldBeActive = getActive();
         boolean invChanged = false;
-
         if (current == null) {
             ItemStack in = input.get();
             MolecularAssemblerRecipesHandler.Recipe r = MolecularAssemblerRecipesHandler.find(in);
@@ -88,17 +92,26 @@ public class TileEntityMolecularAssembler extends TileEntityInventory implements
                     current = r;
                     currentTotalEu = r.totalEU;
                     energyUsed = 0;
+                    currentInputName    = nameOf(r.input);
+                    currentOutputName   = nameOf(r.output);
+                    currentRecipeCostEu = r.totalEU;
                     invChanged = true;
                     shouldBeActive = true;
+                } else {
+                    shouldBeActive = false;
+                    previewDisplayFromSlot();
                 }
             } else {
                 shouldBeActive = false;
+                previewDisplayFromSlot();
             }
         } else {
             shouldBeActive = true;
         }
+
         lastEnergyGiven = energyGivenThisTick;
         energyGivenThisTick = 0;
+
         if (shouldBeActive && current != null) {
             if (energyInThisTick <= 0) {
                 if (starveWait < MAX_STARVE_WAIT) {
@@ -111,8 +124,10 @@ public class TileEntityMolecularAssembler extends TileEntityInventory implements
                 double need = getDemandedEnergy();
                 if (need > 0 && energyInThisTick >= need) {
                     energyInThisTick -= need;
+                    energyUsed += need;
                     finishWork();
                     invChanged = true;
+                    previewDisplayFromSlot();
                 } else {
                     energyUsed += energyInThisTick;
                     energyInThisTick = 0;
@@ -138,9 +153,25 @@ public class TileEntityMolecularAssembler extends TileEntityInventory implements
         currentTotalEu = 0;
         energyUsed = 0;
         toConsume = 0;
+        currentInputName = "";
+        currentOutputName = "";
+        currentRecipeCostEu = 0;
     }
 
-    /* ---------- GUI ---------- */
+    private void previewDisplayFromSlot() {
+        ItemStack in = input.get();
+        if (in == null || in.isEmpty()) {
+            currentInputName = "";
+            currentOutputName = "";
+            currentRecipeCostEu = 0;
+            return;
+        }
+        MolecularAssemblerRecipesHandler.Recipe r = MolecularAssemblerRecipesHandler.find(in);
+        currentInputName    = nameOf(in);
+        currentOutputName   = (r != null) ? nameOf(r.output) : "-";
+        currentRecipeCostEu = (r != null) ? r.totalEU : 0;
+    }
+
     @Override
     public ContainerBase<? extends TileEntityMolecularAssembler> getGuiContainer(EntityPlayer player) {
         return DynamicContainer.create(this, player, GuiParser.parse(this.teBlock));
@@ -167,22 +198,14 @@ public class TileEntityMolecularAssembler extends TileEntityInventory implements
         }
     }
 
-    public double getProgress01() {
-        if (currentTotalEu <= 0) return 0.0;
-        double v = energyUsed / currentTotalEu;
-        if (v < 0) v = 0;
-        if (v > 1) v = 1;
-        return v;
-    }
-    public double getProgressPercent() {
-        return currentTotalEu <= 0 ? 0.0 : Math.round((energyUsed / currentTotalEu) * 100.0);
-    }
-    public double getEutNow() {
-        return Math.round(lastEnergyGiven * 10.0) / 10.0;
-    }
-    public int getTotalEu() {
-        return currentTotalEu;
-    }
+
+    public String getCurrentInputName() { return currentInputName == null ? "" : currentInputName; }
+    public String getCurrentOutputName(){ return currentOutputName == null ? "" : currentOutputName; }
+    public int getRecipeCostEu(){ return currentRecipeCostEu; }
+    public double getProgress01() {return energyUsed / currentTotalEu;}
+    public double getProgressPercent() {return currentTotalEu <= 0 ? 0.0 : Math.round((energyUsed / currentTotalEu) * 100.0);}
+    public double getEutNow() {return Math.round(lastEnergyGiven * 10.0) / 10.0;}
+    public int getTotalEu() {return currentTotalEu;}
 
     @Override public boolean acceptsEnergyFrom(IEnergyEmitter emitter, EnumFacing side) { return true; }
     @Override public int getSinkTier() { return DEFAULT_SINK_TIER; }
@@ -208,16 +231,22 @@ public class TileEntityMolecularAssembler extends TileEntityInventory implements
         super.readFromNBT(nbt);
         this.energyUsed     = nbt.getDouble("energyUsed");
         this.currentTotalEu = nbt.getInteger("currentTotalEu");
+        this.currentInputName    = nbt.getString("currentInputName");
+        this.currentOutputName   = nbt.getString("currentOutputName");
+        this.currentRecipeCostEu = nbt.getInteger("currentRecipeCostEu");
+
         if (this.currentTotalEu > 0) {
             this.current = new MolecularAssemblerRecipesHandler.Recipe(ItemStack.EMPTY, this.currentTotalEu, ItemStack.EMPTY);
         }
     }
-
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         super.writeToNBT(nbt);
         nbt.setDouble("energyUsed", this.energyUsed);
         nbt.setInteger("currentTotalEu", this.currentTotalEu);
+        nbt.setString("currentInputName",  this.currentInputName  == null ? "" : this.currentInputName);
+        nbt.setString("currentOutputName", this.currentOutputName == null ? "" : this.currentOutputName);
+        nbt.setInteger("currentRecipeCostEu", this.currentRecipeCostEu);
         return nbt;
     }
 }

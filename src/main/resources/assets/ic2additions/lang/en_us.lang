@@ -1,20 +1,31 @@
 #ingots
 item.cobalt_ingot.name=Cobalt Ingot
+#items
+item.sanarium_shard.name=Sanarium Shard
+item.sanarium.name=Sanarium
 
 #gui
-gui.ic2additions.output=Output: %s EU/t
+gui.ic2additions.output=Input: %s EU/t
 gui.ic2additions.progress=Progress: %.0f%%
+gui.ic2additions.input=Input: %s
+gui.ic2additions.outputItem=Output: %s
+gui.ic2additions.cost=Cost: %s EU
+
 
 #tiles
+#energy storages
 ic2additions.te.bettermfsu=Better MFSU
+#palens
 ic2additions.te.better_solar_panel=Better Solar Panel
 ic2additions.te.hybrid_solar_panel=Hybrid Solar Panel
 ic2additions.te.quantum_solar_panel=Quantum Solar Panel
 ic2additions.te.ultimate_solar_panel=Ultimate Solar Panel
+#others
+ic2additions.te.molecular_assembler=Molecular Assembler
+
 
 #tab
 itemGroup.ic2additions.tab=IC2 Additions
-
 
 #crystals
 item.plasmatron_crystal.name=Plasmatron Crystal

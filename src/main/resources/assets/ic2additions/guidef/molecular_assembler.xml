@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gui width="176" height="166">
+<gui width="176" height="200">
     <text y="6" align="center">%name%</text>
 
     <slot name="input"  x="56"  y="25"/>
@@ -8,9 +8,13 @@
 
     <gauge name="progress" x="80" y="35" style="progresstriangle"/>
 
+    <text x="3" y="40">{gui.ic2additions.output,%base.getEutNow()%}</text>
+    <text x="3" y="50">{gui.ic2additions.progress,%base.getProgressPercent()%}</text>
 
-    <text x="3" y="33">{gui.ic2additions.output,%base.getEutNow()%}</text>
-    <text x="3" y="45">{gui.ic2additions.progress,%base.getProgressPercent()%}</text>
+    <text x="3" y="57">{gui.ic2additions.input,%base.getCurrentInputName()%}</text>
+    <text x="3" y="69">{gui.ic2additions.outputItem,%base.getCurrentOutputName()%}</text>
+    <text x="3" y="81">{gui.ic2additions.cost,%base.getRecipeCostEu()%}</text>
 
-    <playerInventory x="7" y="83"/>
+
+    <playerInventory x="7" y="120"/>
 </gui>
