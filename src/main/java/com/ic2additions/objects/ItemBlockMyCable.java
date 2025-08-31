@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -27,27 +26,22 @@ public class ItemBlockMyCable extends ItemBlock {
         s.setTagCompound(t);
         return s;
     }
-
     @Override
-    public boolean placeBlockAt(ItemStack stack, net.minecraft.entity.player.EntityPlayer player, World world, net.minecraft.util.math.BlockPos pos,
-                                net.minecraft.util.EnumFacing side, float hitX, float hitY, float hitZ, net.minecraft.block.state.IBlockState newState) {
+    public boolean placeBlockAt(ItemStack stack, net.minecraft.entity.player.EntityPlayer player, World world, net.minecraft.util.math.BlockPos pos, net.minecraft.util.EnumFacing side, float hitX, float hitY, float hitZ, net.minecraft.block.state.IBlockState newState) {
         boolean ok = super.placeBlockAt(stack, player, world, pos, side, hitX, hitY, hitZ, newState);
-        if (ok && !world.isRemote) {
-            if (stack.hasTagCompound() && world.getTileEntity(pos) instanceof TileEntityMyCable) {
-                TileEntityMyCable te = (TileEntityMyCable) world.getTileEntity(pos);
-                NBTTagCompound t = stack.getTagCompound();
-                if (t.hasKey("loss")) te.setLoss(t.getDouble("loss"));
-                if (t.hasKey("capacity")) te.setCapacity(t.getInteger("capacity"));
-                te.markDirty();
-            }
+        if (ok && !world.isRemote && stack.hasTagCompound() && world.getTileEntity(pos) instanceof TileEntityMyCable) {
+            TileEntityMyCable te = (TileEntityMyCable) world.getTileEntity(pos);
+            NBTTagCompound t = stack.getTagCompound();
+            if (t.hasKey("loss")) te.setLoss(t.getDouble("loss"));
+            if (t.hasKey("capacity")) te.setCapacity(t.getInteger("capacity"));
+            te.markDirty();
         }
         return ok;
     }
-
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> lines, ITooltipFlag flagIn) {
-        double loss = 0.05;
-        int cap = 4096;
+    public void addInformation(ItemStack stack, @Nullable World w, List<String> lines, ITooltipFlag flag) {
+        double loss = TileEntityMyCable.DEFAULT_LOSS;
+        int cap = TileEntityMyCable.DEFAULT_CAPACITY;
         if (stack.hasTagCompound()) {
             NBTTagCompound t = stack.getTagCompound();
             if (t.hasKey("loss")) loss = t.getDouble("loss");

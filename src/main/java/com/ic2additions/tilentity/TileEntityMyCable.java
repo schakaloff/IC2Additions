@@ -16,22 +16,24 @@ import net.minecraftforge.common.MinecraftForge;
 public class TileEntityMyCable extends TileEntity implements IEnergyConductor {
     private boolean addedToEnergyNet = false;
     private byte connectivity = 0;
-    private double loss = 0.05;
-    private int capacity = 10000;
+    public static final double DEFAULT_LOSS = 0.05;
+    public static final int DEFAULT_CAPACITY = 10240;
+    private double loss = DEFAULT_LOSS;
+    private int capacity = DEFAULT_CAPACITY;
+
 
     public byte getConnectivity() { return connectivity; }
-
-    private boolean canInteractWith(IEnergyTile other, EnumFacing side) {
-        return true;
-    }
+    private boolean canInteractWith(IEnergyTile other, EnumFacing side) {return true;}
+    public void setLoss(double v) { this.loss = v; }
+    public void setCapacity(int v) { this.capacity = v; }
 
     private void setConnectivity(byte value) {
         connectivity = value;
         if (world != null) {
             IBlockState s = world.getBlockState(pos);
             world.notifyBlockUpdate(pos, s, s, 3);
-            world.markBlockRangeForRenderUpdate(pos, pos);
-            world.notifyNeighborsOfStateChange(pos, s.getBlock(), true);
+            TileEntity te = world.getTileEntity(pos);
+            if (te != null) te.markDirty();
         }
     }
 
@@ -86,19 +88,15 @@ public class TileEntityMyCable extends TileEntity implements IEnergyConductor {
     @Override public boolean acceptsEnergyFrom(IEnergyEmitter emitter, EnumFacing side) { return canInteractWith(emitter, side); }
     @Override public boolean emitsEnergyTo(IEnergyAcceptor receiver, EnumFacing side) { return canInteractWith(receiver, side); }
     @Override public void removeInsulation() {}
+    @Override public void removeConductor() { if (world != null && !world.isRemote) world.setBlockToAir(pos); }
 
-    @Override
-    public void removeConductor() {
-        if (world != null && !world.isRemote) {
-            world.setBlockToAir(pos);
-        }
-    }
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
         if (nbt.hasKey("loss"))     loss = nbt.getDouble("loss");
         if (nbt.hasKey("capacity")) capacity = nbt.getInteger("capacity");
     }
+
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         super.writeToNBT(nbt);
@@ -106,6 +104,4 @@ public class TileEntityMyCable extends TileEntity implements IEnergyConductor {
         nbt.setInteger("capacity", capacity);
         return nbt;
     }
-    public void setLoss(double v) { this.loss = v; }
-    public void setCapacity(int v) { this.capacity = v; }
 }

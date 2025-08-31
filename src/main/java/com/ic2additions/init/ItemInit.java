@@ -25,7 +25,6 @@ public class ItemInit {
     public static final Item PHOTON_CRYSTAL = new CrystalBase("photon_crystal", 100_000_000, 10000D, 7, true);
     //tools
     public static final Item MY_CABLE_ITEM = new ItemBlockMyCable(BlockInit.MY_CABLE);
-
     public static final Item ADVANCED_DRILL = new ItemAdvancedDrill("advanced_drill");
     //armor
     public static final Item BETTER_NANO_HELMET = new ItemArmorBetterNano("better_nano_helmet",  EntityEquipmentSlot.HEAD);
