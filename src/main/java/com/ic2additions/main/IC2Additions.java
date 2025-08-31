@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.*;
 
-@Mod(modid = Reference.MODID, version = Reference.VERSION, name = Reference.NAME)
+@Mod(modid = Reference.MODID, version = Reference.VERSION, name = Reference.NAME, dependencies = Reference.DEPENDENCIES)
 public class IC2Additions {
     @Mod.Instance
     public static IC2Additions instance;
