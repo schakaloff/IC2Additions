@@ -50,6 +50,8 @@ item.photon_crystal.name=Photon Crystal
 
 #tools
 ic2.advanced_drill=Advanced Drill
+ic2.nano_drill=Nano Drill
+ic2.quantum_drill=Quantum Drill
 
 #armor
 item.ic2additions.better_nano_helmet=Better Nano Helmet

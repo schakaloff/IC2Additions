@@ -5,6 +5,8 @@ import com.ic2additions.objects.ItemMusicDisc;
 import com.ic2additions.objects.items.*;
 import com.ic2additions.objects.items.armor.ItemArmorBetterNano;
 import com.ic2additions.objects.items.tool.ItemAdvancedDrill;
+import com.ic2additions.objects.items.tool.ItemNanoDrill;
+import com.ic2additions.objects.items.tool.ItemQuantumDrill;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 
@@ -32,6 +34,7 @@ public class ItemInit {
     public static final Item IRRADIANT_GLASS_PANE = new ItemBase("irradiant_glass_pane");
     public static final Item ISNR_REINFORCED_PLATE = new ItemBase("isnr_reinforced_plate");
     public static final Item IRRADIANT_URANIUM_INGOT = new ItemBase("irradiant_uranium_ingot");
+
     public static final Item COMMUNISM = new ItemMusicDisc("music_disc_communism", "record.communism");
 
     //items
@@ -42,6 +45,8 @@ public class ItemInit {
     //tools
     public static final Item MY_CABLE_ITEM = new ItemBlockMyCable(BlockInit.MY_CABLE);
     public static final Item ADVANCED_DRILL = new ItemAdvancedDrill("advanced_drill");
+    public static final Item NANO_DRILL = new ItemNanoDrill("nano_drill");
+    public static final Item QUANTUM_DRILL = new ItemQuantumDrill("quantum_drill");
     //armor
     public static final Item BETTER_NANO_HELMET = new ItemArmorBetterNano("better_nano_helmet",  EntityEquipmentSlot.HEAD);
     public static final Item BETTER_NANO_CHEST = new ItemArmorBetterNano("better_nano_chestplate",   EntityEquipmentSlot.CHEST);
