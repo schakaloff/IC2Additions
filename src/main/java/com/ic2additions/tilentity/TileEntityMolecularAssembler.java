@@ -202,7 +202,7 @@ public class TileEntityMolecularAssembler extends TileEntityInventory implements
     public String getCurrentInputName() { return currentInputName == null ? "" : currentInputName; }
     public String getCurrentOutputName(){ return currentOutputName == null ? "" : currentOutputName; }
     public int getRecipeCostEu(){ return currentRecipeCostEu; }
-    public double getProgress01() {return energyUsed / currentTotalEu;}
+    public double getProgress01() {return currentTotalEu <= 0 ? 0.0 : (energyUsed / currentTotalEu);}
     public double getProgressPercent() {return currentTotalEu <= 0 ? 0.0 : Math.round((energyUsed / currentTotalEu) * 100.0);}
     public double getEutNow() {return Math.round(lastEnergyGiven * 10.0) / 10.0;}
     public int getTotalEu() {return currentTotalEu;}

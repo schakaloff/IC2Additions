@@ -1,4 +1,4 @@
 {
   "parent": "item/generated",
-  "textures": { "layer0": "ic2additions:items/sanarium_shard" }
+  "textures": { "layer0": "ic2additions:items/sannarium_shard" }
 }

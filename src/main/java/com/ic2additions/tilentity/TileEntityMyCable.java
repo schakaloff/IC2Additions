@@ -81,6 +81,11 @@ public class TileEntityMyCable extends TileEntity implements IEnergyConductor {
         }
     }
 
+    @Override
+    public void update() {
+
+    }
+
     @Override public double getConductionLoss() { return loss; }
     @Override public double getInsulationEnergyAbsorption() { return Integer.MAX_VALUE; }
     @Override public double getInsulationBreakdownEnergy() { return 9001; }

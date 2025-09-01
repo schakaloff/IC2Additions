@@ -7,7 +7,9 @@ package ic2.api.energy.tile;
  * See ic2/api/energy/usage.txt for an overall description of the energy net api.
  */
 public interface IEnergyConductor extends IEnergyAcceptor, IEnergyEmitter {
-	/**
+    void update();
+
+    /**
 	 * Energy loss for the conductor in EU per block.
 	 * 
 	 * @return Energy loss

@@ -14,10 +14,24 @@ public class ItemInit {
     public static final List<Item> ITEMS = new ArrayList<Item>();
     //ingots
     public static final Item COBALT_INGOT = new ItemBase("cobalt_ingot");
-    public static final Item SANARIUM_SHARD = new ItemBase("sanarium_shard");
+
     public static final Item SANARIUM = new ItemBase("sanarium");
+    public static final Item SANARIUM_SHARD = new ItemBase("sanarium_shard");
     public static final Item SANARIUM_ALLOY = new ItemBase("sanarium_alloy");
+    public static final Item ENRICHTED_SANARIUM = new ItemBase("enrichted_sanarium");
+    public static final Item ENRICHTED_SANARIUM_SHARD = new ItemBase("enrichted_sanarium_shard");
     public static final Item ENRICHTED_SANARIUM_ALLOY = new ItemBase("enrichted_sanarium_alloy");
+    public static final Item FULLERITE = new ItemBase("fullerite");
+    public static final Item MT_CORE = new ItemBase("mt_core");
+    public static final Item QUANTUM_CORE = new ItemBase("quantum_core");
+
+    public static final Item IRIDIUM_INGOT = new ItemBase("iridium_ingot");
+    public static final Item IRION_PLATE = new ItemBase("irion_plate");
+    public static final Item IRRADIANT_GLASS_PANE = new ItemBase("irradiant_glass_pane");
+    public static final Item ISNR_REINFORCED_PLATE = new ItemBase("isnr_reinforced_plate");
+    public static final Item IRRADIANT_URANIUM_INGOT = new ItemBase("irradiant_uranium_ingot");
+
+
     //items
     public static final Item PLASMATRON_CRYSTAL = new CrystalBase("plasmatron_crystal", 25_000_000, 4096D, 4, true);
     public static final Item AURATON_CRYSTAL = new CrystalBase("auraton_crystal", 50_000_000, 6144D, 5, true);

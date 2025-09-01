@@ -1,4 +1,4 @@
 {
   "parent": "item/handheld",
-  "textures": { "layer0": "ic2additions:items/enrichted_sanarium_alloy" }
+  "textures": { "layer0": "ic2additions:items/enriched_sannarium_alloy" }
 }

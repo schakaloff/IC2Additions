@@ -1,10 +1,22 @@
 #ingots
 item.cobalt_ingot.name=Cobalt Ingot
 #items
-item.sanarium_shard.name=Sanarium Shard
 item.sanarium.name=Sanarium
+item.sanarium_shard.name=Sanarium Shard
 item.sanarium_alloy.name=Sanarium Alloy
+item.enrichted_sanarium.name=Enrichted Sanarium
+item.enrichted_sanarium_shard.name=Enrichted Sanarium Shard
 item.enrichted_sanarium_alloy.name=Enrichted Sanarium Alloy
+
+item.fullerite.name=Fullerite
+item.quantum_core.name=Quantum Core
+item.mt_core.name=MT Core
+
+item.iridium_ingot.name=Iridium Ingot
+item.irion_plate.name=Iridium Plate
+item.irradiant_glass_pane.name=Irradiant Glass Pane
+item.isnr_reinforced_plate.name=Irradiant Reinforced Plate
+item.irradiant_uranium_ingot.name=Irradiant Uranium Ingot
 
 #gui
 gui.ic2additions.output=Input: %s EU/t
