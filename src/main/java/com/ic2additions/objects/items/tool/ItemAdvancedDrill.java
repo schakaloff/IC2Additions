@@ -22,7 +22,7 @@ import java.util.*;
 
 public class ItemAdvancedDrill extends ItemDrill {
 
-    private static final int OP_ENERGY_COST  = 20000;
+    private static final int OP_ENERGY_COST  = 50000;
     private static final HarvestLevel HARVEST = HarvestLevel.Diamond;
     private static final int MAX_CHARGE      = 200_000;
     private static final int TRANSFER_LIMIT  = 3_200;

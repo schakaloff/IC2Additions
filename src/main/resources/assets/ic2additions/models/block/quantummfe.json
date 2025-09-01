@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "ic2additions:blocks/mfsu3_leftrightback",
+    "down":     "ic2additions:blocks/mfsu3_bottomtop",
+    "up":       "ic2additions:blocks/mfsu3_bottomtop",
+    "north":    "ic2additions:blocks/mfsu3_front",
+    "east":     "ic2additions:blocks/mfsu3_leftrightback",
+    "south":    "ic2additions:blocks/mfsu3_leftrightback",
+    "west":     "ic2additions:blocks/mfsu3_leftrightback"
+  }
+}

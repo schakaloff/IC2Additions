@@ -1,0 +1,9 @@
+{
+  "record.communism": {
+    "category": "record",
+    "sounds": [
+      { "name": "ic2additions:records/communism", "stream": true }
+    ],
+    "subtitle": "subtitles.record.play"
+  }
+}

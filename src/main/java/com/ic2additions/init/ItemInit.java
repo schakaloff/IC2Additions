@@ -1,6 +1,7 @@
 package com.ic2additions.init;
 
 import com.ic2additions.objects.ItemBlockMyCable;
+import com.ic2additions.objects.ItemMusicDisc;
 import com.ic2additions.objects.items.*;
 import com.ic2additions.objects.items.armor.ItemArmorBetterNano;
 import com.ic2additions.objects.items.tool.ItemAdvancedDrill;
@@ -25,12 +26,13 @@ public class ItemInit {
     public static final Item MT_CORE = new ItemBase("mt_core");
     public static final Item QUANTUM_CORE = new ItemBase("quantum_core");
 
+
     public static final Item IRIDIUM_INGOT = new ItemBase("iridium_ingot");
     public static final Item IRION_PLATE = new ItemBase("irion_plate");
     public static final Item IRRADIANT_GLASS_PANE = new ItemBase("irradiant_glass_pane");
     public static final Item ISNR_REINFORCED_PLATE = new ItemBase("isnr_reinforced_plate");
     public static final Item IRRADIANT_URANIUM_INGOT = new ItemBase("irradiant_uranium_ingot");
-
+    public static final Item COMMUNISM = new ItemMusicDisc("music_disc_communism", "record.communism");
 
     //items
     public static final Item PLASMATRON_CRYSTAL = new CrystalBase("plasmatron_crystal", 25_000_000, 4096D, 4, true);

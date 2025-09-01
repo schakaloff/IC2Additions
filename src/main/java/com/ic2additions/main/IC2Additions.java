@@ -3,6 +3,7 @@ package com.ic2additions.main;
 import com.ic2additions.proxy.CommonProxy;
 import com.ic2additions.recipes.MolecularAssemblerRecipes;
 import com.ic2additions.recipes.Recipes;
+import com.ic2additions.tilentity.TileEntityMyCable;
 import com.ic2additions.util.Reference;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.*;
@@ -24,10 +25,7 @@ public class IC2Additions {
     @Mod.EventHandler
     public void preinit(FMLConstructionEvent event) {
         proxy.construct(event);
-        GameRegistry.registerTileEntity(
-                com.ic2additions.tilentity.TileEntityMyCable.class,
-                new ResourceLocation(MODID, "my_cable")
-        );
+        GameRegistry.registerTileEntity(TileEntityMyCable.class, new ResourceLocation(MODID, "my_cable"));
     }
 
     @Mod.EventHandler

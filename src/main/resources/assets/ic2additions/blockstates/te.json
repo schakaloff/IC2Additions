@@ -3,7 +3,10 @@
   "variants": {
     "type": {
       "invalid": { "model": "cube" },
-      "bettermfsu": { "model": "ic2additions:bettermfsu" },
+      "plasmatronmfe": { "model": "ic2additions:plasmatronmfe" },
+      "auratonmfe": { "model": "ic2additions:auratonmfe" },
+      "quantummfe": { "model": "ic2additions:quantummfe" },
+      "photonmfe": { "model": "ic2additions:photonmfe" },
       "better_solar_panel":  { "model": "ic2additions:better_solar_panel" },
       "hybrid_solar_panel":  { "model": "ic2additions:hybrid_solar_panel" },
       "ultimate_solar_panel":  { "model": "ic2additions:ultimate_solar_panel" },
