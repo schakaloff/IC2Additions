@@ -198,7 +198,6 @@ public class TileEntityMolecularAssembler extends TileEntityInventory implements
         }
     }
 
-
     public String getCurrentInputName() { return currentInputName == null ? "" : currentInputName; }
     public String getCurrentOutputName(){ return currentOutputName == null ? "" : currentOutputName; }
     public int getRecipeCostEu(){ return currentRecipeCostEu; }

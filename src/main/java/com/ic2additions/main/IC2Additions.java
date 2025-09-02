@@ -1,5 +1,6 @@
 package com.ic2additions.main;
 
+import com.ic2additions.init.TesRegistry;
 import com.ic2additions.proxy.CommonProxy;
 import com.ic2additions.recipes.MolecularAssemblerRecipes;
 import com.ic2additions.recipes.Recipes;
@@ -35,6 +36,7 @@ public class IC2Additions {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
+        TesRegistry.buildDummies();
         proxy.init(event);
         Recipes.addCraftingRecipes();
         Recipes.addMachineRecipe();

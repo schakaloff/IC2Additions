@@ -15,7 +15,7 @@ public class ItemQuantumDrill extends BaseDrill {
                 45,
                 100,
                 160.0D,
-                3,
+                5,
                 true,
                 true,
                 true, 1, 120.0D,

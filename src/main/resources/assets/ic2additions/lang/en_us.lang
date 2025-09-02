@@ -32,6 +32,12 @@ ic2additions.te.plasmatronmfe=Plasmatron MFE
 ic2additions.te.auratonmfe=Auraton MFE
 ic2additions.te.quantummfe=Quantum MFE
 ic2additions.te.photonmfe=Photon MFE
+
+ic2additions.te.iv_transformer=IV Transformer
+ic2additions.te.ov_transformer=OV Transformer
+ic2additions.te.cv_transformer=CV Transformer
+ic2additions.te.uv_transformer=UV Transformer
+
 ic2additions.te.better_solar_panel=Better Solar Panel
 ic2additions.te.hybrid_solar_panel=Hybrid Solar Panel
 ic2additions.te.quantum_solar_panel=Quantum Solar Panel

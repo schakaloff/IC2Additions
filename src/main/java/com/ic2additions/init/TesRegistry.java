@@ -8,6 +8,10 @@
     import com.ic2additions.tilentity.solarpanels.TileEntityHybridSolarPanel;
     import com.ic2additions.tilentity.solarpanels.TileEntityQuantumSolarPanel;
     import com.ic2additions.tilentity.solarpanels.TileEntityUltimateSolarPanel;
+    import com.ic2additions.tilentity.transformers.TileEntityTransformerCV;
+    import com.ic2additions.tilentity.transformers.TileEntityTransformerIV;
+    import com.ic2additions.tilentity.transformers.TileEntityTransformerOV;
+    import com.ic2additions.tilentity.transformers.TileEntityTransformerUV;
     import com.ic2additions.util.Reference;
     import ic2.core.block.ITeBlock;
     import ic2.core.block.TileEntityBlock;
@@ -22,17 +26,23 @@
     import net.minecraft.util.ResourceLocation;
 
     public enum TesRegistry implements ITeBlock {
-        plasmatronmfe(TileEntityPlasmatronMFE.class, 7, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.RARE),
-        auratonmfe(TileEntityAuratonMFE.class, 8, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.RARE),
-        quantummfe(TileEntityQuantumMFE.class, 9, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.RARE),
-        photonmfe(TileEntityPhotonMFE.class, 10, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.RARE),
 
         better_solar_panel(TileEntityBetterSolarPanel.class, 2, false, Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F, EnumRarity.COMMON),
         hybrid_solar_panel(TileEntityHybridSolarPanel.class, 3, false, Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F, EnumRarity.UNCOMMON),
         ultimate_solar_panel(TileEntityUltimateSolarPanel .class, 4, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.RARE),
         quantum_solar_panel(TileEntityQuantumSolarPanel.class, 5, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC),
 
-        molecular_assembler(TileEntityMolecularAssembler.class, 6, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC);
+        molecular_assembler(TileEntityMolecularAssembler.class, 6, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC),
+
+        plasmatronmfe(TileEntityPlasmatronMFE.class, 7, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.EPIC),
+        auratonmfe(TileEntityAuratonMFE.class, 8, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.EPIC),
+        quantummfe(TileEntityQuantumMFE.class, 9, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.EPIC),
+        photonmfe(TileEntityPhotonMFE.class, 10, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.RARE),
+
+        iv_transformer(TileEntityTransformerIV .class, 11, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10,EnumRarity.RARE),
+        ov_transformer(TileEntityTransformerOV .class, 12, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10,EnumRarity.RARE),
+        cv_transformer(TileEntityTransformerCV .class, 13, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10,EnumRarity.RARE),
+        uv_transformer(TileEntityTransformerUV .class, 14, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10,EnumRarity.EPIC);
 
 
         public static final ResourceLocation IDENTITY = new ResourceLocation(Reference.MODID, "te");
