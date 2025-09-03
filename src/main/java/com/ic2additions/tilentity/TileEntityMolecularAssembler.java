@@ -248,4 +248,9 @@ public class TileEntityMolecularAssembler extends TileEntityInventory implements
         nbt.setInteger("currentRecipeCostEu", this.currentRecipeCostEu);
         return nbt;
     }
+    @net.minecraftforge.fml.relauncher.SideOnly(net.minecraftforge.fml.relauncher.Side.CLIENT)
+    protected boolean shouldSideBeRendered(net.minecraft.util.EnumFacing side,
+                                           net.minecraft.util.math.BlockPos otherPos) {
+        return false; // don’t draw baked sides; TESR will draw everything
+    }
 }

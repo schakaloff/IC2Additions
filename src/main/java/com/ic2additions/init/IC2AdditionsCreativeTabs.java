@@ -9,7 +9,7 @@ public class IC2AdditionsCreativeTabs {
     public static final CreativeTabs tab = new CreativeTabs(Reference.MODID + ".tab") {
         @Override
         public ItemStack getTabIconItem() {
-            return new ItemStack(ItemInit.COBALT_INGOT);
+            return new ItemStack(ItemInit.FULLERITE);
         }
     };
 }

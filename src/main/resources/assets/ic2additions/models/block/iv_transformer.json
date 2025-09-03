@@ -1,12 +1,12 @@
 {
   "parent": "block/cube",
   "textures": {
-    "particle": "ic2additions:blocks/ev_transformer_front",
-    "down":     "ic2additions:blocks/ev_transformer_bottomtop",
-    "up":       "ic2additions:blocks/ev_transformer_bottomtop",
-    "north":    "ic2additions:blocks/ev_transformer_front",
-    "east":     "ic2additions:blocks/ev_transformer_leftrightback",
-    "south":    "ic2additions:blocks/ev_transformer_leftrightback",
-    "west":     "ic2additions:blocks/ev_transformer_leftrightback"
+    "particle": "ic2additions:blocks/iv_transformer_front",
+    "down":     "ic2additions:blocks/iv_transformer_bottomtop_active",
+    "up":       "ic2additions:blocks/iv_transformer_bottomtop_active",
+    "north":    "ic2additions:blocks/iv_transformer_front",
+    "east":     "ic2additions:blocks/iv_transformer_bottomtop_active",
+    "south":    "ic2additions:blocks/iv_transformer_bottomtop_active",
+    "west":     "ic2additions:blocks/iv_transformer_bottomtop_active"
   }
 }

@@ -24,6 +24,9 @@
     import net.minecraft.tileentity.TileEntity;
     import net.minecraft.util.EnumFacing;
     import net.minecraft.util.ResourceLocation;
+    import net.minecraft.util.math.BlockPos;
+    import net.minecraftforge.fml.relauncher.Side;
+    import net.minecraftforge.fml.relauncher.SideOnly;
 
     public enum TesRegistry implements ITeBlock {
 
@@ -32,7 +35,7 @@
         ultimate_solar_panel(TileEntityUltimateSolarPanel .class, 4, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.RARE),
         quantum_solar_panel(TileEntityQuantumSolarPanel.class, 5, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC),
 
-        molecular_assembler(TileEntityMolecularAssembler.class, 6, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC),
+        molecular_assembler(TileEntityMolecularAssembler.class, 6, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC, Material.IRON,true),
 
         plasmatronmfe(TileEntityPlasmatronMFE.class, 7, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.EPIC),
         auratonmfe(TileEntityAuratonMFE.class, 8, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.EPIC),
@@ -43,7 +46,6 @@
         ov_transformer(TileEntityTransformerOV .class, 12, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10,EnumRarity.RARE),
         cv_transformer(TileEntityTransformerCV .class, 13, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10,EnumRarity.RARE),
         uv_transformer(TileEntityTransformerUV .class, 14, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10,EnumRarity.EPIC);
-
 
         public static final ResourceLocation IDENTITY = new ResourceLocation(Reference.MODID, "te");
 
@@ -80,6 +82,8 @@
             this.material = material;
             this.isTransparent = isTransparent;
         }
+
+
 
         @Override public boolean hasItem() { return teClass != null && itemMeta != -1; }
         @Override public String getName() { return name(); }
