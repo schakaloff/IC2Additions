@@ -17,7 +17,7 @@ public class TileEntityMyCable extends TileEntity implements IEnergyConductor {
     private boolean addedToEnergyNet = false;
     private byte connectivity = 0;
     public static final double DEFAULT_LOSS = 0.05;
-    public static final int DEFAULT_CAPACITY = 10240;
+    public static final int DEFAULT_CAPACITY = 38168;
     private double loss = DEFAULT_LOSS;
     private int capacity = DEFAULT_CAPACITY;
 
@@ -82,9 +82,7 @@ public class TileEntityMyCable extends TileEntity implements IEnergyConductor {
     }
 
     @Override
-    public void update() {
-
-    }
+    public void update() {}
 
     @Override public double getConductionLoss() { return loss; }
     @Override public double getInsulationEnergyAbsorption() { return Integer.MAX_VALUE; }

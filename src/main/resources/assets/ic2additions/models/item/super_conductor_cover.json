@@ -1,4 +1,4 @@
 {
   "parent": "item/handheld",
-  "textures": { "layer0": "ic2additions:items/crafting/superconductorcover" }
+  "textures": { "layer0": "ic2additions:items/crafting/superconductor_protector" }
 }

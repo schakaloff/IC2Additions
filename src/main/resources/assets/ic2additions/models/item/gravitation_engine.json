@@ -1,4 +1,4 @@
 {
   "parent": "item/handheld",
-  "textures": { "layer0": "ic2additions:items/crafting/gravitationengine" }
+  "textures": { "layer0": "ic2additions:items/crafting/gravitational_module" }
 }

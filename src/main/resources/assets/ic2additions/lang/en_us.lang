@@ -10,6 +10,16 @@ item.irradiant_reinforced_plate=Irradiant Reinforced Plate
 item.iridium_iron_plate=Iridium-Iron Plate
 item.reinforced_iridium_iron_plate=Reinforced Iridium-Iron Plate
 item.photon.name=Photon
+item.cooling_core.name=Cooling Core
+item.engine_booster.name=Engine Booster
+item.gravitation_engine.name=Gravitation Engine
+item.magnetron.name=Magnetron HV
+item.super_conductor.name=Super Conductor
+item.super_conductor_cover.name=Super Conductor Cover
+item.hybrid_circuit.name=Hybrid Circuit
+item.nano_circuit.name=Nano Circuit
+item.quantum_circuit.name=Quantum Circuit
+item.ic2additions.advanced_pack=Advanced Pack
 
 item.fullerite.name=Fullerite
 item.quantum_core.name=Quantum Core

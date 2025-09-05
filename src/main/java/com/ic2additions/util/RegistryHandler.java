@@ -2,9 +2,13 @@ package com.ic2additions.util;
 import com.ic2additions.init.BlockInit;
 import com.ic2additions.init.ItemInit;
 import com.ic2additions.main.IC2Additions;
+import com.ic2additions.objects.items.tool.ItemPlasmaSaber;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.ModelBakery;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
@@ -29,11 +33,16 @@ public class RegistryHandler {
     {
         for(Item item : ItemInit.ITEMS)
         {
+            if (item == ItemInit.PLASMA_SABER) continue;
             IC2Additions.proxy.registerItemRenderer(item, 0, "inventory");
         }
 
         for(Block block : BlockInit.BLOCKS){
             IC2Additions.proxy.registerItemRenderer(Item.getItemFromBlock(block), 0, "inventory");
         }
+        ModelResourceLocation IDLE = new ModelResourceLocation(Reference.MODID + ":plasma_saber", "inventory");
+        ModelResourceLocation ACTIVE = new ModelResourceLocation(Reference.MODID + ":plasma_saber_active", "inventory");
+        ModelBakery.registerItemVariants(ItemInit.PLASMA_SABER, IDLE, ACTIVE);
+        ModelLoader.setCustomMeshDefinition(ItemInit.PLASMA_SABER, stack -> ItemPlasmaSaber.isActive(stack) ? ACTIVE : IDLE);
     }
 }

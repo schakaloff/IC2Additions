@@ -1,6 +1,7 @@
 package com.ic2additions.objects.items.tool;
 import com.ic2additions.init.IC2AdditionsCreativeTabs;
 import com.ic2additions.init.ItemInit;
+import ic2.api.item.ElectricItem;
 import ic2.core.item.tool.HarvestLevel;
 import ic2.core.item.tool.ItemDrill;
 import net.minecraft.block.state.IBlockState;
@@ -206,7 +207,9 @@ public class BaseDrill extends ItemDrill {
 
     @Override public int energyUse(ItemStack s, World w, BlockPos p, IBlockState st) { return energyUse; }
     @Override public int breakTime(ItemStack s, World w, BlockPos p, IBlockState st) { return breakTime; }
-    @Override public boolean breakBlock(ItemStack s, World w, BlockPos p, IBlockState st) { return this.tryUsePower(s, blockCost); }
+    private boolean tryUseEUFromAnySource(ItemStack stack, EntityPlayer player, double eu) {
+        return ElectricItem.manager.use(stack, eu, player);
+    }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
@@ -219,19 +222,19 @@ public class BaseDrill extends ItemDrill {
 
             if (player.isSneaking()) {
                 tag.setString(NBT_MODE, MODE_NONE);
-                player.sendMessage(new TextComponentString(TextFormatting.GRAY + "Enchantments disabled"));
+                player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Enchantments disabled"));
             } else {
                 String next = nextMode(mode);
                 tag.setString(NBT_MODE, next);
 
                 if (MODE_SILK.equals(next)) {
                     stack.addEnchantment(Enchantments.SILK_TOUCH, 1);
-                    player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Switched to Silk Touch"));
+                    player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Switched to Silk Touch"));
                 } else if (MODE_FORTUNE.equals(next)) {
                     stack.addEnchantment(Enchantments.FORTUNE, fortuneLevel);
                     player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Switched to Fortune " + fortuneLevel));
                 } else {
-                    player.sendMessage(new TextComponentString(TextFormatting.AQUA + "Switched to " + labelFor(next)));
+                    player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Switched to " + labelFor(next)));
                 }
             }
             player.inventory.markDirty();
@@ -367,7 +370,7 @@ public class BaseDrill extends ItemDrill {
             if (!st.getBlock().canHarvestBlock(world, p, player)) continue;
             if (this.getDestroySpeed(stack, st) <= 1.0F) continue;
 
-            if (!this.tryUsePower(stack, costPer)) break;
+            if (!tryUseEUFromAnySource(stack, player, costPer)) break;
 
             GameType gt = player.interactionManager.getGameType();
             int xp = ForgeHooks.onBlockBreakEvent(world, gt, player, p);
@@ -402,7 +405,7 @@ public class BaseDrill extends ItemDrill {
                 if (!st.getBlock().canHarvestBlock(world, p, player)) continue;
                 if (this.getDestroySpeed(stack, st) <= 1.0F) continue;
 
-                if (!this.tryUsePower(stack, costPer)) break;
+                if (!tryUseEUFromAnySource(stack, player, costPer)) break;
 
                 GameType gt = player.interactionManager.getGameType();
                 int xp = ForgeHooks.onBlockBreakEvent(world, gt, player, p);

@@ -1,4 +1,4 @@
 {
   "parent": "item/handheld",
-  "textures": { "layer0": "ic2additions:items/tool/drill_1" }
+  "textures": { "layer0": "ic2additions:items/tool/advanced_drill_2" }
 }

@@ -3,9 +3,11 @@ package com.ic2additions.init;
 import com.ic2additions.objects.ItemBlockMyCable;
 import com.ic2additions.objects.ItemMusicDisc;
 import com.ic2additions.objects.items.*;
+import com.ic2additions.objects.items.armor.ItemAdvancedEnergyPack;
 import com.ic2additions.objects.items.armor.ItemArmorBetterNano;
 import com.ic2additions.objects.items.tool.ItemAdvancedDrill;
 import com.ic2additions.objects.items.tool.ItemNanoDrill;
+import com.ic2additions.objects.items.tool.ItemPlasmaSaber;
 import com.ic2additions.objects.items.tool.ItemQuantumDrill;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -29,8 +31,12 @@ public class ItemInit {
     public static final Item IRIDIUM_INGOT = new ItemBase("iridium_ingot");
     public static final Item MT_CORE = new ItemBase("mt_core");
     public static final Item QUANTUM_CORE = new ItemBase("quantum_core");
+
     public static final Item PHOTON = new ItemBase("photon");
     public static final Item FULLERITE = new ItemBase("fullerite");
+    public static final Item HYBRID_CIRCUIT = new ItemBase("hybrid_circuit");
+    public static final Item NANO_CIRCUIT = new ItemBase("nano_circuit");
+    public static final Item QUANTUM_CIRCUIT = new ItemBase("quantum_circuit");
 
 
     public static final Item COOLING_CORE = new ItemBase("cooling_core");
@@ -58,4 +64,7 @@ public class ItemInit {
     public static final Item BETTER_NANO_CHEST = new ItemArmorBetterNano("better_nano_chestplate",   EntityEquipmentSlot.CHEST);
     public static final Item BETTER_NANO_LEGGINGS= new ItemArmorBetterNano("better_nano_leggings",EntityEquipmentSlot.LEGS);
     public static final Item BETTER_NANO_BOOTS = new ItemArmorBetterNano("better_nano_boots",   EntityEquipmentSlot.FEET);
+
+    public static final Item ADVANCED_PACK = new ItemAdvancedEnergyPack();
+    public static final Item PLASMA_SABER = new ItemPlasmaSaber();
 }
