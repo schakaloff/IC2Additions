@@ -33,16 +33,11 @@ public class RegistryHandler {
     {
         for(Item item : ItemInit.ITEMS)
         {
-            if (item == ItemInit.PLASMA_SABER) continue;
             IC2Additions.proxy.registerItemRenderer(item, 0, "inventory");
         }
 
         for(Block block : BlockInit.BLOCKS){
             IC2Additions.proxy.registerItemRenderer(Item.getItemFromBlock(block), 0, "inventory");
         }
-        ModelResourceLocation IDLE = new ModelResourceLocation(Reference.MODID + ":plasma_saber", "inventory");
-        ModelResourceLocation ACTIVE = new ModelResourceLocation(Reference.MODID + ":plasma_saber_active", "inventory");
-        ModelBakery.registerItemVariants(ItemInit.PLASMA_SABER, IDLE, ACTIVE);
-        ModelLoader.setCustomMeshDefinition(ItemInit.PLASMA_SABER, stack -> ItemPlasmaSaber.isActive(stack) ? ACTIVE : IDLE);
     }
 }

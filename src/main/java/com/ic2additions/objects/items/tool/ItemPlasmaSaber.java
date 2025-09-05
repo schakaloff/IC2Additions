@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import com.ic2additions.init.IC2AdditionsCreativeTabs;
 import com.ic2additions.init.ItemInit;
 import com.ic2additions.main.IC2Additions;
+import com.ic2additions.util.ActivatableItem;
 import ic2.api.item.ElectricItem;
 import ic2.core.IC2;
 import ic2.core.audio.PositionSpec;
@@ -43,7 +44,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.EnumSet;
 
-public class ItemPlasmaSaber extends ItemElectricTool {
+import static com.ic2additions.util.Reference.MODID;
+
+public class ItemPlasmaSaber extends ItemElectricTool implements ActivatableItem {
     public static int ticker = 0;
     private int soundTicker = 0;
 
@@ -198,9 +201,15 @@ public class ItemPlasmaSaber extends ItemElectricTool {
         return EnumRarity.RARE;
     }
 
-    public static boolean isActive(ItemStack stack) {
-        NBTTagCompound nbt = StackUtil.getOrCreateNbtData(stack);
-        return isActive(nbt);
+    @Override
+    public boolean isActive(ItemStack stack) {
+        return stack.hasTagCompound() && stack.getTagCompound().getBoolean("active");
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void registerClientProperty() {
+        this.addPropertyOverride(new ResourceLocation(MODID, "active"),
+                (stack, world, entity) -> isActive(stack) ? 1F : 0F);
     }
 
     private static boolean isActive(NBTTagCompound nbt) {
