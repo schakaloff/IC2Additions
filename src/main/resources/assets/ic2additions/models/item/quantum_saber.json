@@ -1,0 +1,7 @@
+{
+  "parent": "item/handheld",
+  "textures": { "layer0": "ic2additions:items/tool/quantum_saber" },
+  "overrides": [
+    { "predicate": { "ic2additions:active": 1 }, "model": "ic2additions:item/quantum_saber_active" }
+  ]
+}

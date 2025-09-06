@@ -1,0 +1,7 @@
+{
+  "parent": "item/handheld",
+  "textures": { "layer0": "ic2additions:items/tool/advanced_saber" },
+  "overrides": [
+    { "predicate": { "ic2additions:active": 1 }, "model": "ic2additions:item/advanced_saber_active" }
+  ]
+}

@@ -3,13 +3,12 @@ package com.ic2additions.objects.items.armor;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 
-public class ItemAdvancedEnergyPack extends ItemBaseEnergyPack{
-    public ItemAdvancedEnergyPack(){
-        super("advanced_pack", 3000000.0, 30000.0, 3);
+public class ItemUnrealEnergyPack extends ItemBaseEnergyPack{
+    public ItemUnrealEnergyPack(){
+        super("unreal_pack", 350_000_000, 200_000, 5);
     }
-
     @Override
     public EnumRarity getRarity(ItemStack stack) {
-        return EnumRarity.UNCOMMON;
+        return EnumRarity.EPIC;
     }
 }

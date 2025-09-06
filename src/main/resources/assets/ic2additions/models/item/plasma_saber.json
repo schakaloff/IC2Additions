@@ -1,7 +1,0 @@
-{
-  "parent": "item/handheld",
-  "textures": { "layer0": "ic2additions:items/plasma_saber" },
-  "overrides": [
-    { "predicate": { "ic2additions:active": 1 }, "model": "ic2additions:item/plasma_saber_active" }
-  ]
-}

@@ -2,7 +2,6 @@ package com.ic2additions.util;
 import com.ic2additions.init.BlockInit;
 import com.ic2additions.init.ItemInit;
 import com.ic2additions.main.IC2Additions;
-import com.ic2additions.objects.items.tool.ItemPlasmaSaber;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;

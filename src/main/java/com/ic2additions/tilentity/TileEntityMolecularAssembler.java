@@ -196,6 +196,7 @@ public class TileEntityMolecularAssembler extends TileEntityInventory implements
             default:
                 return 0;
         }
+
     }
 
     public String getCurrentInputName() { return currentInputName == null ? "" : currentInputName; }

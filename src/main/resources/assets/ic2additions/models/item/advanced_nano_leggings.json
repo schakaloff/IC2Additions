@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ic2additions:items/armor/advanced_nano_leggings"
+  }
+}

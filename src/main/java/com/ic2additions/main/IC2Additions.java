@@ -26,6 +26,7 @@ public class IC2Additions {
     @Mod.EventHandler
     public void preinit(FMLConstructionEvent event) {
         proxy.construct(event);
+
         GameRegistry.registerTileEntity(TileEntityMyCable.class, new ResourceLocation(MODID, "my_cable"));
     }
 

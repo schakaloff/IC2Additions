@@ -39,4 +39,7 @@ public class MolecularAssemblerRecipesHandler {
         }
         return null;
     }
+    public static synchronized int getRecipeCount() {
+        return RECIPES.size();
+    }
 }

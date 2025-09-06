@@ -1,8 +1,9 @@
 package com.ic2additions.proxy;
 
 import com.ic2additions.init.ItemInit;
-import com.ic2additions.objects.items.tool.ItemPlasmaSaber;
 import com.ic2additions.util.ActivatableItem;
+import com.ic2additions.util.IC2AdditionsKeys;
+import com.ic2additions.util.JetpackOverlay;
 import com.ic2additions.util.Reference;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -32,7 +33,11 @@ public class ClientProxy extends CommonProxy
     }
 
     @Override
-    public void init(FMLInitializationEvent event) {super.init(event);}
+    public void init(FMLInitializationEvent event) {
+        super.init(event);
+        IC2AdditionsKeys.register();
+        new JetpackOverlay();
+    }
 
     @Override
     public void postinit(FMLPostInitializationEvent event) {

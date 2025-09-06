@@ -6,9 +6,9 @@ item.enrichted_sanarium.name=Enrichted Sanarium
 item.enrichted_sanarium_alloy.name=Enrichted Sanarium Alloy
 item.irradiant_glass_pane.name=Irradiant Glass Pane
 item.irradiant_uranium_ingot.name=Irradiant Uranium Ingot
-item.irradiant_reinforced_plate=Irradiant Reinforced Plate
-item.iridium_iron_plate=Iridium-Iron Plate
-item.reinforced_iridium_iron_plate=Reinforced Iridium-Iron Plate
+item.irradiant_reinforced_plate.name=Irradiant Reinforced Plate
+item.iridium_iron_plate.name=Iridium-Iron Plate
+item.reinforced_iridium_iron_plate.name=Reinforced Iridium-Iron Plate
 item.photon.name=Photon
 item.cooling_core.name=Cooling Core
 item.engine_booster.name=Engine Booster
@@ -19,7 +19,16 @@ item.super_conductor_cover.name=Super Conductor Cover
 item.hybrid_circuit.name=Hybrid Circuit
 item.nano_circuit.name=Nano Circuit
 item.quantum_circuit.name=Quantum Circuit
-item.ic2additions.advanced_pack=Advanced Pack
+
+
+ic2additions.message.on=On
+ic2additions.message.off=Off
+ic2additions.message.hover_on=Hover mode enabled
+ic2additions.message.hover_off=Hover mode disabled
+ic2additions.message.jetpackSwitch=Jetpack: %s
+ic2additions.message.hoverSwitch=Jetpack: %s
+
+ic2additions.advancedChainsaw.shear=Shear: %s
 
 item.fullerite.name=Fullerite
 item.quantum_core.name=Quantum Core
@@ -57,9 +66,11 @@ ic2additions.te.ultimate_solar_panel=Ultimate Solar Panel
 #others
 ic2additions.te.molecular_assembler=Molecular Assembler
 tile.ic2additions.my_cable.name=My Cable
+
 #tab
 itemGroup.ic2additions.tab=IC2 Additions
 #crystals
+
 item.plasmatron_crystal.name=Plasmatron Crystal
 item.quantum_crystal.name=Quantum Crystal
 item.auraton_crystal.name=Auraton Crystal
@@ -70,9 +81,28 @@ ic2.advanced_drill=Advanced Drill
 ic2.nano_drill=Nano Drill
 ic2.quantum_drill=Quantum Drill
 
+ic2.advanced_chainsaw=Advanced Chainsaw
+ic2.vajra=Vajra
+
+#weapons
+ic2.advanced_saber=Advanced Nano-Saber
+ic2.quantum_saber=Quantum Saber
+
 #armor
-item.ic2additions.better_nano_helmet=Better Nano Helmet
-item.ic2additions.better_nano_chestplate=Better Nano Chestplate
-item.ic2additions.better_nano_leggings=Better Nano Leggings
-item.ic2additions.better_nano_boots=Better Nano Boots
+item.ic2additions.advanced_pack=Advanced Pack
+item.ic2additions.ultimate_pack=Ultimate Pack
+item.ic2additions.unreal_pack=Unreal Pack
+
+ic2.advanced_electric_jetpack=Advanced Electric-Jetpack
+
+item.ic2additions.advanced_nano_helmet=Advanced Nano Helmet
+item.ic2additions.advanced_nano_chestplate=Advanced Nano Chestplate
+item.ic2additions.advanced_nano_leggings=Advanced Nano Leggings
+item.ic2additions.advanced_nano_boots=Advanced Nano Booots
+
+item.ic2additions.seraphim_mk2_helmet=Seraphim MK2 Helmet
+item.ic2additions.seraphim_mk2_chestplate=Seraphim MK2 Chestplate
+item.ic2additions.seraphim_mk2_leggings=Seraphim MK2 Leggings
+item.ic2additions.seraphim_mk2_boots=Seraphim MK2 Boots
+
 
