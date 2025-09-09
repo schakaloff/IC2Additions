@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "ic2additions:blocks/eu_to_rf_converter"
+  }
+}

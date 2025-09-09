@@ -1,7 +1,7 @@
 package com.ic2additions.objects;
 
 import com.ic2additions.init.ItemInit;
-import com.ic2additions.tilentity.TileEntityMyCable;
+import com.ic2additions.tilentity.TileEntityPlasmaCable;
 import net.minecraft.block.Block;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemBlock;
@@ -9,11 +9,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemBlockMyCable extends ItemBlock {
-    public ItemBlockMyCable(Block block) {
+public class ItemBlockPlasmaCable extends ItemBlock {
+    public ItemBlockPlasmaCable(Block block) {
         super(block);
         setRegistryName(block.getRegistryName());
         ItemInit.ITEMS.add(this);
@@ -29,8 +30,8 @@ public class ItemBlockMyCable extends ItemBlock {
     @Override
     public boolean placeBlockAt(ItemStack stack, net.minecraft.entity.player.EntityPlayer player, World world, net.minecraft.util.math.BlockPos pos, net.minecraft.util.EnumFacing side, float hitX, float hitY, float hitZ, net.minecraft.block.state.IBlockState newState) {
         boolean ok = super.placeBlockAt(stack, player, world, pos, side, hitX, hitY, hitZ, newState);
-        if (ok && !world.isRemote && stack.hasTagCompound() && world.getTileEntity(pos) instanceof TileEntityMyCable) {
-            TileEntityMyCable te = (TileEntityMyCable) world.getTileEntity(pos);
+        if (ok && !world.isRemote && stack.hasTagCompound() && world.getTileEntity(pos) instanceof TileEntityPlasmaCable) {
+            TileEntityPlasmaCable te = (TileEntityPlasmaCable) world.getTileEntity(pos);
             NBTTagCompound t = stack.getTagCompound();
             if (t.hasKey("loss")) te.setLoss(t.getDouble("loss"));
             if (t.hasKey("capacity")) te.setCapacity(t.getInteger("capacity"));
@@ -40,8 +41,8 @@ public class ItemBlockMyCable extends ItemBlock {
     }
     @Override
     public void addInformation(ItemStack stack, @Nullable World w, List<String> lines, ITooltipFlag flag) {
-        double loss = TileEntityMyCable.DEFAULT_LOSS;
-        int cap = TileEntityMyCable.DEFAULT_CAPACITY;
+        double loss = TileEntityPlasmaCable.DEFAULT_LOSS;
+        int cap = TileEntityPlasmaCable.DEFAULT_CAPACITY;
         if (stack.hasTagCompound()) {
             NBTTagCompound t = stack.getTagCompound();
             if (t.hasKey("loss")) loss = t.getDouble("loss");

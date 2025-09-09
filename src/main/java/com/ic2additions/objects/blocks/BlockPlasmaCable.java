@@ -1,6 +1,6 @@
 package com.ic2additions.objects.blocks;
 import com.ic2additions.init.IC2AdditionsCreativeTabs;
-import com.ic2additions.tilentity.TileEntityMyCable;
+import com.ic2additions.tilentity.TileEntityPlasmaCable;
 import com.ic2additions.util.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -11,9 +11,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 
-public class BlockMyCable extends Block {
+public class BlockPlasmaCable extends Block {
 
-    public BlockMyCable(String name) {
+    public BlockPlasmaCable(String name) {
         super(Material.CIRCUITS);
         setUnlocalizedName(Reference.MODID + "." + name);
         setRegistryName(Reference.MODID,name);
@@ -22,14 +22,14 @@ public class BlockMyCable extends Block {
         setResistance(1.0F);
     }
     @Override public boolean hasTileEntity(IBlockState state) { return true; }
-    @Override public TileEntity createTileEntity(World world, IBlockState state) { return new TileEntityMyCable(); }
+    @Override public TileEntity createTileEntity(World world, IBlockState state) { return new TileEntityPlasmaCable(); }
 
     @Override
     public void onBlockAdded(World w, BlockPos pos, IBlockState state) {
         super.onBlockAdded(w, pos, state);
         if (!w.isRemote) {
             TileEntity te = w.getTileEntity(pos);
-            if (te instanceof TileEntityMyCable) ((TileEntityMyCable) te).updateConnectivity();
+            if (te instanceof TileEntityPlasmaCable) ((TileEntityPlasmaCable) te).updateConnectivity();
             for (EnumFacing f : EnumFacing.VALUES) w.neighborChanged(pos.offset(f), this, pos);
         }
     }

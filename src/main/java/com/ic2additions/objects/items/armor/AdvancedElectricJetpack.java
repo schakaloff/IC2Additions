@@ -82,7 +82,7 @@ public class AdvancedElectricJetpack extends ItemArmorElectric implements IBoost
         byte toggleTimer = nbt.getByte(TAG_TOGGLE_TIMER);
 
         if (IC2AdditionsKeys.isFlyKeyDown(player) && toggleTimer == 0) {
-            nbt.setByte(TAG_TOGGLE_TIMER, (byte) 10); // debounce ~0.5s
+            nbt.setByte(TAG_TOGGLE_TIMER, (byte) 10);
             if (!world.isRemote) {
                 boolean on = switchJetpack(stack);
                 String mode = on

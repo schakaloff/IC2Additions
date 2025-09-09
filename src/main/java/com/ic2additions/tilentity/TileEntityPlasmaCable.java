@@ -13,7 +13,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.MinecraftForge;
 
-public class TileEntityMyCable extends TileEntity implements IEnergyConductor {
+public class TileEntityPlasmaCable extends TileEntity implements IEnergyConductor {
     private boolean addedToEnergyNet = false;
     private byte connectivity = 0;
     public static final double DEFAULT_LOSS = 0.05;

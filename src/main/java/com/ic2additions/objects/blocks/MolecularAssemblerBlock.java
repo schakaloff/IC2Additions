@@ -2,7 +2,6 @@ package com.ic2additions.objects.blocks;
 
 import com.ic2additions.init.IC2AdditionsCreativeTabs;
 import com.ic2additions.tilentity.TileEntityMolecularAssembler;
-import com.ic2additions.tilentity.TileEntityMyCable;
 import com.ic2additions.util.Reference;
 import ic2.core.IC2;
 import ic2.core.IHasGui;

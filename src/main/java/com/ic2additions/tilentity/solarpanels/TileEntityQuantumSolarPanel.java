@@ -4,6 +4,6 @@ import com.ic2additions.tilentity.BaseSolarPanel;
 
 public class TileEntityQuantumSolarPanel extends BaseSolarPanel {
     public TileEntityQuantumSolarPanel(){
-        super(8192.0D, 4, 5_000_000);
+        super(8192.0D, 5, 5_000_000);
     }
 }

@@ -1,10 +1,12 @@
 package com.ic2additions.main;
 
 import com.ic2additions.init.TesRegistry;
+import com.ic2additions.objects.blocks.BlockEUtoRF;
 import com.ic2additions.proxy.CommonProxy;
 import com.ic2additions.recipes.MolecularAssemblerRecipes;
 import com.ic2additions.recipes.Recipes;
-import com.ic2additions.tilentity.TileEntityMyCable;
+import com.ic2additions.tilentity.TileEntityEUtoRF;
+import com.ic2additions.tilentity.TileEntityPlasmaCable;
 import com.ic2additions.util.Reference;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.*;
@@ -26,8 +28,8 @@ public class IC2Additions {
     @Mod.EventHandler
     public void preinit(FMLConstructionEvent event) {
         proxy.construct(event);
-
-        GameRegistry.registerTileEntity(TileEntityMyCable.class, new ResourceLocation(MODID, "my_cable"));
+        GameRegistry.registerTileEntity(TileEntityPlasmaCable.class, new ResourceLocation(MODID, "plasma_cable"));
+        GameRegistry.registerTileEntity(TileEntityEUtoRF.class, "ic2additions:eu_to_rf_converter");
     }
 
     @Mod.EventHandler

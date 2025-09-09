@@ -19,7 +19,18 @@ item.super_conductor_cover.name=Super Conductor Cover
 item.hybrid_circuit.name=Hybrid Circuit
 item.nano_circuit.name=Nano Circuit
 item.quantum_circuit.name=Quantum Circuit
+item.fullerite.name=Fullerite
+item.quantum_core.name=Quantum Core
+item.mt_core.name=MT Core
+item.iridium_ingot.name=Iridium Ingot
 
+ic2additions.graviTool.set=%s (%s)
+ic2additions.graviTool.noEnergy=Not enough energy.
+ic2additions.graviTool.hoe=Hoe
+ic2additions.graviTool.treetap=Treetap
+ic2additions.graviTool.wrench=Wrench
+ic2additions.graviTool.screwdriver=Screwdriver
+ic2additions.graviTool.changeTool=Tool mode: %s
 
 ic2additions.message.on=On
 ic2additions.message.off=Off
@@ -29,11 +40,6 @@ ic2additions.message.jetpackSwitch=Jetpack: %s
 ic2additions.message.hoverSwitch=Jetpack: %s
 
 ic2additions.advancedChainsaw.shear=Shear: %s
-
-item.fullerite.name=Fullerite
-item.quantum_core.name=Quantum Core
-item.mt_core.name=MT Core
-item.iridium_ingot.name=Iridium Ingot
 
 #music discs
 item.ic2additions.music_disc_communism.name=Music Disc
@@ -65,7 +71,7 @@ ic2additions.te.ultimate_solar_panel=Ultimate Solar Panel
 
 #others
 ic2additions.te.molecular_assembler=Molecular Assembler
-tile.ic2additions.my_cable.name=My Cable
+tile.ic2additions.plasma_cable.name=Plasma Cable
 
 #tab
 itemGroup.ic2additions.tab=IC2 Additions
@@ -77,10 +83,10 @@ item.auraton_crystal.name=Auraton Crystal
 item.photon_crystal.name=Photon Crystal
 
 #tools
+item.ic2additions.gravitool=MultiTool
 ic2.advanced_drill=Advanced Drill
 ic2.nano_drill=Nano Drill
 ic2.quantum_drill=Quantum Drill
-
 ic2.advanced_chainsaw=Advanced Chainsaw
 ic2.vajra=Vajra
 
@@ -104,5 +110,44 @@ item.ic2additions.seraphim_mk2_helmet=Seraphim MK2 Helmet
 item.ic2additions.seraphim_mk2_chestplate=Seraphim MK2 Chestplate
 item.ic2additions.seraphim_mk2_leggings=Seraphim MK2 Leggings
 item.ic2additions.seraphim_mk2_boots=Seraphim MK2 Boots
+
+#reactor
+ic2.thorium_fuel_rod=Fuel Road (Thorium)
+ic2.thorium_double_fuel_rod=Dual Fuel Rod (Thorium)
+ic2.thorium_quad_fuel_rod=Quad Fuel Rod (Thorium)
+
+item.depleted_thorium.name=Fuel Rod (Depleted Thorium)
+item.depleted_dual_thorium.name=Dual Fuel Rod (Depleted Thorium)
+item.depleted_quad_thorium.name=Quad Fuel Rod (Depleted Thorium)
+
+ic2.neptunium_fuel_rod=Fuel Road (Neptunium)
+ic2.neptunium_double_fuel_rod=Dual Fuel Rod (Neptunium)
+ic2.neptunium_quad_fuel_rod=Quad Fuel Rod (Neptunium)
+
+item.depleted_neptunium.name=Fuel Rod (Depleted Neptunium)
+item.depleted_dual_neptunium.name=Dual Fuel Rod (Depleted Neptunium)
+item.depleted_quad_neptunium.name=Quad Fuel Rod (Depleted Neptunium)
+
+ic2.californium_fuel_rod=Fuel Road (Californium)
+ic2.californium_double_fuel_rod=Dual Fuel Rod (Californium)
+ic2.californium_quad_fuel_rod=Quad Fuel Rod (Californium)
+
+item.depleted_californium.name=Fuel Rod (Depleted Californium)
+item.depleted_dual_californium.name=Dual Fuel Rod (Depleted Californium)
+item.depleted_quad_californium.name=Quad Fuel Rod (Depleted Californium)
+
+item.uranium_233.name=Uranium-233
+
+item.californium_252.name=Californium-252
+item.californium_ingot.name=Californium Ingot
+
+item.thorium_232.name=Thorium-232
+item.thorium_ingot.name=Thorium Ingot
+
+item.neptunium_ingot.name=Neptunium Ingot
+item.neptunium_237.name=Neptunium-237
+item.neptunium_239.name=Neptunium-239
+
+
 
 

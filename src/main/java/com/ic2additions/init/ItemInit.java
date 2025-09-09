@@ -1,11 +1,15 @@
 package com.ic2additions.init;
 
 import com.ic2additions.objects.ItemBlockMolecularAssembler;
-import com.ic2additions.objects.ItemBlockMyCable;
+import com.ic2additions.objects.ItemBlockPlasmaCable;
 import com.ic2additions.objects.ItemMusicDisc;
 import com.ic2additions.objects.items.*;
 import com.ic2additions.objects.items.armor.*;
+import com.ic2additions.objects.items.reactor.ItemReactorCalifornium;
+import com.ic2additions.objects.items.reactor.ItemReactorNeptunium;
+import com.ic2additions.objects.items.reactor.ItemReactorThorium;
 import com.ic2additions.objects.items.tool.*;
+import ic2.core.ref.ItemName;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 
@@ -42,6 +46,46 @@ public class ItemInit {
     public static final Item SUPER_CONDUCTOR = new ItemBase("super_conductor");
     public static final Item SUPER_CONDUCTOR_COVER = new ItemBase("super_conductor_cover");
 
+
+    public static final Item URANIUM_233 = new ItemBaseRadioactiveItem("uranium_233", 180, 100);
+
+    public static final Item CALIFORNIUM_252 = new ItemBaseRadioactiveItem("californium_252", 200, 90);
+    public static final Item CALIFORNIUM_INGOT = new ItemBaseRadioactiveItem("californium_ingot", 50, 100);
+
+    public static final Item THORIUM_232 = new ItemBaseRadioactiveItem("thorium_232", 30, 75);
+    public static final Item THORIUM_INGOT = new ItemBaseRadioactiveItem("thorium_ingot", 30, 75);
+
+    public static final Item NEPTUNIUM_INGOT = new ItemBaseRadioactiveItem("neptunium_ingot", 100, 70);
+    public static final Item NEPTUNIUM_237 = new ItemBaseRadioactiveItem("neptunium_237", 200, 100);
+    public static final Item NEPTUNIUM_239 = new ItemBaseRadioactiveItem("neptunium_239", 200, 100);
+
+
+
+    public static final Item THORIUM_ROD_SINGLE = new ItemReactorThorium("thorium_fuel_rod", 1);
+    public static final Item THORIUM_ROD_DOUBLE = new ItemReactorThorium("thorium_double_fuel_rod", 2);
+    public static final Item THORIUM_ROD_QUAD = new ItemReactorThorium("thorium_quad_fuel_rod", 4);
+
+    public static final Item DEPLETED_THORIUM = new ItemBase("depleted_thorium");
+    public static final Item DEPLETED_THORIUM_DUAL = new ItemBase("depleted_dual_thorium");
+    public static final Item DEPLETED_THORIUM_QUAD = new ItemBase("depleted_quad_thorium");
+
+    public static final Item NEPTUNIUM_ROD_SINGLE = new ItemReactorNeptunium("neptunium_fuel_rod", 1);
+    public static final Item NEPTUNIUM_ROD_DOUBLE = new ItemReactorNeptunium("neptunium_double_fuel_rod", 2);
+    public static final Item NEPTUNIUM_ROD_QUAD = new ItemReactorNeptunium("neptunium_quad_fuel_rod", 4);
+
+    public static final Item DEPLETED_NEPTUNIUM = new ItemBase("depleted_neptunium");
+    public static final Item DEPLETED_NEPTUNIUM_DUAL = new ItemBase("depleted_dual_neptunium");
+    public static final Item DEPLETED_NEPTUNIUM_QUAD = new ItemBase("depleted_quad_neptunium");
+
+    public static final Item CALIFORNIUM_ROD_SINGLE = new ItemReactorCalifornium("californium_fuel_rod", 1);
+    public static final Item CALIFORNIUM_ROD_DOUBLE = new ItemReactorCalifornium("californium_double_fuel_rod", 2);
+    public static final Item CALIFORNIUM_ROD_QUAD = new ItemReactorCalifornium("californium_quad_fuel_rod", 4);
+
+    public static final Item DEPLETED_CALIFORNIUM = new ItemBase("depleted_californium");
+    public static final Item DEPLETED_CALIFORNIUM_DUAL = new ItemBase("depleted_dual_californium");
+    public static final Item DEPLETED_CALIFORNIUM_QUAD = new ItemBase("depleted_quad_californium");
+
+
     //discs
     public static final Item COMMUNISM = new ItemMusicDisc("music_disc_communism", "record.communism");
 
@@ -51,7 +95,7 @@ public class ItemInit {
     public static final Item QUANTUM_CRYSTAL = new CrystalBase("quantum_crystal", 75_000_000, 8196D, 6, true);
     public static final Item PHOTON_CRYSTAL = new CrystalBase("photon_crystal", 100_000_000, 10000D, 7, true);
     //tools
-    public static final Item MY_CABLE_ITEM = new ItemBlockMyCable(BlockInit.MY_CABLE);
+    public static final Item PLASMA_CABLE = new ItemBlockPlasmaCable(BlockInit.PLASMA_CABLE);
     public static final Item MOLECULAR_ASSEMBLER_ITEM = new ItemBlockMolecularAssembler(BlockInit.MOLECULAR_ASSEMBLER);
 
     public static final Item ADVANCED_DRILL = new ItemAdvancedDrill("advanced_drill");
@@ -59,8 +103,8 @@ public class ItemInit {
     public static final Item QUANTUM_DRILL = new ItemQuantumDrill("quantum_drill");
 
     public static final Item ADVANCED_CHAINSAW = new ItemAdvancedChainsaw();
+    public static final Item MULTI_TOOL = new ItemMultiTool("gravitool");
     public static final Item VAIJRA = new ItemVajra("vajra");
-
 
     public static final Item PLASMA_SABER = new ItemQuantumSaber();
     public static final Item ADVANCED_SABER = new ItemAdvancedSaber();
@@ -75,7 +119,6 @@ public class ItemInit {
     public static final Item SERAPHIM_MK2_CHEST = new ItemArmorSeraphimMK2("seraphim_mk2_chestplate",   EntityEquipmentSlot.CHEST);
     public static final Item SERAPHIM_MK2_LEGGINGS= new ItemArmorSeraphimMK2("seraphim_mk2_leggings",EntityEquipmentSlot.LEGS);
     public static final Item SERAPHIM_MK2_BOOTS = new ItemArmorSeraphimMK2 ("seraphim_mk2_boots",   EntityEquipmentSlot.FEET);
-
 
     public static final Item ADVANCED_ELECTRIC_JETPACK = new AdvancedElectricJetpack("advanced_electric_jetpack");
 
