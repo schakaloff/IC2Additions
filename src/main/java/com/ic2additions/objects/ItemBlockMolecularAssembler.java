@@ -7,7 +7,6 @@ import net.minecraft.item.ItemBlock;
 public class ItemBlockMolecularAssembler extends ItemBlock {
     public ItemBlockMolecularAssembler(Block block){
         super(block);
-        setRegistryName(block.getRegistryName());
-        ItemInit.ITEMS.add(this);
+        setRegistryName(block.getRegistryName()); // 🔴 This is required
     }
 }

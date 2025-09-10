@@ -16,8 +16,7 @@ import java.util.List;
 public class ItemBlockPlasmaCable extends ItemBlock {
     public ItemBlockPlasmaCable(Block block) {
         super(block);
-        setRegistryName(block.getRegistryName());
-        ItemInit.ITEMS.add(this);
+        setRegistryName(block.getRegistryName()); // 🔴 This is required
     }
     public static ItemStack withParams(Block block, double loss, int capacity) {
         ItemStack s = new ItemStack(block);

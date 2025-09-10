@@ -9,43 +9,53 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.energy.EnergyStorage;
+import net.minecraftforge.energy.IEnergyStorage;
 
 public class TileEntityEUtoRF extends TileEntity implements ITickable, IEnergySink {
 
     private int euBuffer = 0;
     private final int maxEuBuffer = 10000;
-
     private final EnergyStorageRF rfStorage = new EnergyStorageRF(40000);
-
-    // Conversion rate: 4 EU -> 1 RF
-    private static final double CONVERSION = 0.25;
+    private static final double CONVERSION = 4; //1EU FOR 4RF
 
     @Override
     public void update() {
         if (!world.isRemote) {
-            int rfSpace = rfStorage.getMaxEnergyStored() - rfStorage.getEnergyStored();
-            int euNeeded = (int)(rfSpace / CONVERSION);
-
-            if (euBuffer > 0 && rfSpace > 0) {
-                int euToConvert = Math.min(euBuffer, euNeeded);
+            // Convert EU → RF
+            if (euBuffer > 0 && rfStorage.getEnergyStored() < rfStorage.getMaxEnergyStored()) {
+                int rfSpace = rfStorage.getMaxEnergyStored() - rfStorage.getEnergyStored();
+                int euToConvert = Math.min(euBuffer, (int)(rfSpace / CONVERSION));
                 int rfProduced = (int)(euToConvert * CONVERSION);
 
-                euBuffer -= euToConvert;
-                rfStorage.receiveEnergy(rfProduced, false);
+                if (rfProduced > 0) {
+                    euBuffer -= euToConvert;
+                    rfStorage.receiveEnergy(rfProduced, false);
+                }
+            }
+            for (EnumFacing side : EnumFacing.values()) {
+                TileEntity neighbor = world.getTileEntity(pos.offset(side));
+                if (neighbor != null) {
+                    IEnergyStorage neighborEnergy = neighbor.getCapability(CapabilityEnergy.ENERGY, side.getOpposite());
+                    if (neighborEnergy != null) {
+                        int extracted = rfStorage.extractEnergy(rfStorage.getEnergyStored(), true);
+                        int accepted = neighborEnergy.receiveEnergy(extracted, false);
+                        rfStorage.extractEnergy(accepted, false);
+                    }
+                }
             }
         }
     }
 
-    // --- IC2 EnergySink ---
     @Override
     public double getDemandedEnergy() {
-        return maxEuBuffer - euBuffer;
+        int rfSpace = rfStorage.getMaxEnergyStored() - rfStorage.getEnergyStored();
+        int euNeeded = (int) (rfSpace / CONVERSION);
+        return Math.max(0, Math.min(maxEuBuffer - euBuffer, euNeeded));
     }
 
     @Override
     public int getSinkTier() {
-        return 2; // MV tier
+        return 4; // MV tier
     }
 
     @Override
@@ -97,4 +107,5 @@ public class TileEntityEUtoRF extends TileEntity implements ITickable, IEnergySi
     public EnergyStorageRF getRfStorage() {
         return rfStorage;
     }
+
 }
