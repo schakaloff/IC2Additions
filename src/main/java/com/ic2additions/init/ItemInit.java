@@ -1,6 +1,5 @@
 package com.ic2additions.init;
 
-import com.ic2additions.objects.ItemBlockMolecularAssembler;
 import com.ic2additions.objects.ItemBlockPlasmaCable;
 import com.ic2additions.objects.ItemMusicDisc;
 import com.ic2additions.objects.items.*;
@@ -9,7 +8,6 @@ import com.ic2additions.objects.items.reactor.ItemReactorCalifornium;
 import com.ic2additions.objects.items.reactor.ItemReactorNeptunium;
 import com.ic2additions.objects.items.reactor.ItemReactorThorium;
 import com.ic2additions.objects.items.tool.*;
-import ic2.core.ref.ItemName;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 
@@ -96,7 +94,6 @@ public class ItemInit {
     public static final Item PHOTON_CRYSTAL = new CrystalBase("photon_crystal", 100_000_000, 10000D, 7, true);
     //tools
     public static final Item PLASMA_CABLE = new ItemBlockPlasmaCable(BlockInit.PLASMA_CABLE);
-    public static final Item MOLECULAR_ASSEMBLER_ITEM = new ItemBlockMolecularAssembler(BlockInit.MOLECULAR_ASSEMBLER);
 
     public static final Item ADVANCED_DRILL = new ItemAdvancedDrill("advanced_drill");
     public static final Item NANO_DRILL = new ItemNanoDrill("nano_drill");

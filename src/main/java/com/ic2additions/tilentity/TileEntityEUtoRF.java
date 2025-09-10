@@ -16,12 +16,11 @@ public class TileEntityEUtoRF extends TileEntity implements ITickable, IEnergySi
     private int euBuffer = 0;
     private final int maxEuBuffer = 10000;
     private final EnergyStorageRF rfStorage = new EnergyStorageRF(40000);
-    private static final double CONVERSION = 4; //1EU FOR 4RF
+    private static final double CONVERSION = 4;
 
     @Override
     public void update() {
         if (!world.isRemote) {
-            // Convert EU → RF
             if (euBuffer > 0 && rfStorage.getEnergyStored() < rfStorage.getMaxEnergyStored()) {
                 int rfSpace = rfStorage.getMaxEnergyStored() - rfStorage.getEnergyStored();
                 int euToConvert = Math.min(euBuffer, (int)(rfSpace / CONVERSION));
@@ -55,7 +54,7 @@ public class TileEntityEUtoRF extends TileEntity implements ITickable, IEnergySi
 
     @Override
     public int getSinkTier() {
-        return 4; // MV tier
+        return 7;
     }
 
     @Override
@@ -70,7 +69,6 @@ public class TileEntityEUtoRF extends TileEntity implements ITickable, IEnergySi
         return true;
     }
 
-    // --- Forge Capabilities ---
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
         if (capability == CapabilityEnergy.ENERGY) return true;
@@ -83,7 +81,6 @@ public class TileEntityEUtoRF extends TileEntity implements ITickable, IEnergySi
         return super.getCapability(capability, facing);
     }
 
-    // --- EnergyNet registration ---
     @Override
     public void onLoad() {
         if (!world.isRemote) {
@@ -99,7 +96,6 @@ public class TileEntityEUtoRF extends TileEntity implements ITickable, IEnergySi
         super.invalidate();
     }
 
-    // --- Getters for block display ---
     public int getEuBuffer() {
         return euBuffer;
     }

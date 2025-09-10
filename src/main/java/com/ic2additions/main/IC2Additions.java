@@ -6,7 +6,9 @@ import com.ic2additions.proxy.CommonProxy;
 import com.ic2additions.recipes.MolecularAssemblerRecipes;
 import com.ic2additions.recipes.Recipes;
 import com.ic2additions.tilentity.TileEntityEUtoRF;
+import com.ic2additions.tilentity.TileEntityMolecularAssembler;
 import com.ic2additions.tilentity.TileEntityPlasmaCable;
+import com.ic2additions.tilentity.TileEntityRFtoEU;
 import com.ic2additions.util.Reference;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.*;
@@ -28,8 +30,11 @@ public class IC2Additions {
     @Mod.EventHandler
     public void preinit(FMLConstructionEvent event) {
         proxy.construct(event);
+
         GameRegistry.registerTileEntity(TileEntityPlasmaCable.class, new ResourceLocation(MODID, "plasma_cable"));
-        GameRegistry.registerTileEntity(TileEntityEUtoRF.class, "ic2additions:eu_to_rf_converter");
+        //GameRegistry.registerTileEntity(TileEntityMolecularAssembler.class, new ResourceLocation(MODID, "molecular_assembler"));
+        GameRegistry.registerTileEntity(TileEntityEUtoRF.class, new ResourceLocation(MODID, "eu_to_rf_converter"));
+        GameRegistry.registerTileEntity(TileEntityRFtoEU.class, new ResourceLocation(MODID, "rf_to_eu_converter"));
     }
 
     @Mod.EventHandler
@@ -41,6 +46,7 @@ public class IC2Additions {
     public void init(FMLInitializationEvent event) {
         TesRegistry.buildDummies();
         proxy.init(event);
+
         Recipes.addCraftingRecipes();
         Recipes.addMachineRecipe();
         MolecularAssemblerRecipes.init();

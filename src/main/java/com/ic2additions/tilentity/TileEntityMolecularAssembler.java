@@ -1,5 +1,6 @@
 package com.ic2additions.tilentity;
 
+import com.ic2additions.gui.TransparentDynamicGUI;
 import com.ic2additions.recipes.MolecularAssemblerRecipesHandler;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.event.EnergyTileUnloadEvent;
@@ -8,6 +9,7 @@ import ic2.api.energy.tile.IEnergySink;
 import ic2.api.energy.tile.IEnergyTile;
 import ic2.core.ContainerBase;
 import ic2.core.IHasGui;
+import ic2.core.block.ITeBlock;
 import ic2.core.block.TileEntityInventory;
 import ic2.core.block.invslot.InvSlot;
 import ic2.core.block.invslot.InvSlotOutput;
@@ -19,11 +21,14 @@ import ic2.core.network.GuiSynced;
 import ic2.core.util.StackUtil;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileEntityMolecularAssembler extends TileEntityInventory implements IEnergySink, IHasGui, IGuiValueProvider {
     public final InvSlot input;
@@ -171,6 +176,7 @@ public class TileEntityMolecularAssembler extends TileEntityInventory implements
         currentOutputName   = (r != null) ? nameOf(r.output) : "-";
         currentRecipeCostEu = (r != null) ? r.totalEU : 0;
     }
+
 
     @Override
     public ContainerBase<? extends TileEntityMolecularAssembler> getGuiContainer(EntityPlayer player) {
