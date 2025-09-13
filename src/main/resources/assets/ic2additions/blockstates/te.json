@@ -12,6 +12,8 @@
       "cv_transformer": { "model": "ic2additions:cv_transformer" },
       "uv_transformer": { "model": "ic2additions:uv_transformer" },
       "molecular_assembler":  { "model": "ic2additions:molecular_assembler" },
+      "molecular_assembler_active":  { "model": "ic2additions:molecular_assembler_active" },
+      "rf_to_eu_converter":  { "model": "ic2additions:rf_to_eu_converter" },
       "better_solar_panel":  { "model": "ic2additions:better_solar_panel" },
       "hybrid_solar_panel":  { "model": "ic2additions:hybrid_solar_panel" },
       "ultimate_solar_panel":  { "model": "ic2additions:ultimate_solar_panel" },

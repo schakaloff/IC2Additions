@@ -1,4 +1,4 @@
-package com.ic2additions.objects;
+package com.ic2additions.objects.items;
 
 import com.ic2additions.init.ItemInit;
 import com.ic2additions.tilentity.TileEntityPlasmaCable;
@@ -17,6 +17,7 @@ public class ItemBlockPlasmaCable extends ItemBlock {
     public ItemBlockPlasmaCable(Block block) {
         super(block);
         setRegistryName(block.getRegistryName()); // 🔴 This is required
+        ItemInit.ITEMS.add(this);
     }
     public static ItemStack withParams(Block block, double loss, int capacity) {
         ItemStack s = new ItemStack(block);

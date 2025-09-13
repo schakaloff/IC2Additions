@@ -4,7 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.ic2additions.init.IC2AdditionsCreativeTabs;
 import com.ic2additions.init.ItemInit;
-import com.ic2additions.util.ActivatableItem;
+import com.ic2additions.interfaces.ActivatableItem;
 import ic2.api.item.ElectricItem;
 import ic2.core.IC2;
 import ic2.core.audio.PositionSpec;

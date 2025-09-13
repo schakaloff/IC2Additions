@@ -24,6 +24,14 @@ item.quantum_core.name=Quantum Core
 item.mt_core.name=MT Core
 item.iridium_ingot.name=Iridium Ingot
 
+item.duritanium_ingot.name=Duritanium Ingot
+item.raw_tritanium_ingot.name=Raw Tritanium Ingot
+item.tritanium_ingot.name= Tritanium Ingot
+item.netherstar_uranium.name=Netherstar-Uranium
+
+item.duritanium_plate.name=Duritanium Plate
+item.raw_tritanium_plate.name=Raw Duritanium Plate
+
 ic2additions.graviTool.set=%s (%s)
 ic2additions.graviTool.noEnergy=Not enough energy.
 ic2additions.graviTool.hoe=Hoe
@@ -51,6 +59,27 @@ gui.ic2additions.progress=Progress: %.0f%%
 gui.ic2additions.input=Input: %s
 gui.ic2additions.outputItem=Output: %s
 gui.ic2additions.cost=Cost: %s EU
+
+tooltip.ic2additions.firefull_set=Full Set Bonus:
+tooltip.ic2additions.fire_prox.protects_fire=Fireproof
+
+tooltip.ic2additions.thermohazmat_set=Full Set Bonus:
+tooltip.ic2additions.radiation_protection=Radiation Protection
+
+tooltip.ic2additions.dangerous_drop=Dangerous To Drop
+
+tooltip.ic2additions.hot=Pyrophoric / Hot
+tooltip.ic2additions.radioactive=Radioactive / Dangerous to hold
+
+item.ic2additions.fire_proximity_helmet.name=Fire Proximity Helmet
+item.ic2additions.fire_proximity_chest.name=Fire Proximity Chestplate
+item.ic2additions.fire_proximity_leggings.name=Fire Proximity Leggings
+item.ic2additions.fire_proximity_boots.name=Fire Proximity Boots
+
+item.ic2additions.thermo_hazmat_helmet.name=Thermo-Hazmat Helmet
+item.ic2additions.thermo_hazmat_chest.name=Thermo-Hazmat Chestplate
+item.ic2additions.thermo_hazmat_leggings.name=Thermo-Hazmat Leggings
+item.ic2additions.thermo_hazmat_boots.name=Thermo-Hazmat Boots
 
 #tiles
 #energy storages

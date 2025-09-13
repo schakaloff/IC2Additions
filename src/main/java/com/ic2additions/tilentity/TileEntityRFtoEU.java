@@ -34,7 +34,7 @@ public class TileEntityRFtoEU extends TileEntityInventory
     @GuiSynced
     private int selectedTier = 1; // default LV
 
-    // --- Tick update: convert RF -> EU into buffer ---
+    // ================== Ticking: RF -> EU buffer ==================
     @Override
     protected void updateEntityServer() {
         super.updateEntityServer();
@@ -47,12 +47,14 @@ public class TileEntityRFtoEU extends TileEntityInventory
             int rfToExtract = Math.min(rfAvailable, (int) (euSpace * CONVERSION));
             int euProduced = (int) (rfToExtract / CONVERSION);
 
-            rfStorage.extractEnergy(rfToExtract, false);
-            euBuffer += euProduced;
+            if (rfToExtract > 0 && euProduced > 0) {
+                rfStorage.extractEnergy(rfToExtract, false);
+                euBuffer += euProduced;
+            }
         }
     }
 
-    // --- IC2 EnergyNet hooks ---
+    // ================== IC2 EnergyNet source ==================
     @Override
     public double getOfferedEnergy() {
         return Math.min(euBuffer, tierToEU(selectedTier));
@@ -71,10 +73,10 @@ public class TileEntityRFtoEU extends TileEntityInventory
 
     @Override
     public boolean emitsEnergyTo(IEnergyAcceptor receiver, EnumFacing side) {
-        return true; // can output on any side
+        return true; // output on any side
     }
 
-    // --- Tier logic ---
+    // ================== Tier logic ==================
     private int tierToEU(int tier) {
         switch (tier) {
             case 1: return 32;   // LV
@@ -98,21 +100,37 @@ public class TileEntityRFtoEU extends TileEntityInventory
         markDirty();
     }
 
-    public int getSelectedTier() {
-        return selectedTier;
+    // ================== Dynamic GUI events (reflection) ==================
+    private boolean handleTierEvent(String name) {
+        // Prove clicks hit: watch your console
+        System.out.println("GUI EVENT: " + name);
+        if ("tier_up".equals(name))  { nextTier(); return true; }
+        if ("tier_down".equals(name)){ prevTier(); return true; }
+        return false;
     }
 
-    public int getEuBuffer() {
-        return euBuffer;
+    // IC2 calls one of these by reflection depending on build
+    public boolean onGuiEvent(String name)               { return handleTierEvent(name); }
+    public boolean onGuiEvent(String name, int value)    { return handleTierEvent(name); }
+    public boolean onGuiEvent(String name, double value) { return handleTierEvent(name); }
+    public boolean onGuiEvent(String name, String value) { return handleTierEvent(name); }
+
+    // ================== IGuiValueProvider ==================
+    @Override
+    public double getGuiValue(String key) {
+        switch (key) {
+            case "tier":      return selectedTier;
+            case "tier_eu":   return tierToEU(selectedTier);
+            case "euBuffer":  return euBuffer;
+            case "rfBuffer":  return rfStorage.getEnergyStored();
+            default:          return 0;
+        }
     }
 
-    public EnergyStorageRF getRfStorage() {
-        return rfStorage;
-    }
-
-    // --- GUI support ---
+    // ================== GUI plumbing ==================
     @Override
     public ContainerBase<? extends TileEntityRFtoEU> getGuiContainer(EntityPlayer player) {
+        // Looks up XML by teBlock registry name
         return DynamicContainer.create(this, player, GuiParser.parse(this.teBlock));
     }
 
@@ -124,17 +142,7 @@ public class TileEntityRFtoEU extends TileEntityInventory
     @Override
     public void onGuiClosed(EntityPlayer player) { }
 
-    @Override
-    public double getGuiValue(String key) {
-        switch (key) {
-            case "tier": return selectedTier;
-            case "euBuffer": return euBuffer;
-            case "rfBuffer": return rfStorage.getEnergyStored();
-            default: return 0;
-        }
-    }
-
-    // --- NBT persistence ---
+    // ================== NBT ==================
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
@@ -152,7 +160,7 @@ public class TileEntityRFtoEU extends TileEntityInventory
         return nbt;
     }
 
-    // --- Capabilities (for RF input) ---
+    // ================== Forge capabilities (RF in) ==================
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
         if (capability == CapabilityEnergy.ENERGY) return true;
@@ -165,7 +173,7 @@ public class TileEntityRFtoEU extends TileEntityInventory
         return super.getCapability(capability, facing);
     }
 
-    // --- EnergyNet registration ---
+    // ================== EnergyNet registration ==================
     @Override
     protected void onLoaded() {
         super.onLoaded();

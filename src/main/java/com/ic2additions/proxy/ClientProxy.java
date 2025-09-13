@@ -1,7 +1,7 @@
 package com.ic2additions.proxy;
 
 import com.ic2additions.init.ItemInit;
-import com.ic2additions.util.ActivatableItem;
+import com.ic2additions.interfaces.ActivatableItem;
 import com.ic2additions.util.IC2AdditionsKeys;
 import com.ic2additions.util.JetpackOverlay;
 import com.ic2additions.util.Reference;

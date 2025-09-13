@@ -2,11 +2,14 @@ package com.ic2additions.util;
 import com.ic2additions.init.BlockInit;
 import com.ic2additions.init.ItemInit;
 import com.ic2additions.main.IC2Additions;
+import com.ic2additions.objects.blocks.BlockCable;
+import com.ic2additions.objects.blocks.BlockPlasmaCable;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
@@ -22,10 +25,28 @@ public class RegistryHandler {
     {
         event.getRegistry().registerAll(ItemInit.ITEMS.toArray(new Item[0]));
         for (Block block : BlockInit.BLOCKS) {
-            ItemBlock itemBlock = new ItemBlock(block);
-            itemBlock.setRegistryName(block.getRegistryName()); // IMPORTANT
-            event.getRegistry().register(itemBlock);
+            if (!(block instanceof BlockCable)) {
+                ItemBlock itemBlock = new ItemBlock(block);
+                itemBlock.setRegistryName(block.getRegistryName());
+                event.getRegistry().register(itemBlock);
+            }
         }
+
+//        String[] toRemove = {
+//                "nano_saber",
+//                "quantum_helmet",
+//                "quantum_chestplate",
+//                "quantum_leggings",
+//                "quantum_boots"
+//        };
+//
+//        for (String id : toRemove) {
+//            ResourceLocation rl = new ResourceLocation("ic2", id);
+//            Item item = event.getRegistry().getValue(rl);
+//            if (item != null) {
+//                event.getRegistry().register(new Item().setRegistryName(rl));
+//            }
+//        }
     }
 
     @SubscribeEvent

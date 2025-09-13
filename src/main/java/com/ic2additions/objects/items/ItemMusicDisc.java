@@ -1,4 +1,4 @@
-package com.ic2additions.objects;
+package com.ic2additions.objects.items;
 
 import com.ic2additions.init.IC2AdditionsCreativeTabs;
 import com.ic2additions.init.ItemInit;

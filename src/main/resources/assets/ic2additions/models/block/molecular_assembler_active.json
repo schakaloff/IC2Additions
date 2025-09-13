@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "ic2additions:blocks/molecular_assembler/molecular_assembler_front",
+    "down":     "ic2additions:blocks/molecular_assembler/molecular_assembler_bottom",
+    "up":       "ic2additions:blocks/molecular_assembler/molecular_assembler_top_active",
+    "north":    "ic2additions:blocks/molecular_assembler/molecular_assembler_front",
+    "east":     "ic2additions:blocks/molecular_assembler/molecular_assembler_side_active",
+    "south":    "ic2additions:blocks/molecular_assembler/molecular_assembler_bottom",
+    "west":     "ic2additions:blocks/molecular_assembler/molecular_assembler_side_active"
+  }
+}
