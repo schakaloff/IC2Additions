@@ -1,6 +1,5 @@
 package com.ic2additions.init;
 
-import com.ic2additions.objects.items.ItemBlockPlasmaCable;
 import com.ic2additions.objects.items.ItemMusicDisc;
 import com.ic2additions.objects.items.*;
 import com.ic2additions.objects.items.armor.*;
@@ -37,6 +36,7 @@ public class ItemInit {
     public static final Item IRRADIANT_REINFORCED_PLATE = register(new ItemBase("irradiant_reinforced_plate"));
     public static final Item MT_CORE = register(new ItemBase("mt_core"));
     public static final Item QUANTUM_CORE = register(new ItemBase("quantum_core"));
+    public static final Item VAJRA_CORE = register(new ItemBase("vajra_core"));
     public static final Item COOLING_CORE = register(new ItemBase("cooling_core"));
     public static final Item ENGINE_BOOSTER = register(new ItemBase("engine_booster"));
     public static final Item GRAVITATION_ENGINE = register(new ItemBase("gravitation_engine"));
@@ -44,6 +44,16 @@ public class ItemInit {
     public static final Item SUPER_CONDUCTOR = register(new ItemBase("super_conductor"));
     public static final Item SUPER_CONDUCTOR_COVER = register(new ItemBase("super_conductor_cover"));
 
+    public static final Item ADVANCED_COIL = register(new ItemBaseUncommon("advanced_coil"));
+    public static final Item NANO_COIL = register(new ItemBaseRare("nano_coil"));
+    public static final Item QUANTUM_COIL = register(new ItemBaseEpic("quantum_coil"));
+
+    public static final Item ADVANCED_ELECTRIC_MOTOR = register(new ItemBaseUncommon("advanced_electric_motor"));
+    public static final Item NANO_ELECTRIC_MOTOR = register(new ItemBaseRare("nano_electric_motor"));
+    public static final Item QUANTUM_ELECTRIC_MOTOR = register(new ItemBaseEpic("quantum_electric_motor"));
+
+
+    public static final Item INDUSTRIAL_IRIDIUM = register(new ItemBase("industrial_iridium"));
     public static final Item PHOTON = register(new ItemBase("photon"));
     public static final Item FULLERITE = register(new ItemBase("fullerite"));
 
@@ -53,7 +63,6 @@ public class ItemInit {
     public static final Item HYBRID_CIRCUIT = register(new ItemBase("hybrid_circuit"));
     public static final Item NANO_CIRCUIT = register(new ItemBase("nano_circuit"));
     public static final Item QUANTUM_CIRCUIT = register(new ItemBase("quantum_circuit"));
-
 
     public static final Item IRIDIUM_INGOT = register(new ItemBase("iridium_ingot"));
     public static final Item DURITANIUM_INGOT = register(new ItemDangerousDrop("duritanium_ingot",16,true,true));
@@ -65,6 +74,7 @@ public class ItemInit {
     public static final Item THORIUM_INGOT = register(new ItemBaseRadioactive("thorium_ingot", 30, 75));
     public static final Item CALIFORNIUM_INGOT = register(new ItemBaseRadioactive("californium_ingot", 50, 100));
 
+    public static final Item GOLD_250 = register(new ItemBaseRadioactive("gold_250", 180, 100));
     public static final Item URANIUM_233 = register(new ItemBaseRadioactive("uranium_233", 180, 100));
     public static final Item CALIFORNIUM_252 = register(new ItemBaseRadioactive("californium_252", 200, 90));
     public static final Item THORIUM_232 = register(new ItemBaseRadioactive("thorium_232", 30, 75));
@@ -76,25 +86,25 @@ public class ItemInit {
     public static final Item THORIUM_ROD_DOUBLE = register(new ItemReactorThorium("thorium_double_fuel_rod", 2));
     public static final Item THORIUM_ROD_QUAD = register(new ItemReactorThorium("thorium_quad_fuel_rod", 4));
 
-    public static final Item DEPLETED_THORIUM = register(new ItemBase("depleted_thorium"));
-    public static final Item DEPLETED_THORIUM_DUAL = register(new ItemBase("depleted_dual_thorium"));
-    public static final Item DEPLETED_THORIUM_QUAD = register(new ItemBase("depleted_quad_thorium"));
+    public static final Item DEPLETED_THORIUM = register(new ItemRadioactiveHot("depleted_thorium",200,90));
+    public static final Item DEPLETED_THORIUM_DUAL = register(new ItemRadioactiveHot("depleted_dual_thorium",200,90));
+    public static final Item DEPLETED_THORIUM_QUAD = register(new ItemRadioactiveHot("depleted_quad_thorium",200,90));
 
     public static final Item NEPTUNIUM_ROD_SINGLE = register(new ItemReactorNeptunium("neptunium_fuel_rod", 1));
     public static final Item NEPTUNIUM_ROD_DOUBLE = register(new ItemReactorNeptunium("neptunium_double_fuel_rod", 2));
     public static final Item NEPTUNIUM_ROD_QUAD = register(new ItemReactorNeptunium("neptunium_quad_fuel_rod", 4));
 
-    public static final Item DEPLETED_NEPTUNIUM = register(new ItemBase("depleted_neptunium"));
-    public static final Item DEPLETED_NEPTUNIUM_DUAL = register(new ItemBase("depleted_dual_neptunium"));
-    public static final Item DEPLETED_NEPTUNIUM_QUAD = register(new ItemBase("depleted_quad_neptunium"));
+    public static final Item DEPLETED_NEPTUNIUM = register(new ItemRadioactiveHot("depleted_neptunium",200,90));
+    public static final Item DEPLETED_NEPTUNIUM_DUAL = register(new ItemRadioactiveHot("depleted_dual_neptunium",200,90));
+    public static final Item DEPLETED_NEPTUNIUM_QUAD = register(new ItemRadioactiveHot("depleted_quad_neptunium",200,90));
 
     public static final Item CALIFORNIUM_ROD_SINGLE = register(new ItemReactorCalifornium("californium_fuel_rod", 1));
     public static final Item CALIFORNIUM_ROD_DOUBLE = register(new ItemReactorCalifornium("californium_double_fuel_rod", 2));
     public static final Item CALIFORNIUM_ROD_QUAD = register(new ItemReactorCalifornium("californium_quad_fuel_rod", 4));
 
-    public static final Item DEPLETED_CALIFORNIUM = register(new ItemBase("depleted_californium"));
-    public static final Item DEPLETED_CALIFORNIUM_DUAL = register(new ItemBase("depleted_dual_californium"));
-    public static final Item DEPLETED_CALIFORNIUM_QUAD = register(new ItemBase("depleted_quad_californium"));
+    public static final Item DEPLETED_CALIFORNIUM = register(new ItemRadioactiveHot("depleted_californium",200,90));
+    public static final Item DEPLETED_CALIFORNIUM_DUAL = register(new ItemRadioactiveHot("depleted_dual_californium",200,90));
+    public static final Item DEPLETED_CALIFORNIUM_QUAD = register(new ItemRadioactiveHot("depleted_quad_californium",200,90));
 
     // Music discs
     public static final Item COMMUNISM = register(new ItemMusicDisc("music_disc_communism", "record.communism"));
@@ -105,15 +115,15 @@ public class ItemInit {
     public static final Item QUANTUM_CRYSTAL = register(new CrystalBase("quantum_crystal", 75_000_000, 8196D, 6, true));
     public static final Item PHOTON_CRYSTAL = register(new CrystalBase("photon_crystal", 100_000_000, 10000D, 7, true));
 
-    //public static final Item PLASMA_CABLE = register(new ItemBlockPlasmaCable(BlockInit.PLASMA_CABLE));
-
     public static final Item ADVANCED_DRILL = register(new ItemAdvancedDrill("advanced_drill"));
     public static final Item NANO_DRILL = register(new ItemNanoDrill("nano_drill"));
     public static final Item QUANTUM_DRILL = register(new ItemQuantumDrill("quantum_drill"));
 
     public static final Item ADVANCED_CHAINSAW = register(new ItemAdvancedChainsaw());
     public static final Item MULTI_TOOL = register(new ItemMultiTool("gravitool"));
+
     public static final Item VAIJRA = register(new ItemVajra("vajra"));
+    public static final Item ADVANCED_VAIJRA = register(new ItemAdvancedVajra("advanced_vajra"));
 
     public static final Item PLASMA_SABER = register(new ItemQuantumSaber());
     public static final Item ADVANCED_SABER = register(new ItemAdvancedSaber());
@@ -138,6 +148,17 @@ public class ItemInit {
     public static final Item SERAPHIM_MK2_CHEST = register(new ItemArmorSeraphimMK2("seraphim_mk2_chestplate", EntityEquipmentSlot.CHEST));
     public static final Item SERAPHIM_MK2_LEGGINGS = register(new ItemArmorSeraphimMK2("seraphim_mk2_leggings", EntityEquipmentSlot.LEGS));
     public static final Item SERAPHIM_MK2_BOOTS = register(new ItemArmorSeraphimMK2("seraphim_mk2_boots", EntityEquipmentSlot.FEET));
+
+    public static final Item ADVANCED_QUANT_HELMET = register(new ItemAdvancedQuantumArmor("advanced_quantum_helmet", EntityEquipmentSlot.HEAD));
+    public static final Item ADVANCED_QUANT_CHEST = register(new ItemAdvancedQuantumArmor("advanced_quantum_chestplate", EntityEquipmentSlot.CHEST));
+    public static final Item ADVANCED_QUANT_LEGGINGS = register(new ItemAdvancedQuantumArmor("advanced_quantum_leggings", EntityEquipmentSlot.LEGS));
+    public static final Item ADVANCED_QUANT_BOOTS = register(new ItemAdvancedQuantumArmor("advanced_quantum_boots", EntityEquipmentSlot.FEET));
+
+    public static final Item MOLECULAR_HELMET = register(new ItemArmorMolecular("molecular_helmet", EntityEquipmentSlot.HEAD));
+    public static final Item MOLECULAR_CHEST = register(new ItemArmorMolecular("molecular_chestplate", EntityEquipmentSlot.CHEST));
+    public static final Item MOLECULAR_LEGGINGS = register(new ItemArmorMolecular("molecular_leggings", EntityEquipmentSlot.LEGS));
+    public static final Item MOLECULAR_BOOTS = register(new ItemArmorMolecular("molecular_boots", EntityEquipmentSlot.FEET));
+
 
     // Jetpacks & packs
     public static final Item ADVANCED_ELECTRIC_JETPACK = register(new AdvancedElectricJetpack("advanced_electric_jetpack"));

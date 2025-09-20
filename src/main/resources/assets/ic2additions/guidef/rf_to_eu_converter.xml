@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gui width="176" height="166">
     <text x="19" y="4" width="176">%name%</text>
-    <environment name="game">
-        <!-- DOWN -->
-        <button name="tier_down_btn" type="recipe" x="70" y="16" width="22" height="20" event="tier_down" action="tier_down">
-            <!-- coords are relative to the button in most IC² builds; these stay inside the 22x20 box -->
-            <text x="8" y="5" width="22">-</text>
-        </button>
 
-        <!-- UP -->
-        <button name="tier_up_btn" type="recipe" x="100" y="16" width="22" height="20" event="tier_up" action="tier_up">
-            <text x="7" y="30" width="22">+</text>
-        </button>
-    </environment>
 
     <text x="8" y="42" width="160">Tier: {tier}</text>
     <text x="8" y="54" width="160">EU/t: {tier_eu}</text>

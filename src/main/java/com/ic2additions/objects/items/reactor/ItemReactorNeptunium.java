@@ -17,36 +17,11 @@ public class ItemReactorNeptunium extends ItemReactorUranium implements IReactor
         setCreativeTab(IC2AdditionsCreativeTabs.tab);
         ItemInit.ITEMS.add(this);
     }
-    @Override
-    protected int getFinalHeat(ItemStack stack, IReactor reactor, int x, int y, int heat) {
-        return (heat * 5) / 4; // наоборот, горячее чем расчетное
-    }
 
     @Override
     public boolean acceptUraniumPulse(ItemStack stack, IReactor reactor, ItemStack pulsingStack, int youX, int youY, int pulseX, int pulseY, boolean heatrun) {
-        if (!heatrun) reactor.addOutput(1.5F);
+        if (!heatrun) reactor.addOutput(2.0F);
         return true;
-    }
-
-    @Override
-    public void processChamber(ItemStack stack, IReactor reactor, int x, int y, boolean heatRun) {
-        if (reactor.produceEnergy()) {
-            int basePulses = 1 + this.numberOfCells / 2;
-
-            for (int iteration = 0; iteration < this.numberOfCells; iteration++) {
-                if (!heatRun) {
-                    for (int i = 0; i < basePulses; i++) {
-                        this.acceptUraniumPulse(stack, reactor, stack, x, y, x, y, heatRun);
-                    }
-                } else {
-                    int heat = triangularNumber(basePulses) * 5; // горячее урана
-                    heat = this.getFinalHeat(stack, reactor, x, y, heat);
-                    reactor.addHeat(heat);
-                }
-            }
-
-            if (!heatRun) this.applyCustomDamage(stack, 1, null);
-        }
     }
 
     @Override

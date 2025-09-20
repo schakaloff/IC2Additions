@@ -1,12 +1,17 @@
 package com.ic2additions.objects.items;
 
 import com.ic2additions.interfaces.IHot;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 
 @Mod.EventBusSubscriber
@@ -30,17 +35,11 @@ public class ItemHot extends ItemBase implements IHot {
         }
     }
 
-    @SubscribeEvent
-    public static void onItemTooltip(ItemTooltipEvent event) {
-        ItemStack stack = event.getItemStack();
-        if (stack.isEmpty()) return;
-        if (stack.getItem() instanceof IHot) {
-            ((IHot) stack.getItem()).addHotTooltip(
-                    stack,
-                    event.getEntityPlayer() != null ? event.getEntityPlayer().world : null,
-                    event.getToolTip(),
-                    event.getFlags()
-            );
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        super.addInformation(stack, worldIn, tooltip, flagIn);
+        if (this instanceof IHot) {
+            ((IHot) this).addHotTooltip(stack, worldIn, tooltip, flagIn);
         }
     }
 }

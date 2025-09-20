@@ -3,20 +3,13 @@ import com.ic2additions.init.BlockInit;
 import com.ic2additions.init.ItemInit;
 import com.ic2additions.main.IC2Additions;
 import com.ic2additions.objects.blocks.BlockCable;
-import com.ic2additions.objects.blocks.BlockPlasmaCable;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelBakery;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class RegistryHandler {

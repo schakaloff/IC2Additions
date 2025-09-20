@@ -23,6 +23,9 @@ item.fullerite.name=Fullerite
 item.quantum_core.name=Quantum Core
 item.mt_core.name=MT Core
 item.iridium_ingot.name=Iridium Ingot
+item.vajra_core.name=Vajra Core
+item.industrial_iridium.name=Industrial Iridium
+item.gold_250.name=Gold-250 Ingot
 
 item.duritanium_ingot.name=Duritanium Ingot
 item.raw_tritanium_ingot.name=Raw Tritanium Ingot
@@ -50,7 +53,7 @@ ic2additions.message.hoverSwitch=Jetpack: %s
 ic2additions.advancedChainsaw.shear=Shear: %s
 
 #music discs
-item.ic2additions.music_disc_communism.name=Music Disc
+item.ic2additions.music_disc_communism.name=Music Disk
 item.record.music_disc_communism.desc=Egor Letov - New Patriotic
 
 #gui
@@ -67,6 +70,13 @@ tooltip.ic2additions.thermohazmat_set=Full Set Bonus:
 tooltip.ic2additions.radiation_protection=Radiation Protection
 
 tooltip.ic2additions.dangerous_drop=Dangerous To Drop
+tooltip.ic2additions.haste_2=Haste II
+tooltip.ic2additions.strength_2=Strength II
+tooltip.ic2additions.nightvision=Built-In Night-Vision
+tooltip.ic2additions.jetpack=Built-In Jetpack
+tooltip.ic2additions.highjump=Built-In High-Jump
+tooltip.ic2additions.fastwalk=Built-In Fast-Walk
+tooltip.ic2additions.waterbreathing=Built-In Scuba-Diver
 
 tooltip.ic2additions.hot=Pyrophoric / Hot
 tooltip.ic2additions.radioactive=Radioactive / Dangerous to hold
@@ -80,6 +90,12 @@ item.ic2additions.thermo_hazmat_helmet.name=Thermo-Hazmat Helmet
 item.ic2additions.thermo_hazmat_chest.name=Thermo-Hazmat Chestplate
 item.ic2additions.thermo_hazmat_leggings.name=Thermo-Hazmat Leggings
 item.ic2additions.thermo_hazmat_boots.name=Thermo-Hazmat Boots
+
+
+item.ic2additions.advanced_quantum_helmet=Advanced Quantum-Helmet
+item.ic2additions.advanced_quantum_chestplate=Advanced Quantum-Chestplate
+item.ic2additions.advanced_quantum_leggings=Advanced Quantum-Leggings
+item.ic2additions.advanced_quantum_boots=Advanced Quantum-Boots
 
 #tiles
 #energy storages
@@ -114,11 +130,14 @@ item.photon_crystal.name=Photon Crystal
 
 #tools
 item.ic2additions.gravitool=MultiTool
+
 ic2.advanced_drill=Advanced Drill
 ic2.nano_drill=Nano Drill
 ic2.quantum_drill=Quantum Drill
 ic2.advanced_chainsaw=Advanced Chainsaw
+
 ic2.vajra=Vajra
+ic2.advanced_vajra=Advanced Vajra
 
 #weapons
 ic2.advanced_saber=Advanced Nano-Saber

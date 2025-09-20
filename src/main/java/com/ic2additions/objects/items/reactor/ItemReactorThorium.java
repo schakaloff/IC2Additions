@@ -18,18 +18,9 @@ public class ItemReactorThorium extends ItemReactorUranium implements IReactorCo
         ItemInit.ITEMS.add(this);
     }
 
-    // Run cooler than uranium: uranium uses triangular*4 then calls this.
-    // Scale down final heat to ~75% of uranium’s.
-    @Override
-    protected int getFinalHeat(ItemStack stack, IReactor reactor, int x, int y, int heat) {
-        // 3/4 of uranium’s heat
-        return (heat * 3) / 4;
-    }
-
-    // Slight EU buff per pulse
     @Override
     public boolean acceptUraniumPulse(ItemStack stack, IReactor reactor, ItemStack pulsingStack, int youX, int youY, int pulseX, int pulseY, boolean heatrun) {
-        if (!heatrun) reactor.addOutput(1.2F); // uranium is 1.0F
+        if (!heatrun) reactor.addOutput(1.3F);
         return true;
     }
 

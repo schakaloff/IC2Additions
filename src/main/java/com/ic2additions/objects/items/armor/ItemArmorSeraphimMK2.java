@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemArmorSeraphimMK2 extends ItemArmorElectric {
     public ItemArmorSeraphimMK2(String name, EntityEquipmentSlot slot){
-        super(null, "seraphim_mk2", slot, 3_000_000, 4096D, 4);
+        super(null, "seraphim_mk2", slot, 5_000_000, 4096D, 4);
         setRegistryName(name);
         setUnlocalizedName(name);
         setCreativeTab(IC2AdditionsCreativeTabs.tab);

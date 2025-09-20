@@ -84,7 +84,7 @@ public class ItemThermohazmatArmor extends ItemArmor implements IHazmatLike {
         if (e == null) return false;
         int count = 0;
         for (ItemStack s : e.getArmorInventoryList()) {
-            if (!s.isEmpty() && s.getItem() instanceof ItemThermohazmatArmor) count++;
+            if (!s.isEmpty() && s.getItem() instanceof ItemAdvancedQuantumArmor) count++;
         }
         return count == 4;
     }
