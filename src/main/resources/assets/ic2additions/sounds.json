@@ -5,5 +5,11 @@
       { "name": "ic2additions:records/communism", "stream": true }
     ],
     "subtitle": "subtitles.record.play"
+  },
+  "molecular.punch": {
+    "sounds": [
+      { "name": "ic2additions:molecular_punch", "stream": false, "preload": true }
+    ],
+    "attenuation_distance": 32
   }
 }

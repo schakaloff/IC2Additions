@@ -54,7 +54,6 @@ public class RegistryHandler {
         {
             IC2Additions.proxy.registerItemRenderer(item, 0, "inventory");
         }
-
         for(Block block : BlockInit.BLOCKS){
             IC2Additions.proxy.registerItemRenderer(Item.getItemFromBlock(block), 0, "inventory");
         }

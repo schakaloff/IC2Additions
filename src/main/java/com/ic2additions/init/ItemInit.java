@@ -110,10 +110,10 @@ public class ItemInit {
     public static final Item COMMUNISM = register(new ItemMusicDisc("music_disc_communism", "record.communism"));
 
     // Crystals
-    public static final Item PLASMATRON_CRYSTAL = register(new CrystalBase("plasmatron_crystal", 25_000_000, 4096D, 4, true));
-    public static final Item AURATON_CRYSTAL = register(new CrystalBase("auraton_crystal", 50_000_000, 6144D, 5, true));
-    public static final Item QUANTUM_CRYSTAL = register(new CrystalBase("quantum_crystal", 75_000_000, 8196D, 6, true));
-    public static final Item PHOTON_CRYSTAL = register(new CrystalBase("photon_crystal", 100_000_000, 10000D, 7, true));
+    public static final Item PLASMATRON_CRYSTAL = register(new CrystalBase("plasmatron_crystal", 50_000_000, 8192, 5, true));
+    public static final Item AURATON_CRYSTAL = register(new CrystalBase("auraton_crystal", 100_000_000, 32768D, 6, true));
+    public static final Item QUANTUM_CRYSTAL = register(new CrystalBase("quantum_crystal", 200_000_000, 131072D, 7, true));
+    public static final Item PHOTON_CRYSTAL = register(new CrystalBase("photon_crystal", 400_000_000, 524288D, 8, true));
 
     public static final Item ADVANCED_DRILL = register(new ItemAdvancedDrill("advanced_drill"));
     public static final Item NANO_DRILL = register(new ItemNanoDrill("nano_drill"));

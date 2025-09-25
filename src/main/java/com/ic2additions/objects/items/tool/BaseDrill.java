@@ -296,6 +296,7 @@ public class BaseDrill extends ItemDrill {
 
         tooltip.add(TextFormatting.YELLOW + "Current Mode: " + TextFormatting.WHITE + nice);
         tooltip.add(TextFormatting.YELLOW + "Right-click to toggle:");
+        tooltip.add(TextFormatting.YELLOW + "Shift + Right Click to Disable");
         addModeLine(tooltip, MODE_NONE.equals(mode), "None");
         if (enableSilk)      addModeLine(tooltip, MODE_SILK.equals(mode), "Silk Touch");
         if (enableFortune)   addModeLine(tooltip, MODE_FORTUNE.equals(mode), "Fortune " + fortuneLevel);
@@ -313,7 +314,7 @@ public class BaseDrill extends ItemDrill {
         if (MODE_AOE_LARGE.equals(mode))  { int s = 2 * aoeLargeRadius  + 1; return s + "x" + s; }
         if (MODE_VEIN_1.equals(mode)) return "Vein Miner I";
         if (MODE_VEIN_2.equals(mode)) return "Vein Miner II";
-        return "AOE";
+        return "None";
     }
 
     protected void addModeLine(List<String> tooltip, boolean active, String label) {

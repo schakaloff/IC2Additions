@@ -10,6 +10,12 @@ item.irradiant_reinforced_plate.name=Irradiant Reinforced Plate
 item.iridium_iron_plate.name=Iridium-Iron Plate
 item.reinforced_iridium_iron_plate.name=Reinforced Iridium-Iron Plate
 item.photon.name=Photon
+item.advanced_coil.name=Advanced Coil
+item.advanced_electric_motor.name=Electric Advanced-Motor
+item.nano_coil.name=Nano Coil
+item.nano_electric_motor.name=Electric Nano-Motor
+item.quantum_coil.name=Quantum Coil
+item.quantum_electric_motor.name=Electric Quantum-Motor
 item.cooling_core.name=Cooling Core
 item.engine_booster.name=Engine Booster
 item.gravitation_engine.name=Gravitation Engine
@@ -49,6 +55,28 @@ ic2additions.message.hover_on=Hover mode enabled
 ic2additions.message.hover_off=Hover mode disabled
 ic2additions.message.jetpackSwitch=Jetpack: %s
 ic2additions.message.hoverSwitch=Jetpack: %s
+ic2additions.hud.energy=Jetpack Energy: %s%%
+ic2additions.hud.engine=Engine: %s
+ic2additions.hud.hover_brackets=[Hover]
+
+ic2additions.hud.suit_fire=Suit Mode: Fire
+ic2additions.hud.suit_normal=Suit Mode: Normal
+ic2additions.message.suit_fire_mode=Suit Fire Mode: %s
+ic2additions.message.suit_fire_mode_auto_off=Suit Fire Mode disabled (not enough energy)
+ic2additions.message.kill_protection=You cannot kill the god...
+tooltip.ic2additions.armor_cannotbekilled=God Mode
+tooltip.ic2additions.armor_firemode=Fire Mode
+tooltip.ic2additions.armor_fastbreak=Fast Break
+tooltip.ic2additions.armor_fastbreaksilk=Fast Break[Silk]
+tooltip.ic2additions.armor_hardpunch=Furios Punches
+
+
+ic2additions.message.suit_mode=Suit Mode: %s
+ic2additions.mode.fire=Fire Shield
+ic2additions.mode.hand=Hand-Fastbreak
+ic2additions.mode.hand_silk=Hand-Fastbreak[Silk]
+ic2additions.mode.punch=Hard Punch
+ic2additions.mode.none=None
 
 ic2additions.advancedChainsaw.shear=Shear: %s
 
@@ -80,22 +108,6 @@ tooltip.ic2additions.waterbreathing=Built-In Scuba-Diver
 
 tooltip.ic2additions.hot=Pyrophoric / Hot
 tooltip.ic2additions.radioactive=Radioactive / Dangerous to hold
-
-item.ic2additions.fire_proximity_helmet.name=Fire Proximity Helmet
-item.ic2additions.fire_proximity_chest.name=Fire Proximity Chestplate
-item.ic2additions.fire_proximity_leggings.name=Fire Proximity Leggings
-item.ic2additions.fire_proximity_boots.name=Fire Proximity Boots
-
-item.ic2additions.thermo_hazmat_helmet.name=Thermo-Hazmat Helmet
-item.ic2additions.thermo_hazmat_chest.name=Thermo-Hazmat Chestplate
-item.ic2additions.thermo_hazmat_leggings.name=Thermo-Hazmat Leggings
-item.ic2additions.thermo_hazmat_boots.name=Thermo-Hazmat Boots
-
-
-item.ic2additions.advanced_quantum_helmet=Advanced Quantum-Helmet
-item.ic2additions.advanced_quantum_chestplate=Advanced Quantum-Chestplate
-item.ic2additions.advanced_quantum_leggings=Advanced Quantum-Leggings
-item.ic2additions.advanced_quantum_boots=Advanced Quantum-Boots
 
 #tiles
 #energy storages
@@ -159,6 +171,27 @@ item.ic2additions.seraphim_mk2_helmet=Seraphim MK2 Helmet
 item.ic2additions.seraphim_mk2_chestplate=Seraphim MK2 Chestplate
 item.ic2additions.seraphim_mk2_leggings=Seraphim MK2 Leggings
 item.ic2additions.seraphim_mk2_boots=Seraphim MK2 Boots
+
+item.ic2additions.fire_proximity_helmet.name=Fire Proximity Helmet
+item.ic2additions.fire_proximity_chest.name=Fire Proximity Chestplate
+item.ic2additions.fire_proximity_leggings.name=Fire Proximity Leggings
+item.ic2additions.fire_proximity_boots.name=Fire Proximity Boots
+
+item.ic2additions.thermo_hazmat_helmet.name=Thermo-Hazmat Helmet
+item.ic2additions.thermo_hazmat_chest.name=Thermo-Hazmat Chestplate
+item.ic2additions.thermo_hazmat_leggings.name=Thermo-Hazmat Leggings
+item.ic2additions.thermo_hazmat_boots.name=Thermo-Hazmat Boots
+
+
+item.ic2additions.advanced_quantum_helmet=Advanced Quantum-Helmet
+item.ic2additions.advanced_quantum_chestplate=Advanced Quantum-Chestplate
+item.ic2additions.advanced_quantum_leggings=Advanced Quantum-Leggings
+item.ic2additions.advanced_quantum_boots=Advanced Quantum-Boots
+
+item.ic2additions.molecular_helmet=Molecular Helmet
+item.ic2additions.molecular_chestplate=Molecular Chestplate
+item.ic2additions.molecular_leggings=Molecular Leggings
+item.ic2additions.molecular_boots=Molecular Boots
 
 #reactor
 ic2.thorium_fuel_rod=Fuel Road (Thorium)

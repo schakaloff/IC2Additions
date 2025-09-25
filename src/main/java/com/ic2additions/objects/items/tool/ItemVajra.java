@@ -63,7 +63,7 @@ public class ItemVajra extends ItemElectricTool {
         final String mode = readMode(stack);
         tooltip.add(TextFormatting.YELLOW + "Current Mode: " + TextFormatting.WHITE + label(mode));
         tooltip.add(TextFormatting.YELLOW + "Right-click to toggle");
-        tooltip.add(TextFormatting.YELLOW + "Shift + Right Click to set to None");
+        tooltip.add(TextFormatting.YELLOW + "Shift + Right Click to Disable");
         addModeLine(tooltip, MODE_NONE.equals(mode), "None");
         addModeLine(tooltip, MODE_SILK.equals(mode), "Silk Touch");
     }

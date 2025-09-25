@@ -18,12 +18,14 @@ import java.util.Set;
 public class IC2AdditionsKeys extends Keyboard {
     private static final IKeyWatcher FLY_KEY = new KeyWatcher(ic2Additionskeys.FLY);
     private static final IKeyWatcher HOVER_KEY = new KeyWatcher(ic2Additionskeys.HOVER);
+    private static final IKeyWatcher MODE_KEY = new KeyWatcher(ic2Additionskeys.MODE);
 
     private IC2AdditionsKeys() {}
 
     public static void register() {
         IC2.keyboard.addKeyWatcher(FLY_KEY);
         IC2.keyboard.addKeyWatcher(HOVER_KEY);
+        IC2.keyboard.addKeyWatcher(MODE_KEY);
     }
 
     public static boolean isFlyKeyDown(EntityPlayer player) {
@@ -31,6 +33,9 @@ public class IC2AdditionsKeys extends Keyboard {
     }
     public static boolean isHoverKeyDown(EntityPlayer player) {
         return IC2.keyboard.isKeyDown(player, HOVER_KEY);
+    }
+    public static boolean isModeKeyDown(EntityPlayer player) {
+        return IC2.keyboard.isKeyDown(player, MODE_KEY);
     }
 
     private static class KeyWatcher implements IKeyWatcher {
@@ -48,7 +53,9 @@ public class IC2AdditionsKeys extends Keyboard {
 
     private enum ic2Additionskeys {
         FLY(33, "Fly"),
-        HOVER(35, "Hover");
+        HOVER(35, "Hover"),
+        MODE(46, "Suit Mode");
+
 
         private final Key key = addKey(name());
         @SideOnly(Side.CLIENT)

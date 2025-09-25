@@ -11,6 +11,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 @Mod.EventBusSubscriber(modid = Reference.MODID)
 public final class SoundInit {
     public static SoundEvent COMMUNISM;
+    public static SoundEvent MOLECULAR_PUNCH;
 
     private SoundInit() {}
 
@@ -25,5 +26,6 @@ public final class SoundInit {
     public static void onRegisterSounds(RegistryEvent.Register<SoundEvent> e) {
         IForgeRegistry<SoundEvent> r = e.getRegistry();
         r.register(COMMUNISM = create("record.communism"));
+        r.register(MOLECULAR_PUNCH = create("molecular.punch"));
     }
 }

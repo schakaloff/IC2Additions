@@ -1,13 +1,13 @@
 package com.ic2additions.main;
 
 import com.ic2additions.init.TesRegistry;
-import com.ic2additions.objects.blocks.BlockEUtoRF;
 import com.ic2additions.proxy.CommonProxy;
 import com.ic2additions.recipes.MolecularAssemblerRecipes;
 import com.ic2additions.recipes.Recipes;
 import com.ic2additions.tilentity.*;
 import com.ic2additions.util.Reference;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.*;
@@ -23,6 +23,11 @@ public class IC2Additions {
 
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
     public static CommonProxy proxy;
+
+
+    static {
+       FluidRegistry.enableUniversalBucket();
+    }
 
     @Mod.EventHandler
     public void preinit(FMLConstructionEvent event) {

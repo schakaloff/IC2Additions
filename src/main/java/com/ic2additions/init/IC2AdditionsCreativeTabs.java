@@ -4,6 +4,8 @@ import com.ic2additions.util.Reference;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidUtil;
 
 import java.util.Comparator;
 
@@ -20,10 +22,10 @@ public class IC2AdditionsCreativeTabs {
         @Override
         public void displayAllRelevantItems(NonNullList<ItemStack> items) {
             super.displayAllRelevantItems(items);
-
             items.sort(Comparator.comparingInt(stack ->
                     ORDERED_ITEMS.indexOf(stack.getItem())
             ));
         }
+
     };
 }
