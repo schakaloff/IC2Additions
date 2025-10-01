@@ -4,6 +4,6 @@ import com.ic2additions.tilentity.BaseSolarPanel;
 
 public class TileEntityUltimateSolarPanel extends BaseSolarPanel {
     public TileEntityUltimateSolarPanel(){
-        super(512.0D, 4, 1_000_000);
+        super(256.0D, 4, 1_000_000);
     }
 }

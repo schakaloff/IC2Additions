@@ -37,6 +37,7 @@ public class ItemAdvancedVajra extends ItemVajra {
 
     public ItemAdvancedVajra(String name) {
         super(name);
+        this.maxCharge = 100_000_000;
     }
 
     @Override

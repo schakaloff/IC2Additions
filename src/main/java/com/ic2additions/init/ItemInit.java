@@ -7,8 +7,16 @@ import com.ic2additions.objects.items.reactor.ItemReactorCalifornium;
 import com.ic2additions.objects.items.reactor.ItemReactorNeptunium;
 import com.ic2additions.objects.items.reactor.ItemReactorThorium;
 import com.ic2additions.objects.items.tool.*;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,23 +34,32 @@ public class ItemInit {
     public static final Item SANARIUM = register(new ItemHot("sanarium"));
     public static final Item SANARIUM_SHARD = register(new ItemHot("sanarium_shard"));
     public static final Item SANARIUM_ALLOY = register(new ItemHot("sanarium_alloy"));
-    public static final Item IRRADIANT_URANIUM_INGOT = register(new ItemBaseRadioactive("irradiant_uranium_ingot",30,50));
+    public static final Item IRRADIANT_PURIFIED_URANIUM = register(new ItemBase("irradiant_purified_uranium"));
+    public static final Item IRRADIANT_URANIUM_INGOT = register(
+            new ItemBaseRadioactive("irradiant_uranium_ingot", 30, 50) {
+                @Override
+                public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+                    tooltip.add(TextFormatting.GREEN + I18n.format("Your new best friend"));
+                }
+            }
+    );
     public static final Item ENRICHTED_SANARIUM = register(new ItemRadioactiveHot("enrichted_sanarium",30,60));
     public static final Item ENRICHTED_SANARIUM_ALLOY = register(new ItemRadioactiveHot("enrichted_sanarium_alloy",30,60));
 
-    public static final Item IRRADIANT_GLASS_PANE = register(new ItemBase("irradiant_glass_pane"));
-    public static final Item IRIDIUM_IRON_PLATE = register(new ItemBase("iridium_iron_plate"));
-    public static final Item REINFORCED_IRIDIUM_IRON_PLATE = register(new ItemBase("reinforced_iridium_iron_plate"));
-    public static final Item IRRADIANT_REINFORCED_PLATE = register(new ItemBase("irradiant_reinforced_plate"));
-    public static final Item MT_CORE = register(new ItemBase("mt_core"));
-    public static final Item QUANTUM_CORE = register(new ItemBase("quantum_core"));
-    public static final Item VAJRA_CORE = register(new ItemBase("vajra_core"));
-    public static final Item COOLING_CORE = register(new ItemBase("cooling_core"));
-    public static final Item ENGINE_BOOSTER = register(new ItemBase("engine_booster"));
-    public static final Item GRAVITATION_ENGINE = register(new ItemBase("gravitation_engine"));
-    public static final Item MAGNETRON = register(new ItemBase("magnetron"));
-    public static final Item SUPER_CONDUCTOR = register(new ItemBase("super_conductor"));
-    public static final Item SUPER_CONDUCTOR_COVER = register(new ItemBase("super_conductor_cover"));
+    public static final Item IRRADIANT_GLASS_PANE = register(new ItemBaseUncommon("irradiant_glass_pane"));
+    public static final Item IRIDIUM_IRON_PLATE = register(new ItemBaseUncommon("iridium_iron_plate"));
+    public static final Item REINFORCED_IRIDIUM_IRON_PLATE = register(new ItemBaseRare("reinforced_iridium_iron_plate"));
+    public static final Item IRRADIANT_REINFORCED_PLATE = register(new ItemBaseEpic("irradiant_reinforced_plate"));
+
+    public static final Item MT_CORE = register(new ItemBaseRare("mt_core"));
+    public static final Item QUANTUM_CORE = register(new ItemBaseEpic("quantum_core"));
+    public static final Item VAJRA_CORE = register(new ItemBaseEpic("vajra_core"));
+    public static final Item COOLING_CORE = register(new ItemBaseRare("cooling_core"));
+    public static final Item ENGINE_BOOSTER = register(new ItemBaseUncommon("engine_booster"));
+    public static final Item GRAVITATION_ENGINE = register(new ItemBaseUncommon("gravitation_engine"));
+    public static final Item MAGNETRON = register(new ItemBaseUncommon("magnetron"));
+    public static final Item SUPER_CONDUCTOR = register(new ItemBaseUncommon("super_conductor"));
+    public static final Item SUPER_CONDUCTOR_COVER = register(new ItemBaseUncommon("super_conductor_cover"));
 
     public static final Item ADVANCED_COIL = register(new ItemBaseUncommon("advanced_coil"));
     public static final Item NANO_COIL = register(new ItemBaseRare("nano_coil"));
@@ -52,19 +69,16 @@ public class ItemInit {
     public static final Item NANO_ELECTRIC_MOTOR = register(new ItemBaseRare("nano_electric_motor"));
     public static final Item QUANTUM_ELECTRIC_MOTOR = register(new ItemBaseEpic("quantum_electric_motor"));
 
+    public static final Item HYBRID_CIRCUIT = register(new ItemBaseUncommon("hybrid_circuit"));
+    public static final Item NANO_CIRCUIT = register(new ItemBaseRare("nano_circuit"));
+    public static final Item QUANTUM_CIRCUIT = register(new ItemBaseEpic("quantum_circuit"));
 
-    public static final Item INDUSTRIAL_IRIDIUM = register(new ItemBase("industrial_iridium"));
-    public static final Item PHOTON = register(new ItemBase("photon"));
-    public static final Item FULLERITE = register(new ItemBase("fullerite"));
+    public static final Item PHOTON = register(new ItemBaseRare("photon"));
+    public static final Item FULLERITE = register(new ItemBaseEpic("fullerite"));
 
     public static final Item DURITANIUM_PLATE = register(new ItemDangerousDrop("duritanium_plate",16,true,true));
     public static final Item RAW_TRITANIUM_PLATE = register(new ItemDangerousDrop("raw_tritanium_plate",16,true,true));
 
-    public static final Item HYBRID_CIRCUIT = register(new ItemBase("hybrid_circuit"));
-    public static final Item NANO_CIRCUIT = register(new ItemBase("nano_circuit"));
-    public static final Item QUANTUM_CIRCUIT = register(new ItemBase("quantum_circuit"));
-
-    public static final Item IRIDIUM_INGOT = register(new ItemBase("iridium_ingot"));
     public static final Item DURITANIUM_INGOT = register(new ItemDangerousDrop("duritanium_ingot",16,true,true));
     public static final Item RAW_TRITANIUM_INGOT = register(new ItemDangerousDrop("raw_tritanium_ingot",16,true,true));
     public static final Item TRITANIUM_INGOT = register(new ItemDangerousDrop("tritanium_ingot",16,true,true));

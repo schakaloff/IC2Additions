@@ -1,6 +1,8 @@
 package com.ic2additions.objects.items.tool;
 
 import ic2.core.item.tool.HarvestLevel;
+import net.minecraft.item.EnumRarity;
+import net.minecraft.item.ItemStack;
 
 public class ItemAdvancedDrill extends BaseDrill{
     public ItemAdvancedDrill(String name){
@@ -22,5 +24,9 @@ public class ItemAdvancedDrill extends BaseDrill{
                 1,
                 120.0D
         );
+    }
+    @Override
+    public EnumRarity getRarity(ItemStack stack){
+        return EnumRarity.UNCOMMON;
     }
 }

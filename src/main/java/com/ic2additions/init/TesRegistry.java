@@ -2,6 +2,7 @@
 
     import java.util.Set;
 
+    import com.ic2additions.main.IC2Additions;
     import com.ic2additions.tilentity.TileEntityMolecularAssembler;
     import com.ic2additions.tilentity.TileEntityRFtoEU;
     import com.ic2additions.tilentity.energystorage.*;
@@ -22,6 +23,7 @@
     import ic2.core.util.Util;
     import net.minecraft.block.material.Material;
     import net.minecraft.item.EnumRarity;
+    import net.minecraft.item.ItemStack;
     import net.minecraft.tileentity.TileEntity;
     import net.minecraft.util.EnumFacing;
     import net.minecraft.util.ResourceLocation;
@@ -102,6 +104,9 @@
         @Override public boolean isTransparent() { return isTransparent; }
         @Override public void setPlaceHandler(TeBlock.ITePlaceHandler handler) { this.placeHandler = handler; }
         @Override public TeBlock.ITePlaceHandler getPlaceHandler() { return placeHandler; }
+
+
+
 
         public static void buildDummies() {
             for (TesRegistry block : values()) {

@@ -9,6 +9,7 @@ item.irradiant_uranium_ingot.name=Irradiant Uranium Ingot
 item.irradiant_reinforced_plate.name=Irradiant Reinforced Plate
 item.iridium_iron_plate.name=Iridium-Iron Plate
 item.reinforced_iridium_iron_plate.name=Reinforced Iridium-Iron Plate
+item.irradiant_purified_uranium.name=Irradiant Purified Uranium
 item.photon.name=Photon
 item.advanced_coil.name=Advanced Coil
 item.advanced_electric_motor.name=Electric Advanced-Motor
@@ -39,7 +40,7 @@ item.tritanium_ingot.name= Tritanium Ingot
 item.netherstar_uranium.name=Netherstar-Uranium
 
 item.duritanium_plate.name=Duritanium Plate
-item.raw_tritanium_plate.name=Raw Duritanium Plate
+item.raw_tritanium_plate.name=Raw Tritanium Plate
 
 ic2additions.graviTool.set=%s (%s)
 ic2additions.graviTool.noEnergy=Not enough energy.
@@ -128,7 +129,9 @@ ic2additions.te.ultimate_solar_panel=Ultimate Solar Panel
 
 #others
 ic2additions.te.molecular_assembler=Molecular Assembler
-tile.ic2additions.plasma_cable.name=Plasma Cable
+tile.ic2additions.plasma_cable.name=Super Conduct Cable
+tile.ic2additions.quantum_cable.name=
+
 tile.eu_to_rf_converter.name=EU to RF Converter
 
 #tab

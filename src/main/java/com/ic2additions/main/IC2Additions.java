@@ -51,6 +51,7 @@ public class IC2Additions {
 
         Recipes.addCraftingRecipes();
         Recipes.addMachineRecipe();
+        Recipes.addFurnaceRecipe();
         MolecularAssemblerRecipes.init();
     }
 

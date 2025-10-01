@@ -1,6 +1,8 @@
 package com.ic2additions.objects.items.tool;
 
 import ic2.core.item.tool.HarvestLevel;
+import net.minecraft.item.EnumRarity;
+import net.minecraft.item.ItemStack;
 
 public class ItemQuantumDrill extends BaseDrill {
     public ItemQuantumDrill(String name){
@@ -24,5 +26,9 @@ public class ItemQuantumDrill extends BaseDrill {
                 true, 6, 6, 150.0D,
                 true, 13, 13, 200.0D
         );
+    }
+    @Override
+    public EnumRarity getRarity(ItemStack stack){
+        return EnumRarity.EPIC;
     }
 }

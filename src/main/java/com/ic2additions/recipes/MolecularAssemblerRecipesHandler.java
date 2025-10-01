@@ -21,7 +21,7 @@ public class MolecularAssemblerRecipesHandler {
         }
     }
 
-    private static final List<Recipe> RECIPES = new ArrayList<>();
+    public static final List<Recipe> RECIPES = new ArrayList<>();
 
     public static synchronized void add(ItemStack input, int totalEU, ItemStack output) {
         Objects.requireNonNull(input,  "input");
@@ -41,5 +41,8 @@ public class MolecularAssemblerRecipesHandler {
     }
     public static synchronized int getRecipeCount() {
         return RECIPES.size();
+    }
+    public static synchronized List<Recipe> getAllRecipes() {
+        return new ArrayList<>(RECIPES);
     }
 }

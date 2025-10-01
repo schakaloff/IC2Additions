@@ -6,7 +6,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-import static com.ic2additions.recipes.MolecularAssemblerRecipesHandler.getRecipeCount;
 
 public class MolecularAssemblerRecipes {
     private MolecularAssemblerRecipes() {}
@@ -18,6 +17,5 @@ public class MolecularAssemblerRecipes {
         MolecularAssemblerRecipesHandler.add(new ItemStack(Items.SKULL, 1), 250_000_000, new ItemStack(Items.NETHER_STAR, 1));
         MolecularAssemblerRecipesHandler.add(new ItemStack(Items.GLOWSTONE_DUST, 1), 1_000_000, new ItemStack(ItemInit.SANARIUM_SHARD));
         MolecularAssemblerRecipesHandler.add(new ItemStack(Blocks.GLOWSTONE, 1), 9_000_000, new ItemStack(ItemInit.SANARIUM));
-        System.out.println("[IC2Additions] Assembler recipes loaded: " + getRecipeCount());
     }
 }

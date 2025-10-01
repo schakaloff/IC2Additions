@@ -34,7 +34,6 @@ public class TileEntityMolecularAssembler extends TileEntityInventory implements
     public final InvSlot input;
     public final InvSlotOutput output;
 
-
     private MolecularAssemblerRecipesHandler.Recipe current;
     @GuiSynced private int currentTotalEu;
     private int toConsume;
