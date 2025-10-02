@@ -35,7 +35,7 @@ public interface ICraftingRecipeManager {
 		public final boolean fixedSize;
 
 		/**
-		 * @param hidden Whether the recipe is hidden from JEI by default
+		 * @param hidden Whether the recipe is hidden from com.ic2additions.JEI by default
 		 * @param consuming Whether containers should be consumed or returned empty
 		 */
 		public AttributeContainer(boolean hidden, boolean consuming) {
@@ -43,7 +43,7 @@ public interface ICraftingRecipeManager {
 		}
 
 		/**
-		 * @param hidden Whether the recipe is hidden from JEI by default
+		 * @param hidden Whether the recipe is hidden from com.ic2additions.JEI by default
 		 * @param consuming Whether containers should be consumed or returned empty
 		 * @param fixedSize Whether empty rows or columns can be safely ignored as intentional
 		 */

@@ -81,7 +81,11 @@ public class ItemInit {
 
     public static final Item DURITANIUM_INGOT = register(new ItemDangerousDrop("duritanium_ingot",16,true,true));
     public static final Item RAW_TRITANIUM_INGOT = register(new ItemDangerousDrop("raw_tritanium_ingot",16,true,true));
+
     public static final Item TRITANIUM_INGOT = register(new ItemDangerousDrop("tritanium_ingot",16,true,true));
+    public static final Item TRITANIUM_PLATE = register(new ItemDangerousDrop("tritanium_plate",16,true,true));
+
+    public static final Item THERMOSIL_PLATE = register(new ItemBase("thermosil_plate"));
 
     public static final Item NETHERSTAR_URANIUM = register(new ItemBaseRadioactive("netherstar_uranium",200,75));
     public static final Item NEPTUNIUM_INGOT = register(new ItemBaseRadioactive("neptunium_ingot", 100, 70));
