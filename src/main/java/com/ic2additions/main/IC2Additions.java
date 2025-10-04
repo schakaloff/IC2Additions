@@ -24,11 +24,6 @@ public class IC2Additions {
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
     public static CommonProxy proxy;
 
-
-    static {
-       FluidRegistry.enableUniversalBucket();
-    }
-
     @Mod.EventHandler
     public void preinit(FMLConstructionEvent event) {
         proxy.construct(event);

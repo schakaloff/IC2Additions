@@ -40,6 +40,9 @@
 
         molecular_assembler(TileEntityMolecularAssembler.class, 6, true,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC, Material.IRON,true),
         rf_to_eu_converter(TileEntityRFtoEU.class, 15, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC, Material.IRON,false),
+        //superconductor_cable(ic2.core.block.wiring.TileEntityCable.class, 16, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 0.5F, 10F, EnumRarity.EPIC),
+
+
 
         plasmatronmfe(TileEntityPlasmatronMFE.class, 7, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.EPIC),
         auratonmfe(TileEntityAuratonMFE.class, 8, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.EPIC),

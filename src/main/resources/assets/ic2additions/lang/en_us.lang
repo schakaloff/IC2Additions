@@ -33,6 +33,8 @@ item.iridium_ingot.name=Iridium Ingot
 item.vajra_core.name=Vajra Core
 item.industrial_iridium.name=Industrial Iridium
 item.gold_250.name=Gold-250 Ingot
+item.tritanium_plate.name=Tritanium Plate
+item.thermosil_plate.name=Thermosil Plate
 
 item.duritanium_ingot.name=Duritanium Ingot
 item.raw_tritanium_ingot.name=Raw Tritanium Ingot
@@ -91,6 +93,8 @@ gui.ic2additions.progress=Progress: %.0f%%
 gui.ic2additions.input=Input: %s
 gui.ic2additions.outputItem=Output: %s
 gui.ic2additions.cost=Cost: %s EU
+
+tooltip.ic2additions.thermolsil=Made for space ships...
 
 tooltip.ic2additions.firefull_set=Full Set Bonus:
 tooltip.ic2additions.fire_prox.protects_fire=Fireproof
@@ -185,6 +189,10 @@ item.ic2additions.thermo_hazmat_chest.name=Thermo-Hazmat Chestplate
 item.ic2additions.thermo_hazmat_leggings.name=Thermo-Hazmat Leggings
 item.ic2additions.thermo_hazmat_boots.name=Thermo-Hazmat Boots
 
+item.ic2additions.prototype_quant_helmet=Prototype Quantum-Helmet
+item.ic2additions.prototype_quant_chest=Prototype Quantum-Chestplate
+item.ic2additions.prototype_quant_leggings=Prototype Quantum-Leggings
+item.ic2additions.prototype_quant_boots=Prototype Quantum-Boots
 
 item.ic2additions.advanced_quantum_helmet=Advanced Quantum-Helmet
 item.ic2additions.advanced_quantum_chestplate=Advanced Quantum-Chestplate

@@ -85,7 +85,6 @@ public class Recipes {
         addShapedRecipe(new ItemStack(ItemInit.NANO_CIRCUIT), "CEC", "RHR", "CRC", 'C', carbon_plate, 'E', ItemInit.NANO_ELECTRIC_MOTOR, 'R', Items.REDSTONE, 'H', ItemInit.HYBRID_CIRCUIT);
         addShapedRecipe(new ItemStack(ItemInit.QUANTUM_CIRCUIT), "AEA", "INI", "AIA", 'A', advanced_heat_exchanger, 'E', ItemInit.QUANTUM_ELECTRIC_MOTOR, 'I', iridium_reflector, 'N', ItemInit.NANO_CIRCUIT);
 
-
         addShapedRecipe(new ItemStack(ItemInit.GRAVITATION_ENGINE), "HPH", "CTC", "HPH", 'H', ItemInit.HYBRID_CIRCUIT, 'P', ItemInit.SUPER_CONDUCTOR, 'C', ItemInit.COOLING_CORE, 'T', hv_transformer);
         addShapedRecipe(new ItemStack(ItemInit.ENGINE_BOOSTER), "GCG", "AUA", "CTC", 'G', Items.GLOWSTONE_DUST, 'C', composite, 'A', advanced_circuit, 'U', overclocker, 'T', advanced_heat_vent);
         addShapedRecipe(new ItemStack(ItemInit.SUPER_CONDUCTOR_COVER, 3), "CIC", "PPP", "CIC", 'C', composite, 'I', iridium_plate, 'P', carbon_plate);
@@ -119,6 +118,16 @@ public class Recipes {
         addShapedRecipe(block.getItemStack(TesRegistry.auratonmfe), "SCS", "NMN", "SCS", 'S', ItemInit.SANARIUM_ALLOY, 'C', ItemInit.AURATON_CRYSTAL, 'N', ItemInit.NANO_CIRCUIT, 'M', block.getItemStack(TesRegistry.plasmatronmfe));
         addShapedRecipe(block.getItemStack(TesRegistry.quantummfe), "QIQ", "CMC", "QIQ", 'Q', ItemInit.QUANTUM_CORE, 'I', ItemInit.NETHERSTAR_URANIUM, 'C', ItemInit.QUANTUM_CRYSTAL, 'M', block.getItemStack(TesRegistry.auratonmfe));
         addShapedRecipe(block.getItemStack(TesRegistry.photonmfe), "CTC", "TMT", "CTC", 'C', ItemInit.PHOTON_CRYSTAL, 'T', ItemInit.TRITANIUM_INGOT, 'M', block.getItemStack(TesRegistry.quantummfe));
+
+        addShapedRecipe(new ItemStack(ItemInit.DURITANIUM_INGOT), "IPI", "PFP", "IPI", 'I', new ItemStack(ItemInit.IRRADIANT_REINFORCED_PLATE), 'P', ItemInit.PHOTON, 'F', ItemInit.FULLERITE);
+        addShapedRecipe(new ItemStack(ItemInit.RAW_TRITANIUM_INGOT), "FDF", "DFD", "FDF", 'F', ItemInit.FULLERITE, 'D', ItemInit.DURITANIUM_PLATE);
+        addShapedRecipe(new ItemStack(ItemInit.TRITANIUM_INGOT), "III", "IFI", "III", 'I', ItemInit.RAW_TRITANIUM_PLATE, 'F', ItemInit.FULLERITE);
+        addShapedRecipe(new ItemStack(ItemInit.THERMOSIL_PLATE), "PIP", "IPI", "PIP", 'P', ItemInit.TRITANIUM_PLATE, 'I', ItemInit.TRITANIUM_INGOT);
+
+        addShapedRecipe(new ItemStack(ItemInit.MOLECULAR_HELMET), "TTT", "THT", " C ", 'T', ItemInit.THERMOSIL_PLATE, 'H', ItemInit.ADVANCED_QUANT_HELMET, 'C', ItemInit.PHOTON_CRYSTAL);
+        addShapedRecipe(new ItemStack(ItemInit.MOLECULAR_CHEST), "TCT", "TMT", "TTT", 'T', ItemInit.THERMOSIL_PLATE, 'C', ItemInit.PHOTON_CRYSTAL, 'M', ItemInit.ADVANCED_QUANT_CHEST);
+        addShapedRecipe(new ItemStack(ItemInit.MOLECULAR_LEGGINGS), "TTT", "TLT", "TCT", 'T', ItemInit.THERMOSIL_PLATE, 'L', ItemInit.ADVANCED_QUANT_LEGGINGS, 'C', ItemInit.PHOTON_CRYSTAL);
+        addShapedRecipe(new ItemStack(ItemInit.MOLECULAR_BOOTS), "   ", "TBT", "TCT", 'T',ItemInit.THERMOSIL_PLATE, 'B', ItemInit.ADVANCED_QUANT_BOOTS, 'C', ItemInit.PHOTON_CRYSTAL);
     }
 
 

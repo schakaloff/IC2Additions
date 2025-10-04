@@ -10,6 +10,7 @@ import com.ic2additions.objects.items.tool.*;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
@@ -85,7 +86,17 @@ public class ItemInit {
     public static final Item TRITANIUM_INGOT = register(new ItemDangerousDrop("tritanium_ingot",16,true,true));
     public static final Item TRITANIUM_PLATE = register(new ItemDangerousDrop("tritanium_plate",16,true,true));
 
-    public static final Item THERMOSIL_PLATE = register(new ItemBase("thermosil_plate"));
+    public static final Item THERMOSIL_PLATE = register(new ItemBase("thermosil_plate"){
+        @Override
+        public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+            tooltip.add(TextFormatting.LIGHT_PURPLE + I18n.format("tooltip.ic2additions.thermolsil"));
+        }
+        @Override
+        public EnumRarity getRarity(ItemStack stack){
+            return EnumRarity.EPIC;
+        }
+    });
+
 
     public static final Item NETHERSTAR_URANIUM = register(new ItemBaseRadioactive("netherstar_uranium",200,75));
     public static final Item NEPTUNIUM_INGOT = register(new ItemBaseRadioactive("neptunium_ingot", 100, 70));
@@ -166,6 +177,11 @@ public class ItemInit {
     public static final Item SERAPHIM_MK2_CHEST = register(new ItemArmorSeraphimMK2("seraphim_mk2_chestplate", EntityEquipmentSlot.CHEST));
     public static final Item SERAPHIM_MK2_LEGGINGS = register(new ItemArmorSeraphimMK2("seraphim_mk2_leggings", EntityEquipmentSlot.LEGS));
     public static final Item SERAPHIM_MK2_BOOTS = register(new ItemArmorSeraphimMK2("seraphim_mk2_boots", EntityEquipmentSlot.FEET));
+
+    public static final Item PROTOTYPE_QUANT_HELMET = register(new ItemQuantumArmor("prototype_quant_helmet", EntityEquipmentSlot.HEAD));
+    public static final Item PROTOTYPE_QUANT_CHEST = register(new ItemQuantumArmor("prototype_quant_chest", EntityEquipmentSlot.CHEST));
+    public static final Item PROTOTYPE_QUANT_LEGGINGS = register(new ItemQuantumArmor("prototype_quant_leggings", EntityEquipmentSlot.LEGS));
+    public static final Item PROTOTYPE_QUANT_BOOTS = register(new ItemQuantumArmor("prototype_quant_boots", EntityEquipmentSlot.FEET));
 
     public static final Item ADVANCED_QUANT_HELMET = register(new ItemAdvancedQuantumArmor("advanced_quantum_helmet", EntityEquipmentSlot.HEAD));
     public static final Item ADVANCED_QUANT_CHEST = register(new ItemAdvancedQuantumArmor("advanced_quantum_chestplate", EntityEquipmentSlot.CHEST));

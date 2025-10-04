@@ -6,6 +6,7 @@ import com.ic2additions.objects.blocks.BlockCable;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -24,22 +25,7 @@ public class RegistryHandler {
                 event.getRegistry().register(itemBlock);
             }
         }
-
-//        String[] toRemove = {
-//                "nano_saber",
-//                "quantum_helmet",
-//                "quantum_chestplate",
-//                "quantum_leggings",
-//                "quantum_boots"
-//        };
-//
-//        for (String id : toRemove) {
-//            ResourceLocation rl = new ResourceLocation("ic2", id);
-//            Item item = event.getRegistry().getValue(rl);
-//            if (item != null) {
-//                event.getRegistry().register(new Item().setRegistryName(rl));
-//            }
-//        }
+        DeleteItems.init(event);
     }
 
     @SubscribeEvent
