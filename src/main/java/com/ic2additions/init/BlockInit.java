@@ -10,7 +10,7 @@ public class BlockInit {
     public static final List<Block> BLOCKS = new ArrayList<>();
     //public static final Block PLASMA_CABLE = reg(new BlockPlasmaCable("plasma_cable"));
 
-    public static final Block EU_TO_RF_CONVERTER = reg(new BlockEUtoRF("eu_to_rf_converter"));
+    //public static final Block EU_TO_RF_CONVERTER = reg(new BlockEUtoRF("eu_to_rf_converter"));
 
     public static final Block PLASMA_CABLE = reg(new BlockCable("plasma_cable", "Plasma Cable", 0.03, 38168));
     public static final Block QUANTUM_CABLE = reg(new BlockCable("quantum_cable", "Quantum Cable", 0.02, 131072));

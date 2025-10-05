@@ -39,7 +39,7 @@
         quantum_solar_panel(TileEntityQuantumSolarPanel.class, 5, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC),
 
         molecular_assembler(TileEntityMolecularAssembler.class, 6, true,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC, Material.IRON,true),
-        rf_to_eu_converter(TileEntityRFtoEU.class, 15, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC, Material.IRON,false),
+        //rf_to_eu_converter(TileEntityRFtoEU.class, 15, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC, Material.IRON,false),
         //superconductor_cable(ic2.core.block.wiring.TileEntityCable.class, 16, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 0.5F, 10F, EnumRarity.EPIC),
 
 

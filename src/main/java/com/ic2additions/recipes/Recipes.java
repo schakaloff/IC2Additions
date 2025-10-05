@@ -22,6 +22,7 @@ public class Recipes {
     public static final ItemStack iron_plate = IC2Items.getItem("plate","iron");
     public static final ItemStack dense_lapis = IC2Items.getItem("plate","dense_lapis");
     public static final ItemStack dense_steel = IC2Items.getItem("plate","dense_steel");
+    public static final ItemStack dense_obsidian = IC2Items.getItem("plate","dense_obsidian");
     public static final ItemStack iridium_plate = IC2Items.getItem("crafting","iridium");
     public static final ItemStack uranium_235 = IC2Items.getItem("nuclear", "small_uranium_235");
     public static final ItemStack uranium = IC2Items.getItem("purified", "uranium");
@@ -48,11 +49,23 @@ public class Recipes {
     public static final ItemStack electric_wrench = IC2Items.getItem("electric_wrench");
     public static final ItemStack electric_treetap = IC2Items.getItem("electric_treetap");
     public static final ItemStack iridium_reflector = IC2Items.getItem("iridium_reflector");
+    public static final ItemStack hazmat_helmet = IC2Items.getItem("hazmat_helmet");
+    public static final ItemStack hazmat_chestplate = IC2Items.getItem("hazmat_chestplate");
+    public static final ItemStack hazmat_leggings = IC2Items.getItem("hazmat_leggings");
+    public static final ItemStack rubber_boots = IC2Items.getItem("rubber_boots");
     public static final ItemStack glass_fibre_cable = IC2Items.getItem("cable", "type:glass,insulation:0");
     public static final ItemStack ins_hv_cable = IC2Items.getItem("cable", "type:iron,insulation:3");
     public static final ItemStack sulfur = IC2Items.getItem("dust", "sulfur");
     public static final ItemStack lithium = IC2Items.getItem("dust", "lithium");
     public static final ItemStack coal_fuel = IC2Items.getItem("dust", "coal_fuel");
+    public static final ItemStack rubber = IC2Items.getItem("crafting", "rubber");
+    public static final ItemStack jetpack_attachment_plate = IC2Items.getItem("crafting", "jetpack_attachment_plate");
+    public static final ItemStack nano_helmet = IC2Items.getItem("nano_helmet");
+    public static final ItemStack nano_chestplate = IC2Items.getItem("nano_chestplate");
+    public static final ItemStack nano_leggings = IC2Items.getItem("nano_leggings");
+    public static final ItemStack nano_boots = IC2Items.getItem("nano_boots");
+
+
 
     public static final ItemStack copper_plate = IC2Items.getItem("plate", "copper");
     public static final ItemStack mfsu = IC2Items.getItem("te", "mfsu");
@@ -108,7 +121,7 @@ public class Recipes {
         addShapedRecipe(new ItemStack(ItemInit.QUANTUM_CRYSTAL), "ECE", "IAI", "ECE", 'E', ItemInit.ENRICHTED_SANARIUM_ALLOY, 'C', ItemInit.QUANTUM_CIRCUIT, 'I', ItemInit.IRRADIANT_REINFORCED_PLATE, 'A', ItemInit.AURATON_CRYSTAL);
         addShapedRecipe(new ItemStack(ItemInit.PHOTON_CRYSTAL), "DPD", "PQP", "DPD", 'D', ItemInit.DURITANIUM_PLATE, 'P', ItemInit.PHOTON, 'Q', ItemInit.QUANTUM_CRYSTAL);
 
-        addShapedRecipe(block.getItemStack(TesRegistry.molecular_assembler), "MTM", "CKC", "MTM", 'M', advanced_machine, 'T', ev_transformer, 'C', advanced_circuit, 'K', ItemInit.MT_CORE);
+        addShapedRecipe(block.getItemStack(TesRegistry.molecular_assembler), "MTM", "CKC", "MTM", 'M', advanced_machine, 'T', ev_transformer, 'C', ItemInit.HYBRID_CIRCUIT, 'K', ItemInit.MT_CORE);
         addShapedRecipe(block.getItemStack(TesRegistry.better_solar_panel), "III", "CSC", "HPH", 'I', new ItemStack(ItemInit.IRRADIANT_GLASS_PANE), 'C', composite, 'S', solar_panel, 'H', advanced_circuit, 'P', ItemInit.IRRADIANT_REINFORCED_PLATE);
         addShapedRecipe(block.getItemStack(TesRegistry.hybrid_solar_panel), "PLP", "ISI","HEH", 'P', plcar, 'L', Blocks.LAPIS_BLOCK, 'I', iridium_plate, 'S', block.getItemStack(TesRegistry.better_solar_panel), 'H', ItemInit.HYBRID_CIRCUIT, 'E', ItemInit.ENRICHTED_SANARIUM);
         addShapedRecipe(block.getItemStack(TesRegistry.ultimate_solar_panel), "NLN", "GPG", "SGS", 'N', ItemInit.NANO_CIRCUIT, 'L', Blocks.REDSTONE_BLOCK, 'G', coal_chunk, 'P', block.getItemStack(TesRegistry.hybrid_solar_panel),'S', ItemInit.ENRICHTED_SANARIUM_ALLOY);
@@ -128,7 +141,43 @@ public class Recipes {
         addShapedRecipe(new ItemStack(ItemInit.MOLECULAR_CHEST), "TCT", "TMT", "TTT", 'T', ItemInit.THERMOSIL_PLATE, 'C', ItemInit.PHOTON_CRYSTAL, 'M', ItemInit.ADVANCED_QUANT_CHEST);
         addShapedRecipe(new ItemStack(ItemInit.MOLECULAR_LEGGINGS), "TTT", "TLT", "TCT", 'T', ItemInit.THERMOSIL_PLATE, 'L', ItemInit.ADVANCED_QUANT_LEGGINGS, 'C', ItemInit.PHOTON_CRYSTAL);
         addShapedRecipe(new ItemStack(ItemInit.MOLECULAR_BOOTS), "   ", "TBT", "TCT", 'T',ItemInit.THERMOSIL_PLATE, 'B', ItemInit.ADVANCED_QUANT_BOOTS, 'C', ItemInit.PHOTON_CRYSTAL);
+
+        addShapedRecipe(new ItemStack(ItemInit.ADVANCED_QUANT_HELMET), "MCM", "QHQ", "MUM", 'M', ItemInit.MAGNETRON, 'C', ItemInit.QUANTUM_CORE, 'Q', ItemInit.QUANTUM_CIRCUIT,'H', ItemInit.PROTOTYPE_QUANT_HELMET, 'U', ItemInit.QUANTUM_CRYSTAL);
+        addShapedRecipe(new ItemStack(ItemInit.ADVANCED_QUANT_CHEST), "GQG", "CHC", "GUG", 'G', ItemInit.GRAVITATION_ENGINE, 'Q', ItemInit.QUANTUM_CORE, 'C', ItemInit.QUANTUM_CIRCUIT, 'H', ItemInit.PROTOTYPE_QUANT_CHEST, 'U', ItemInit.QUANTUM_CRYSTAL);
+        addShapedRecipe(new ItemStack(ItemInit.ADVANCED_QUANT_LEGGINGS), "EQE", "CLC", "EUE", 'E', ItemInit.ENGINE_BOOSTER, 'Q', ItemInit.QUANTUM_CORE, 'C', ItemInit.QUANTUM_CIRCUIT, 'L',ItemInit.ADVANCED_QUANT_LEGGINGS, 'U', ItemInit.QUANTUM_CRYSTAL);
+        addShapedRecipe(new ItemStack(ItemInit.ADVANCED_QUANT_BOOTS), "SQS", "CBC", "SUS", 'S', ItemInit.SUPER_CONDUCTOR, 'Q', ItemInit.QUANTUM_CORE, 'C', ItemInit.QUANTUM_CIRCUIT, 'B', ItemInit.PROTOTYPE_QUANT_BOOTS, 'U', ItemInit.QUANTUM_CRYSTAL);
+
+        addShapedRecipe(new ItemStack(ItemInit.PROTOTYPE_QUANT_HELMET), "IHI", "QCQ", "ISI", 'I', iridium_plate, 'H', ItemInit.SERAPHIM_MK2_HELMET, 'Q', ItemInit.QUANTUM_COIL, 'C', ItemInit.AURATON_CRYSTAL, 'S', hazmat_helmet);
+        addShapedRecipe(new ItemStack(ItemInit.PROTOTYPE_QUANT_CHEST), "ISI", "CAC", "IPI", 'I',iridium_plate, 'S', ItemInit.SERAPHIM_MK2_CHEST, 'C', ItemInit.QUANTUM_COIL, 'A', ItemInit.AURATON_CRYSTAL, 'P', hazmat_chestplate);
+        addShapedRecipe(new ItemStack(ItemInit.PROTOTYPE_QUANT_LEGGINGS), "ISI", "CPC", "ILI", 'I', iridium_plate, 'S', ItemInit.SERAPHIM_MK2_LEGGINGS, 'C', ItemInit.QUANTUM_COIL, 'P', ItemInit.AURATON_CRYSTAL, 'L', hazmat_leggings);
+        addShapedRecipe(new ItemStack(ItemInit.PROTOTYPE_QUANT_BOOTS), "ISI", "CAC", "IRI", 'I', iridium_plate, 'S', ItemInit.SERAPHIM_MK2_BOOTS, 'C', ItemInit.QUANTUM_COIL, 'A', ItemInit.AURATON_CRYSTAL, 'R', rubber_boots);
+
+        addShapedRecipe(new ItemStack(ItemInit.SERAPHIM_MK2_HELMET), "GHG", "CPC", "NFN", 'G', new ItemStack(Blocks.STAINED_GLASS, 1, 11), 'H', ItemInit.ADVANCED_NANO_HELMET, 'C', composite, 'N', ItemInit.NANO_CIRCUIT, 'F', ItemInit.FIRE_PROX_HELMET, 'P', ItemInit.PLASMATRON_CRYSTAL);
+        addShapedRecipe(new ItemStack(ItemInit.SERAPHIM_MK2_CHEST), "BCB", "NPN", "AFA", 'B', advanced_machine, 'C', ItemInit.ADVANCED_NANO_CHEST, 'N', ItemInit.NANO_CIRCUIT, 'P', ItemInit.PLASMATRON_CRYSTAL, 'A', composite, 'F', ItemInit.FIRE_PROX_CHEST);
+        addShapedRecipe(new ItemStack(ItemInit.SERAPHIM_MK2_LEGGINGS), "NLN", "OPO", "CFC", 'N', ItemInit.NANO_CIRCUIT, 'L', ItemInit.ADVANCED_NANO_LEGGINGS, 'O', dense_obsidian, 'P', ItemInit.PLASMATRON_CRYSTAL, 'C', composite, 'F', ItemInit.FIRE_PROX_LEGS);
+        addShapedRecipe(new ItemStack(ItemInit.SERAPHIM_MK2_BOOTS), "CLC", "SPS", "BNB", 'C', carbon_plate, 'L', ItemInit.ADVANCED_NANO_BOOTS, 'S', Blocks.SLIME_BLOCK, 'P', ItemInit.PLASMATRON_CRYSTAL, 'B', ItemInit.FIRE_PROX_BOOTS, 'N', ItemInit.NANO_CIRCUIT);
+
+        addShapedRecipe(new ItemStack(ItemInit.ADVANCED_NANO_HELMET), "LNL", "HAH", "R R", 'L', dense_lapis, 'N', nano_helmet, 'H', ItemInit.HYBRID_CIRCUIT, 'A', lapotron_crystal, 'R', rubber);
+        addShapedRecipe(new ItemStack(ItemInit.ADVANCED_NANO_CHEST), "LNL", "HCH", "LRL", 'L', dense_lapis, 'C', lapotron_crystal, 'H', ItemInit.HYBRID_CIRCUIT, 'N', nano_chestplate, 'R', ItemInit.ADVANCED_ELECTRIC_JETPACK);
+        addShapedRecipe(new ItemStack(ItemInit.ADVANCED_NANO_LEGGINGS), "LCL", "HNH", "RLR", 'L', dense_lapis, 'C', lapotron_crystal, 'H', ItemInit.HYBRID_CIRCUIT, 'N', nano_leggings, 'R', rubber);
+        addShapedRecipe(new ItemStack(ItemInit.ADVANCED_NANO_BOOTS), " R ", "HCH", "LBL", 'R', rubber, 'H', ItemInit.HYBRID_CIRCUIT, 'C', lapotron_crystal, 'L', dense_lapis, 'B', nano_boots);
+
+        addShapedRecipe(new ItemStack(ItemInit.FIRE_PROX_HELMET), " C ", "RGR", "RBR", 'C', carbon_plate, 'R', rubber, 'G', new ItemStack(Blocks.STAINED_GLASS, 1, 7), 'B', Items.BLAZE_POWDER);
+        addShapedRecipe(new ItemStack(ItemInit.FIRE_PROX_CHEST), "R R", "RPR", "RCR", 'R', rubber, 'P', Items.BLAZE_POWDER, 'C', carbon_plate);
+        addShapedRecipe(new ItemStack(ItemInit.FIRE_PROX_LEGS), "RBR", "R R", "R R", 'R', rubber, 'B', Items.BLAZE_POWDER);
+        addShapedRecipe(new ItemStack(ItemInit.FIRE_PROX_BOOTS), "   ", "R R", "RBR", 'R', rubber, 'B', Items.BLAZE_POWDER);
+
+
+        addShapedRecipe(new ItemStack(ItemInit.THERMO_HAZ_HELMET), " F ", " J ", " S ", 'F', ItemInit.FIRE_PROX_HELMET, 'J', jetpack_attachment_plate, 'S', hazmat_helmet);
+        addShapedRecipe(new ItemStack(ItemInit.THERMO_HAZ_CHEST), " F ", " J ", " S ", 'F', ItemInit.FIRE_PROX_CHEST, 'J', jetpack_attachment_plate, 'S', hazmat_chestplate);
+        addShapedRecipe(new ItemStack(ItemInit.THERMO_HAZ_LEGS), " F ", " J ", " S ", 'F', ItemInit.FIRE_PROX_LEGS, 'J', jetpack_attachment_plate, 'S', hazmat_leggings);
+        addShapedRecipe(new ItemStack(ItemInit.THERMO_HAZ_BOOTS), " F ", " J ", " S ", 'F', ItemInit.FIRE_PROX_BOOTS, 'J', jetpack_attachment_plate, 'S', rubber_boots);
+
     }
+
+
+
+
 
 
     private static void addShapedRecipe(ItemStack output, Object... input){
