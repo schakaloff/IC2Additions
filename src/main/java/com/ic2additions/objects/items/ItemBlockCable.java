@@ -49,7 +49,6 @@ public class ItemBlockCable extends ItemBlock {
             loss = b.getDefaultLoss();
             cap = b.getDefaultCapacity();
         }
-        lines.add(TextFormatting.GRAY + "Type: " + name);
         lines.add(TextFormatting.GRAY + String.format("Loss: %.3f EU/block", loss));
         lines.add(TextFormatting.GRAY + "Capacity: " + cap + " EU/t");
     }

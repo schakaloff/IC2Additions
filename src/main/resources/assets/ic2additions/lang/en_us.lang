@@ -35,6 +35,8 @@ item.industrial_iridium.name=Industrial Iridium
 item.gold_250.name=Gold-250 Ingot
 item.tritanium_plate.name=Tritanium Plate
 item.thermosil_plate.name=Thermosil Plate
+item.purified_thorium.name=Purified Crashed Thorium Ore
+item.crushed_thorium.name=Crushed Thorium Ore
 
 item.duritanium_ingot.name=Duritanium Ingot
 item.raw_tritanium_ingot.name=Raw Tritanium Ingot
@@ -99,6 +101,7 @@ gui.ic2additions.outputItemMA=Output:
 gui.ic2additions.costMA=Cost:
 
 tooltip.ic2additions.thermolsil=Made for space ships...
+tooltip.ic2additions.fall_damage_neutralization=Fall Damage Neutralization
 
 tooltip.ic2additions.firefull_set=Full Set Bonus:
 tooltip.ic2additions.fire_prox.protects_fire=Fireproof
@@ -109,6 +112,7 @@ tooltip.ic2additions.radiation_protection=Radiation Protection
 tooltip.ic2additions.dangerous_drop=Dangerous To Drop
 tooltip.ic2additions.haste_2=Haste II
 tooltip.ic2additions.strength_2=Strength II
+tooltip.ic2additions.strength_1=Strength I
 tooltip.ic2additions.nightvision=Built-In Night-Vision
 tooltip.ic2additions.jetpack=Built-In Jetpack
 tooltip.ic2additions.highjump=Built-In High-Jump
@@ -137,10 +141,16 @@ ic2additions.te.ultimate_solar_panel=Ultimate Solar Panel
 
 #others
 ic2additions.te.molecular_assembler=Molecular Assembler
-tile.ic2additions.plasma_cable.name=Super Conduct Cable
-tile.ic2additions.quantum_cable.name=
+
+tile.ic2additions.plasma_cable.name=Super-Conduct Cable
+tile.ic2additions.quantum_cable.name=Advanced Super-Conduct Cable
+tile.ic2additions.photon_cable.name=Photon Cable
+tile.ic2additions.arc_cable.name=Arc Cable
 
 tile.eu_to_rf_converter.name=EU to RF Converter
+
+tile.thorium_ore.name=Thorium ore
+
 
 #tab
 itemGroup.ic2additions.tab=IC2 Additions

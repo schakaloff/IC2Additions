@@ -3,6 +3,7 @@ package com.ic2additions.util;
 import com.ic2additions.objects.items.armor.ItemAdvancedQuantumArmor;
 import ic2.core.item.armor.ItemArmorQuantumSuit;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -12,6 +13,10 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Mod.EventBusSubscriber
 public class IC2Effects {
@@ -43,4 +48,33 @@ public class IC2Effects {
             event.setCanceled(true);
         }
     }
+
+    private static final List<String> HOT_ITEMS = Arrays.asList(
+            "depleted_uranium",
+            "depleted_dual_uranium",
+            "depleted_quad_uranium",
+            "depleted_mox",
+            "depleted_dual_mox",
+            "depleted_quad_mox"
+    );
+
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END) return;
+        EntityPlayer player = event.player;
+        if (player == null || player.world.isRemote) return; // only server side
+
+        for (ItemStack stack : player.inventory.mainInventory) {
+            if (stack.isEmpty()) continue;
+
+            String name = stack.getItem().getRegistryName().toString();
+            if (HOT_ITEMS.stream().anyMatch(name::contains)) {
+                if (!player.isBurning()) {
+                    player.setFire(5); // set fire for 5 seconds
+                }
+                break; // only need to set fire once per tick
+            }
+        }
+    }
+
 }

@@ -56,9 +56,9 @@ public class ItemAdvancedQuantumArmor extends ItemArmorElectric
         implements IJetpack, IHazmatLike, IItemHudProvider {
 
     // Keep vanilla quantum stats unless you want to change them.
-    private static final double MAX_CHARGE = 100_000_000D;   // 10,000,000 EU. Change to 1.0E8 for 100M.
-    private static final double TRANSFER    = 12000.0;
-    private static final int TIER           = 4;
+    private static final double MAX_CHARGE = 350_000_000D;
+    private static final double TRANSFER    = 131072.0D;
+    private static final int TIER           = 7;
 
     protected static final Map<Potion, Integer> potionRemovalCost = new IdentityHashMap<>();
     private float jumpCharge;
@@ -140,13 +140,13 @@ public class ItemAdvancedQuantumArmor extends ItemArmorElectric
 
     @Override
     public int getEnergyPerDamage() {
-        return 20000;
+        return 50000;
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public EnumRarity getRarity(ItemStack stack) {
-        return EnumRarity.RARE;
+        return EnumRarity.EPIC;
     }
 
     @Override
@@ -437,5 +437,6 @@ public class ItemAdvancedQuantumArmor extends ItemArmorElectric
         tooltip.add("  " + TextFormatting.DARK_RED + I18n.format("tooltip.ic2additions.strength_2"));
         tooltip.add("  " + TextFormatting.DARK_GREEN + I18n.format("tooltip.ic2additions.radiation_protection"));
         tooltip.add("  " + TextFormatting.RED + I18n.format("tooltip.ic2additions.fire_prox.protects_fire"));
+        tooltip.add("  " + TextFormatting.RED + I18n.format("tooltip.ic2additions.fall_damage_neutralization"));
     }
 }

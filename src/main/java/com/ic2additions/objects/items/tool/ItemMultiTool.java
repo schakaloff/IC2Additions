@@ -55,13 +55,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class ItemMultiTool extends ItemTool implements IElectricItem {
-    // EU costs
     private static final double COST_ROTATE = 50.0;
     private static final double COST_HOE = 50.0;
     private static final double COST_TAP = 50.0;
     private static final double COST_SCREW = 500.0;
 
-    // IElectricItem config
     private static final double MAX_CHARGE = 300_000.0;
     private static final int    TIER       = 2;
     private static final double TRANSFER   = 10_000.0;
@@ -82,10 +80,10 @@ public class ItemMultiTool extends ItemTool implements IElectricItem {
 
     // ---------- Mode enum: only data ----------
     public enum Mode {
-        HOE(TextFormatting.DARK_GREEN),
-        TREETAP(TextFormatting.GOLD),
-        WRENCH(TextFormatting.AQUA),
-        SCREWDRIVER(TextFormatting.LIGHT_PURPLE);
+        HOE(TextFormatting.YELLOW),
+        TREETAP(TextFormatting.YELLOW),
+        WRENCH(TextFormatting.YELLOW),
+        SCREWDRIVER(TextFormatting.YELLOW);
 
         public final TextFormatting color;
         public final String i18nKey;
@@ -142,26 +140,25 @@ public class ItemMultiTool extends ItemTool implements IElectricItem {
         ItemStack stack = player.getHeldItem(hand);
 
         if (IC2.keyboard.isModeSwitchKeyDown(player)) {
-            // compute the same new mode on both sides
             Mode newMode = Mode.byId(getMode(stack).ordinal() + 1);
+            setMode(stack, newMode);
+            world.playSound(
+                    player,                            // who hears it
+                    player.getPosition(),               // position
+                    SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, // the sound event
+                    SoundCategory.PLAYERS,              // sound category
+                    0.8F,                               // volume
+                    1.2F                                // pitch (slightly higher "peep")
+            );
 
-            if (world.isRemote) {
-                // client: write NBT so mesh definition picks it up immediately
-                setMode(stack, newMode);
-                IC2.audioManager.playOnce(player, PositionSpec.Hand, "ic2additions:tool_change", true,
-                        IC2.audioManager.getDefaultVolume());
-            } else {
-                // server: authoritative write + chat
-                setMode(stack, newMode);
-                String msg = Localization.translate("ic2additions.graviTool.changeTool",
-                        newMode.color + Localization.translate(newMode.i18nKey));
-                player.sendMessage(new net.minecraft.util.text.TextComponentString(msg));
-                // nudge sync for held item
+            if (!world.isRemote) {
+                String msg = Localization.translate("ic2additions.graviTool.changeTool", newMode.color + Localization.translate(newMode.i18nKey));
+                player.sendMessage(new TextComponentString(msg));
                 ((EntityPlayerMP) player).inventoryContainer.detectAndSendChanges();
             }
+
             return new ActionResult<>(EnumActionResult.SUCCESS, stack);
         }
-
         return super.onItemRightClick(world, player, hand);
     }
 

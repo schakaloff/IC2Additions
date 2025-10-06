@@ -12,6 +12,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -27,9 +28,10 @@ public class ItemInit {
 
     // Tools & blocks
     public static final Item PLASMA_CABLE = register(new ItemBlockCable(BlockInit.PLASMA_CABLE));
-    public static final Item PHOTON_CABLE = register(new ItemBlockCable(BlockInit.PHOTON_CABLE));
+   // public static final Item PHOTON_CABLE = register(new ItemBlockCable(BlockInit.PHOTON_CABLE));
     public static final Item QUANTUM_CABLE = register(new ItemBlockCable(BlockInit.QUANTUM_CABLE));
-    public static final Item ARC_CABLE = register(new ItemBlockCable(BlockInit.ARC_CABLE));
+    //public static final Item ARC_CABLE = register(new ItemBlockCable(BlockInit.ARC_CABLE));
+
 
     // Materials
     public static final Item SANARIUM = register(new ItemHot("sanarium"));
@@ -97,17 +99,21 @@ public class ItemInit {
         }
     });
 
+    public static final Item CRUSHED_THORIUM = register(new ItemBase("crushed_thorium"));
+    public static final Item PURIFIED_THORIUM = register(new ItemBase("purified_thorium"));
+
 
     public static final Item NETHERSTAR_URANIUM = register(new ItemBaseRadioactive("netherstar_uranium",200,75));
-    public static final Item NEPTUNIUM_INGOT = register(new ItemBaseRadioactive("neptunium_ingot", 100, 70));
-    public static final Item THORIUM_INGOT = register(new ItemBaseRadioactive("thorium_ingot", 30, 75));
-    public static final Item CALIFORNIUM_INGOT = register(new ItemBaseRadioactive("californium_ingot", 50, 100));
+    //public static final Item NEPTUNIUM_INGOT = register(new ItemBaseRadioactive("neptunium_ingot", 100, 70));
+   //public static final Item THORIUM_INGOT = register(new ItemBaseRadioactive("thorium_ingot", 30, 75));
+    //public static final Item CALIFORNIUM_INGOT = register(new ItemBaseRadioactive("californium_ingot", 50, 100));
 
-    public static final Item GOLD_250 = register(new ItemBaseRadioactive("gold_250", 180, 100));
+
+    //public static final Item GOLD_250 = register(new ItemBaseRadioactive("gold_250", 180, 100));
     public static final Item URANIUM_233 = register(new ItemBaseRadioactive("uranium_233", 180, 100));
     public static final Item CALIFORNIUM_252 = register(new ItemBaseRadioactive("californium_252", 200, 90));
     public static final Item THORIUM_232 = register(new ItemBaseRadioactive("thorium_232", 30, 75));
-    public static final Item NEPTUNIUM_237 = register(new ItemBaseRadioactive("neptunium_237", 200, 100));
+    //public static final Item NEPTUNIUM_237 = register(new ItemBaseRadioactive("neptunium_237", 200, 100));
     public static final Item NEPTUNIUM_239 = register(new ItemBaseRadioactive("neptunium_239", 200, 100));
 
     // Reactor rods
@@ -148,7 +154,7 @@ public class ItemInit {
     public static final Item NANO_DRILL = register(new ItemNanoDrill("nano_drill"));
     public static final Item QUANTUM_DRILL = register(new ItemQuantumDrill("quantum_drill"));
 
-    public static final Item ADVANCED_CHAINSAW = register(new ItemAdvancedChainsaw());
+    //public static final Item ADVANCED_CHAINSAW = register(new ItemAdvancedChainsaw());
     public static final Item MULTI_TOOL = register(new ItemMultiTool("gravitool"));
 
     public static final Item VAIJRA = register(new ItemVajra("vajra"));

@@ -1,11 +1,13 @@
 package com.ic2additions.main;
 
+import com.ic2additions.init.OreDict;
 import com.ic2additions.init.TesRegistry;
 import com.ic2additions.proxy.CommonProxy;
 import com.ic2additions.recipes.MolecularAssemblerRecipes;
 import com.ic2additions.recipes.Recipes;
 import com.ic2additions.tilentity.*;
 import com.ic2additions.util.Reference;
+import com.ic2additions.world.gen.WorldOreGen;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.*;
@@ -36,14 +38,15 @@ public class IC2Additions {
 
     @Mod.EventHandler
     public void preinit(FMLPreInitializationEvent event) {
+        GameRegistry.registerWorldGenerator(new WorldOreGen(), 30);
         proxy.preinit(event);
+        OreDict.registerOres();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
         TesRegistry.buildDummies();
         proxy.init(event);
-
         Recipes.addCraftingRecipes();
         Recipes.addMachineRecipe();
         Recipes.addFurnaceRecipe();

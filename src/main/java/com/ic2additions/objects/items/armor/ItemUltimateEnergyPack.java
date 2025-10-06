@@ -27,6 +27,7 @@ public class ItemUltimateEnergyPack extends ItemBaseEnergyPack implements IBoost
     public EnumRarity getRarity(ItemStack stack) {
         return EnumRarity.RARE;
     }
+
     public static boolean isJetpackOn(ItemStack stack) {
         return StackUtil.getOrCreateNbtData(stack).getBoolean(TAG_FLY);
     }

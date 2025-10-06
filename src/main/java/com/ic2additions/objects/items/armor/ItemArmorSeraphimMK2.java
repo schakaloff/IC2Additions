@@ -2,48 +2,224 @@ package com.ic2additions.objects.items.armor;
 
 import com.ic2additions.init.IC2AdditionsCreativeTabs;
 import com.ic2additions.init.ItemInit;
+import com.ic2additions.util.IC2AdditionsKeys;
 import com.ic2additions.util.Reference;
+import ic2.api.item.ElectricItem;
+import ic2.core.IC2;
+import ic2.core.init.Localization;
 import ic2.core.item.armor.ItemArmorElectric;
+import ic2.core.item.armor.jetpack.IBoostingJetpack;
+import ic2.core.util.StackUtil;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemArmorSeraphimMK2 extends ItemArmorElectric {
+import javax.annotation.Nullable;
+import java.util.List;
+
+@Mod.EventBusSubscriber
+public class ItemArmorSeraphimMK2 extends ItemArmorElectric implements IBoostingJetpack {
+    public static final String TAG_FLY = "isFlyActive";
+    public static final String TAG_HOVER = "hoverMode";
+    public static final String TAG_TOGGLE_TIMER = "toggleTimer";
+
     public ItemArmorSeraphimMK2(String name, EntityEquipmentSlot slot){
-        super(null, "seraphim_mk2", slot, 5_000_000, 4096D, 4);
+        super(null, "seraphim_mk2", slot, 50_000_000, 8192.0D, 5);
         setRegistryName(name);
         setUnlocalizedName(name);
         setCreativeTab(IC2AdditionsCreativeTabs.tab);
         setMaxStackSize(1);
         ItemInit.ITEMS.add(this);
     }
-//    @Override
-//    public void onArmorTick(World world, EntityPlayer player, ItemStack stack){
-//        if (!world.isRemote && isWearingFullBetterNano(player)) {
-//            player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 20, 1, true, false));
-//            player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 20, 1, true, false));
-//        }
-//    }
 
-    private static boolean isWearing(EntityPlayer player, Item item, EntityEquipmentSlot slot) {
-        ItemStack stack = player.getItemStackFromSlot(slot);
-        return stack != null && stack.getItem() == item;
+    public static boolean isJetpackOn(ItemStack stack) {
+        return StackUtil.getOrCreateNbtData(stack).getBoolean(TAG_FLY);
     }
 
-//    public static boolean isWearingFullBetterNano(EntityPlayer player) {
-//        return isWearing(player, ItemInit.BETTER_NANO_HELMET, EntityEquipmentSlot.HEAD)
-//                && isWearing(player, ItemInit.BETTER_NANO_CHEST, EntityEquipmentSlot.CHEST)
-//                && isWearing(player, ItemInit.BETTER_NANO_LEGGINGS, EntityEquipmentSlot.LEGS)
-//                && isWearing(player, ItemInit.BETTER_NANO_BOOTS, EntityEquipmentSlot.FEET);
-//    }
+    public static boolean isHovering(ItemStack stack) {
+        return StackUtil.getOrCreateNbtData(stack).getBoolean(TAG_HOVER);
+    }
+
+    public static boolean switchJetpack(ItemStack stack) {
+        NBTTagCompound nbt = StackUtil.getOrCreateNbtData(stack);
+        boolean newMode = !nbt.getBoolean(TAG_FLY);
+        nbt.setBoolean(TAG_FLY, newMode);
+        return newMode;
+    }
+
+    public static boolean switchHover(ItemStack stack) {
+        NBTTagCompound nbt = StackUtil.getOrCreateNbtData(stack);
+        boolean newMode = !nbt.getBoolean(TAG_HOVER);
+        nbt.setBoolean(TAG_HOVER, newMode);
+        return newMode;
+    }
+
+    @Override
+    public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
+        // Only process toggle logic if this is the chestplate
+        if (this.armorType != EntityEquipmentSlot.CHEST) return;
+
+        NBTTagCompound nbt = StackUtil.getOrCreateNbtData(stack);
+        byte toggleTimer = nbt.getByte(TAG_TOGGLE_TIMER);
+
+        if (IC2AdditionsKeys.isFlyKeyDown(player) && toggleTimer == 0) {
+            nbt.setByte(TAG_TOGGLE_TIMER, (byte) 10);
+            if (!world.isRemote) {
+                boolean on = switchJetpack(stack);
+                String mode = on
+                        ? TextFormatting.DARK_GREEN + Localization.translate("ic2additions.message.on")
+                        : TextFormatting.DARK_RED + Localization.translate("ic2additions.message.off");
+                sendStatus(player, "ic2additions.message.jetpackSwitch", TextFormatting.YELLOW, mode);
+            }
+        }
+
+        if (IC2AdditionsKeys.isHoverKeyDown(player) && toggleTimer == 0) {
+            nbt.setByte(TAG_TOGGLE_TIMER, (byte) 10);
+            if (!world.isRemote) {
+                boolean hover = switchHover(stack);
+                String mode = hover
+                        ? TextFormatting.DARK_GREEN + Localization.translate("ic2additions.message.hover_on")
+                        : TextFormatting.DARK_RED + Localization.translate("ic2additions.message.hover_off");
+                sendStatus(player, "ic2additions.message.hoverSwitch", TextFormatting.YELLOW, mode);
+            }
+        }
+
+        if (toggleTimer > 0) {
+            nbt.setByte(TAG_TOGGLE_TIMER, (byte) (toggleTimer - 1));
+        }
+    }
+
+    private static void sendStatus(EntityPlayer player, String key, TextFormatting color, Object... args) {
+        TextComponentTranslation msg = new TextComponentTranslation(key, args);
+        msg.setStyle(new Style().setColor(color));
+        player.sendMessage(msg);
+    }
+
+    @Override
+    public boolean isJetpackActive(ItemStack stack) {
+        return isJetpackOn(stack);
+    }
+
+    @Override
+    public double getChargeLevel(ItemStack stack) {
+        return ElectricItem.manager.getCharge(stack) / getMaxCharge(stack);
+    }
+
+    @Override
+    public float getPower(ItemStack stack) {
+        return 1.0f;
+    }
+
+    @Override
+    public float getDropPercentage(ItemStack stack) {
+        return 0.05f;
+    }
+
+    @Override
+    public float getBaseThrust(ItemStack stack, boolean hover) {
+        return hover ? 0.65f : 0.30f;
+    }
+
+    @Override
+    public float getBoostThrust(EntityPlayer player, ItemStack stack, boolean hover) {
+        return IC2.keyboard.isBoostKeyDown(player) && ElectricItem.manager.getCharge(stack) >= 60.0 ? (hover ? 0.07f : 0.09f) : 0.0f;
+    }
+
+    @Override
+    public boolean useBoostPower(ItemStack stack, float boostAmount) {
+        return ElectricItem.manager.discharge(stack, 60.0, Integer.MAX_VALUE, true, false, false) > 0.0;
+    }
+
+    @Override
+    public float getWorldHeightDivisor(ItemStack stack) {
+        return 1.0f;
+    }
+
+    @Override
+    public float getHoverMultiplier(ItemStack stack, boolean upwards) {
+        return 0.2f;
+    }
+
+    @Override
+    public float getHoverBoost(EntityPlayer player, ItemStack stack, boolean up) {
+        if (IC2.keyboard.isBoostKeyDown(player) && ElectricItem.manager.getCharge(stack) >= 60.0) {
+            if (!player.onGround) {
+                ElectricItem.manager.discharge(stack, 60.0, Integer.MAX_VALUE, true, false, false);
+            }
+            return 2.0f;
+        }
+        return 1.0f;
+    }
+
+    @Override
+    public boolean drainEnergy(ItemStack pack, int amount) {
+        return ElectricItem.manager.discharge(pack, amount * 6.0, Integer.MAX_VALUE, true, false, false) > 0.0;
+    }
+
+
+    public static boolean hasFullSet(EntityLivingBase e) {
+        if (e == null) return false;
+        int count = 0;
+        for (ItemStack s : e.getArmorInventoryList()) {
+            if (!s.isEmpty() && s.getItem() instanceof ItemArmorSeraphimMK2) count++;
+        }
+        return count == 4;
+    }
+
+    @SubscribeEvent
+    public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
+        if (!hasFullSet(event.getEntityLiving())) return;
+        EntityLivingBase entity = event.getEntityLiving();
+        if (entity.isBurning()) {
+            entity.extinguish();
+        }
+        entity.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 20, 0, true, false));
+    }
+
+    @SubscribeEvent
+    public static void onLivingAttack(LivingAttackEvent event) {
+        if (!hasFullSet(event.getEntityLiving())) return;
+        DamageSource src = event.getSource();
+        if (src.isFireDamage() || src == DamageSource.HOT_FLOOR || src == DamageSource.LAVA) {
+            event.setCanceled(true);
+            return;
+        }
+        if (src == DamageSource.FALL) {
+            event.setCanceled(true);
+            return;
+        }
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.ic2additions.nightvision"));
+        tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.ic2additions.jetpack"));
+        tooltip.add(TextFormatting.GOLD + I18n.format("tooltip.ic2additions.thermohazmat_set"));
+        tooltip.add("  " + TextFormatting.RED + I18n.format("tooltip.ic2additions.fire_prox.protects_fire"));
+        tooltip.add("  " + TextFormatting.DARK_RED + I18n.format("tooltip.ic2additions.strength_1"));
+        tooltip.add("  " + TextFormatting.RED + I18n.format("tooltip.ic2additions.fall_damage_neutralization"));
+
+    }
 
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type){
@@ -52,12 +228,12 @@ public class ItemArmorSeraphimMK2 extends ItemArmorElectric {
 
     @Override
     public double getDamageAbsorptionRatio() {
-        return 0.70;
+        return 0.95;
     }
 
     @Override
     public int getEnergyPerDamage() {
-        return 20000;
+        return 100_000;
     }
 
     @SideOnly(Side.CLIENT)

@@ -41,6 +41,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -52,10 +53,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+@Mod.EventBusSubscriber
 public class ItemQuantumArmor extends ItemArmorElectric implements IJetpack, IHazmatLike, IItemHudProvider{
     private static final double MAX_CHARGE = 100_000_000D;
-    private static final double TRANSFER    = 12000.0;
-    private static final int TIER           = 4;
+    private static final double TRANSFER    = 32767.0D;
+    private static final int TIER           = 6;
 
     protected static final Map<Potion, Integer> potionRemovalCost = new IdentityHashMap<>();
     private float jumpCharge;
@@ -132,13 +134,13 @@ public class ItemQuantumArmor extends ItemArmorElectric implements IJetpack, IHa
 
     @Override
     public int getEnergyPerDamage() {
-        return 20000;
+        return 50000;
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public EnumRarity getRarity(ItemStack stack) {
-        return EnumRarity.RARE;
+        return EnumRarity.EPIC;
     }
 
     @Override
@@ -386,7 +388,7 @@ public class ItemQuantumArmor extends ItemArmorElectric implements IJetpack, IHa
         if (e == null) return false;
         int count = 0;
         for (ItemStack s : e.getArmorInventoryList()) {
-            if (!s.isEmpty() && s.getItem() instanceof ItemAdvancedQuantumArmor) count++;
+            if (!s.isEmpty() && s.getItem() instanceof ItemQuantumArmor) count++;
         }
         return count == 4;
     }
@@ -411,6 +413,7 @@ public class ItemQuantumArmor extends ItemArmorElectric implements IJetpack, IHa
         }
     }
 
+
     @Override
     public boolean fullyProtects(EntityLivingBase entity, EntityEquipmentSlot slot, ItemStack stack) {
         return false;
@@ -419,16 +422,15 @@ public class ItemQuantumArmor extends ItemArmorElectric implements IJetpack, IHa
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 
-//        tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.ic2additions.nightvision"));
-//        tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.ic2additions.jetpack"));
-//        tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.ic2additions.highjump"));
-//        tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.ic2additions.fastwalk"));
-//
-//        tooltip.add(TextFormatting.GOLD + I18n.format("tooltip.ic2additions.thermohazmat_set"));
-//        tooltip.add("  " + TextFormatting.AQUA + I18n.format("tooltip.ic2additions.haste_2"));
-//        tooltip.add("  " + TextFormatting.DARK_RED + I18n.format("tooltip.ic2additions.strength_2"));
-//        tooltip.add("  " + TextFormatting.DARK_GREEN + I18n.format("tooltip.ic2additions.radiation_protection"));
-//        tooltip.add("  " + TextFormatting.RED + I18n.format("tooltip.ic2additions.fire_prox.protects_fire"));
+        tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.ic2additions.nightvision"));
+        tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.ic2additions.jetpack"));
+        tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.ic2additions.highjump"));
+        tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.ic2additions.fastwalk"));
+
+        tooltip.add(TextFormatting.GOLD + I18n.format("tooltip.ic2additions.thermohazmat_set"));
+        tooltip.add("  " + TextFormatting.DARK_GREEN + I18n.format("tooltip.ic2additions.radiation_protection"));
+        tooltip.add("  " + TextFormatting.RED + I18n.format("tooltip.ic2additions.fire_prox.protects_fire"));
+        tooltip.add("  " + TextFormatting.RED + I18n.format("tooltip.ic2additions.fall_damage_neutralization"));
     }
 
 

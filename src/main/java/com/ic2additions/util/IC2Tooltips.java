@@ -1,7 +1,10 @@
 package com.ic2additions.util;
 
+import ic2.api.item.IC2Items;
 import ic2.core.item.armor.ItemArmorHazmat;
+import ic2.core.item.armor.ItemArmorNanoSuit;
 import ic2.core.item.armor.ItemArmorQuantumSuit;
+import ic2.core.item.reactor.ItemReactorMOX;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -30,21 +33,22 @@ public class IC2Tooltips {
         ItemStack stack = event.getItemStack();
         if (stack.isEmpty()) return;
 
-        if (stack.getItem() instanceof ItemArmorQuantumSuit) {
-            int insertIndex = 1;
-            event.getToolTip().add(insertIndex++, TextFormatting.BLUE + I18n.format("tooltip.ic2additions.nightvision"));
-            event.getToolTip().add(insertIndex++, TextFormatting.BLUE + I18n.format("tooltip.ic2additions.jetpack"));
-            event.getToolTip().add(insertIndex++, TextFormatting.BLUE + I18n.format("tooltip.ic2additions.highjump"));
-            event.getToolTip().add(insertIndex++, TextFormatting.BLUE + I18n.format("tooltip.ic2additions.fastwalk"));
-
-            event.getToolTip().add(insertIndex++, TextFormatting.GOLD + I18n.format("tooltip.ic2additions.thermohazmat_set"));
-            event.getToolTip().add(insertIndex++, "  " + TextFormatting.AQUA + I18n.format("tooltip.ic2additions.haste_2"));
-            event.getToolTip().add(insertIndex++, "  " + TextFormatting.DARK_GREEN + I18n.format("tooltip.ic2additions.radiation_protection"));
-            event.getToolTip().add(insertIndex, "  " + TextFormatting.RED + I18n.format("tooltip.ic2additions.fire_prox.protects_fire"));}
-
         if (stack.getItem() instanceof ItemArmorHazmat) {
             int insertIndex = 1;
             event.getToolTip().add(insertIndex, TextFormatting.DARK_GREEN + I18n.format("tooltip.ic2additions.radiation_protection"));
         }
+
+        if(stack.getItem() instanceof ItemArmorNanoSuit){
+            int insertIndex=1;
+            event.getToolTip().add(insertIndex++, TextFormatting.BLUE + I18n.format("tooltip.ic2additions.nightvision"));
+        }
+
+        String name = stack.getUnlocalizedName();
+        if (name.contains("depleted_uranium") || name.contains("depleted_dual_uranium")  || name.contains("depleted_quad_uranium") ||
+                name.contains("depleted_mox") || name.contains("depleted_dual_mox") || name.contains("depleted_quad_mox")) {
+            String localized = net.minecraft.client.resources.I18n.format("tooltip.ic2additions.hot");
+            event.getToolTip().add(TextFormatting.GOLD + localized);
+        }
+
     }
 }

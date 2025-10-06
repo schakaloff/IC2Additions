@@ -25,7 +25,7 @@ public class RegistryHandler {
                 event.getRegistry().register(itemBlock);
             }
         }
-        DeleteItems.init(event);
+        //DeleteItems.init(event);
     }
 
     @SubscribeEvent

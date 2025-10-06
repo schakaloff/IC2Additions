@@ -44,10 +44,10 @@ public class ItemAdvancedSaber extends ItemElectricTool implements ActivatableIt
     private int soundTicker = 0;
 
     public ItemAdvancedSaber() {
-        super(null, 10, HarvestLevel.Diamond, EnumSet.of(ToolClass.Sword));
-        this.maxCharge = 300_000;
-        this.transferLimit = 10_000;
-        this.tier = 3;
+        super(null, 100, HarvestLevel.Diamond, EnumSet.of(ToolClass.Sword));
+        this.maxCharge = 500_000;
+        this.transferLimit = 50_000;
+        this.tier = 4;
         setRegistryName("advanced_saber");
         setUnlocalizedName("advanced_saber");
         setCreativeTab(IC2AdditionsCreativeTabs.tab);

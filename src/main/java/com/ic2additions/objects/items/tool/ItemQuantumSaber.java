@@ -44,10 +44,10 @@ public class ItemQuantumSaber extends ItemElectricTool implements ActivatableIte
     private int soundTicker = 0;
 
     public ItemQuantumSaber() {
-        super(null, 10, HarvestLevel.Diamond, EnumSet.of(ToolClass.Sword));
-        this.maxCharge = 1_000_000;
-        this.transferLimit = 30_000;
-        this.tier = 3;
+        super(null, 300, HarvestLevel.Diamond, EnumSet.of(ToolClass.Sword));
+        this.maxCharge = 3_000_000;
+        this.transferLimit = 100_000;
+        this.tier = 6;
         setRegistryName("quantum_saber");
         setUnlocalizedName("quantum_saber");
         setCreativeTab(IC2AdditionsCreativeTabs.tab);

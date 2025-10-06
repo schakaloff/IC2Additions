@@ -102,8 +102,8 @@ public class ItemArmorMolecular extends ItemArmorElectric implements IBoostingJe
     }
 
     // ---------- Armor behavior ----------
-    @Override public double getDamageAbsorptionRatio() { return 1.0; }
-    @Override public int getEnergyPerDamage() { return 30000; }
+    @Override public double getDamageAbsorptionRatio() { return 2.5D; }
+    @Override public int getEnergyPerDamage() { return 50000; }
 
     private static boolean isChest(ItemStack stack) {
         return stack != null && stack.getItem() instanceof ItemArmorMolecular
@@ -655,6 +655,7 @@ public class ItemArmorMolecular extends ItemArmorElectric implements IBoostingJe
         tooltip.add("  " + TextFormatting.BOLD + I18n.format("tooltip.ic2additions.armor_hardpunch"));
         tooltip.add("  " + TextFormatting.DARK_GREEN + I18n.format("tooltip.ic2additions.radiation_protection"));
         tooltip.add("  " + TextFormatting.RED + I18n.format("tooltip.ic2additions.fire_prox.protects_fire"));
+        tooltip.add("  " + TextFormatting.RED + I18n.format("tooltip.ic2additions.fall_damage_neutralization"));
         tooltip.add("  " + TextFormatting.DARK_RED + I18n.format("tooltip.ic2additions.armor_cannotbekilled"));
     }
 
