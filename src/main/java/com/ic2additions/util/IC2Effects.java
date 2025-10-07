@@ -1,6 +1,10 @@
 package com.ic2additions.util;
 
+import com.ic2additions.interfaces.IHot;
 import com.ic2additions.objects.items.armor.ItemAdvancedQuantumArmor;
+import com.ic2additions.objects.items.armor.ItemArmorSeraphimMK2;
+import com.ic2additions.objects.items.armor.ItemThermohazmatArmor;
+import ic2.api.item.IC2Items;
 import ic2.core.item.armor.ItemArmorQuantumSuit;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,60 +24,73 @@ import java.util.List;
 
 @Mod.EventBusSubscriber
 public class IC2Effects {
-    public static boolean hasFullQuantumSet(EntityLivingBase e) {
+    public static final ItemStack depleted_uranium = IC2Items.getItem("nuclear", "depleted_uranium");
+    public static final ItemStack depleted_dual_uranium = IC2Items.getItem("nuclear", "depleted_dual_uranium");
+    public static final ItemStack depleted_quad_uranium = IC2Items.getItem("nuclear", "depleted_quad_uranium");
+
+    public static final ItemStack depleted_mox = IC2Items.getItem("nuclear", "depleted_mox");
+    public static final ItemStack depleted_dual_mox = IC2Items.getItem("nuclear", "depleted_dual_mox");
+    public static final ItemStack depleted_quad_mox = IC2Items.getItem("nuclear", "depleted_quad_mox");
+
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END) return;
+
+        EntityPlayer player = event.player;
+        if (player == null || player.world.isRemote) return;
+
+        boolean hasDepletedUranium = false;
+
+        for (ItemStack stack : player.inventory.mainInventory) {
+            if (stack.isEmpty()) continue;
+
+            if (ItemStack.areItemsEqual(stack, depleted_uranium) ||
+                    ItemStack.areItemsEqual(stack, depleted_mox) ||
+                    ItemStack.areItemsEqual(stack, depleted_dual_mox) ||
+                    ItemStack.areItemsEqual(stack, depleted_quad_mox) ||
+                    ItemStack.areItemsEqual(stack, depleted_dual_uranium) ||
+                    ItemStack.areItemsEqual(stack, depleted_quad_uranium)) {
+                hasDepletedUranium = true;
+                break;
+            }
+            if (stack.getItem() instanceof IHot) {
+                ((IHot) stack.getItem()).onCarriedTick(player, stack);
+            }
+        }
+        if (hasDepletedUranium) {
+            player.setFire(2);
+        }
+    }
+
+    public static boolean hasFullSet(EntityLivingBase e) {
         if (e == null) return false;
         int count = 0;
         for (ItemStack s : e.getArmorInventoryList()) {
-            if (!s.isEmpty() && s.getItem() instanceof ItemArmorQuantumSuit) count++;
+            if (!s.isEmpty() && s.getItem() instanceof ItemThermohazmatArmor) count++;
         }
         return count == 4;
     }
 
     @SubscribeEvent
-    public static void wearingQuant(LivingEvent.LivingUpdateEvent event) {
-        if (!hasFullQuantumSet(event.getEntityLiving())) return;
+    public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
+        if (!hasFullSet(event.getEntityLiving())) return;
         EntityLivingBase entity = event.getEntityLiving();
         if (entity.isBurning()) {
             entity.extinguish();
         }
-        //entity.addPotionEffect(new PotionEffect(MobEffects.HASTE, 20, 1, true, false));
-        entity.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 20, 0, true, false));
     }
 
     @SubscribeEvent
     public static void onLivingAttack(LivingAttackEvent event) {
-        if (!hasFullQuantumSet(event.getEntityLiving())) return;
+        if (!hasFullSet(event.getEntityLiving())) return;
         DamageSource src = event.getSource();
         if (src.isFireDamage() || src == DamageSource.HOT_FLOOR || src == DamageSource.LAVA) {
             event.setCanceled(true);
+            return;
         }
-    }
-
-    private static final List<String> HOT_ITEMS = Arrays.asList(
-            "depleted_uranium",
-            "depleted_dual_uranium",
-            "depleted_quad_uranium",
-            "depleted_mox",
-            "depleted_dual_mox",
-            "depleted_quad_mox"
-    );
-
-    @SubscribeEvent
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
-        EntityPlayer player = event.player;
-        if (player == null || player.world.isRemote) return; // only server side
-
-        for (ItemStack stack : player.inventory.mainInventory) {
-            if (stack.isEmpty()) continue;
-
-            String name = stack.getItem().getRegistryName().toString();
-            if (HOT_ITEMS.stream().anyMatch(name::contains)) {
-                if (!player.isBurning()) {
-                    player.setFire(5); // set fire for 5 seconds
-                }
-                break; // only need to set fire once per tick
-            }
+        if (src == DamageSource.FALL) {
+            event.setCanceled(true);
+            return;
         }
     }
 

@@ -217,6 +217,9 @@ public class Recipes {
 
         addShapelessRecipe(small_uranium_238, uranium_238);
 
+        addShapedRecipe(new ItemStack(ItemInit.PLASMA_CABLE, 6), "III", "CCC", "III", 'I', ItemInit.SUPER_CONDUCTOR, 'C', glass_fibre_cable);
+        addShapedRecipe(new ItemStack(ItemInit.QUANTUM_CABLE,6), "MMM", "CCC", "MMM", 'M', ItemInit.MAGNETRON, 'C', ItemInit.PLASMA_CABLE);
+
         small_uranium_238.setCount(9);
         small_plutoniumx2.setCount(2);
         small_plutoniumx4.setCount(4);
