@@ -1,5 +1,6 @@
 package com.ic2additions.main;
 
+import com.ic2additions.init.BlockInit;
 import com.ic2additions.init.OreDict;
 import com.ic2additions.init.TesRegistry;
 import com.ic2additions.proxy.CommonProxy;
@@ -51,6 +52,7 @@ public class IC2Additions {
         Recipes.addMachineRecipe();
         Recipes.addFurnaceRecipe();
         MolecularAssemblerRecipes.init();
+        BlockInit.registerOres();
     }
 
     @EventHandler

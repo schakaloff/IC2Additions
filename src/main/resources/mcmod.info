@@ -3,7 +3,7 @@
     "modid": "ic2additions",
     "name": "IC2Additions",
     "description": "An addon for IndustrialCraft² that adds new energy storages, crystal batteries, items, armor, swords, drills, and more.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "mcversion": "1.12.2",
     "url": "https://legacy.curseforge.com/minecraft/mc-mods/ic2additions",
     "updateUrl": "",

@@ -2,6 +2,8 @@ package com.ic2additions.init;
 import com.ic2additions.objects.blocks.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraftforge.oredict.OreDictionary;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,4 +23,10 @@ public class BlockInit {
     public static final Block THORIUM_ORE = new BlockBase("thorium_ore", Material.ROCK);
 
     private static Block reg(Block b) {BLOCKS.add(b);return b;}
+
+
+    public static void registerOres() {
+        OreDictionary.registerOre("oreThorium", THORIUM_ORE);
+        OreDictionary.registerOre("dustThorium", ItemInit.CRUSHED_THORIUM);
+    }
 }

@@ -332,6 +332,7 @@ public class Recipes {
 
     public static void addFurnaceRecipe(){
         GameRegistry.addSmelting(ItemInit.IRRADIANT_PURIFIED_URANIUM, new ItemStack(ItemInit.IRRADIANT_URANIUM_INGOT), 1.0F);
+        GameRegistry.addSmelting(BlockInit.THORIUM_ORE, new ItemStack(ItemInit.THOR));
     }
 
 }
