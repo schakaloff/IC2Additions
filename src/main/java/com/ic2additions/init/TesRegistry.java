@@ -5,6 +5,7 @@
     import com.ic2additions.main.IC2Additions;
     import com.ic2additions.tilentity.TileEntityMolecularAssembler;
     import com.ic2additions.tilentity.TileEntityRFtoEU;
+    import com.ic2additions.tilentity.UpdatedTileEntityNuclearReactorElectric;
     import com.ic2additions.tilentity.energystorage.*;
     import com.ic2additions.tilentity.solarpanels.TileEntityBetterSolarPanel;
     import com.ic2additions.tilentity.solarpanels.TileEntityHybridSolarPanel;
@@ -39,8 +40,10 @@
         quantum_solar_panel(TileEntityQuantumSolarPanel.class, 5, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC),
 
         molecular_assembler(TileEntityMolecularAssembler.class, 6, true,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC, Material.IRON,false),
+        reactor(UpdatedTileEntityNuclearReactorElectric.class, 16, true,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC, Material.IRON,false),
         //rf_to_eu_converter(TileEntityRFtoEU.class, 15, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC, Material.IRON,false),
         //superconductor_cable(ic2.core.block.wiring.TileEntityCable.class, 16, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 0.5F, 10F, EnumRarity.EPIC),
+
 
 
 
