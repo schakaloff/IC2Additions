@@ -97,6 +97,8 @@ gui.ic2additions.outputItem=Output: %s
 gui.ic2additions.cost=Cost: %s EU
 gui.ic2additions.time=Time: %.0f%%
 
+gui.ic2additions.countdown=Time Left: %s
+
 gui.ic2additions.eut=Stored: %.0f EU
 
 

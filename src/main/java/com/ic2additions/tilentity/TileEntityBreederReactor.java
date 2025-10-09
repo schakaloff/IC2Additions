@@ -33,6 +33,8 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
     private static final int DEFAULT_SINK_TIER = 12;
     private static final double MAX_EU_PER_TICK = 128.0;
 
+    @GuiSynced private int ticksRemaining;
+
     private boolean addedToEnet;
 
     @GuiSynced private double energyBuffer;
@@ -84,7 +86,6 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
             BreederReactorRecipesHandler.Recipe recipe = BreederReactorRecipesHandler.find(in);
 
             if (recipe != null && canAcceptOutput(recipe.output)) {
-                // Only start when enough EU is stored
                 if (energyBuffer >= recipe.totalEU) {
                     in.shrink(1);
                     if (in.getCount() <= 0) input.clear();
@@ -95,6 +96,7 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
                     currentInput = recipe.input.copy();
                     progressTicks = 0;
                     currentRecipeTotalTime = recipe.totalTime;
+                    ticksRemaining = currentRecipeTotalTime;
 
                     currentInputName = recipe.input.getDisplayName();
                     currentOutputName = recipe.output.getDisplayName();
@@ -108,6 +110,7 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
                 currentOutputName = "-";
                 currentRecipeCostEu = 0;
                 currentRecipeTotalTime = 0;
+                ticksRemaining = 0;
                 active = false;
             }
         }
@@ -115,10 +118,11 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         // Handle active recipe progress
         if (currentRecipe != null) {
             progressTicks++;
+            ticksRemaining = Math.max(0, currentRecipeTotalTime - progressTicks); // countdown
             active = true;
             dirty = true;
 
-            if (progressTicks >= currentRecipe.totalTime) {
+            if (progressTicks >= currentRecipeTotalTime) {
                 finishRecipe();
                 active = false;
                 dirty = true;
@@ -166,6 +170,7 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         currentInput = ItemStack.EMPTY;
         progressTicks = 0;
         currentRecipeTotalTime = 0;
+        ticksRemaining = 0;
 
         currentInputName = "-";
         currentOutputName = "-";
@@ -202,6 +207,8 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
                 return currentRecipeTotalTime <= 0 ? 0 : Math.round(((double) progressTicks / currentRecipeTotalTime) * 100.0);
             case "eut":
                 return energyBuffer;
+            case "countdownSeconds":
+                return ticksRemaining / 20.0; // ticks → seconds
             default:
                 return 0;
         }
@@ -220,7 +227,6 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         return Math.round(((double) progressTicks / currentRecipeTotalTime) * 100.0);
     }
 
-    // This is what %base.getTime()% calls
     public double getTime() {
         return getTimeProgressPercent();
     }
@@ -229,6 +235,14 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
     public String getCurrentOutputName() { return currentOutputName; }
     public int getRecipeCostEu() { return currentRecipeCostEu; }
 
+    // Returns countdown as MM:SS string
+    public String getCountdown() {
+        int seconds = ticksRemaining / 20;
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+        return String.format("%d:%02d", minutes, seconds);
+    }
+
     // === Save/load ===
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
@@ -236,6 +250,7 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         energyBuffer = nbt.getDouble("energyBuffer");
         progressTicks = nbt.getInteger("progressTicks");
         currentRecipeTotalTime = nbt.getInteger("currentRecipeTotalTime");
+        ticksRemaining = nbt.getInteger("ticksRemaining");
         currentInput = new ItemStack(nbt.getCompoundTag("currentInput"));
         currentInputName = nbt.getString("currentInputName");
         currentOutputName = nbt.getString("currentOutputName");
@@ -252,6 +267,7 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         nbt.setDouble("energyBuffer", energyBuffer);
         nbt.setInteger("progressTicks", progressTicks);
         nbt.setInteger("currentRecipeTotalTime", currentRecipeTotalTime);
+        nbt.setInteger("ticksRemaining", ticksRemaining);
         NBTTagCompound inputTag = new NBTTagCompound();
         currentInput.writeToNBT(inputTag);
         nbt.setTag("currentInput", inputTag);

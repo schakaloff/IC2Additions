@@ -6,12 +6,13 @@
     <slot name="input"  x="16" y="19"/>
     <slot name="output" x="16" y="54"/>
 
-    <text x="60" y="20">{gui.ic2additions.output,%base.getEutNow()%}</text>
-    <text x="60" y="30">{gui.ic2additions.progress,%base.getProgressPercent()%}</text>
+    <text x="60" y="20">{gui.ic2additions.countdown,%base.getCountdown()%}</text>
+    <text x="60" y="30">{gui.ic2additions.output,%base.getEutNow()%}</text>
     <text x="60" y="40">{gui.ic2additions.input,%base.getCurrentInputName()%}</text>
     <text x="60" y="50">{gui.ic2additions.outputItem,%base.getCurrentOutputName()%}</text>
     <text x="60" y="60">{gui.ic2additions.cost,%base.getRecipeCostEu()%}</text>
     <text x="60" y="70">{gui.ic2additions.time,%base.getTime()%}</text>
+
 
 
     <playerInventory x="7" y="83"/>
