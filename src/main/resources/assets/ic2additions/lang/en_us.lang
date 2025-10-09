@@ -95,6 +95,10 @@ gui.ic2additions.progress=Progress: %.0f%%
 gui.ic2additions.input=Input: %s
 gui.ic2additions.outputItem=Output: %s
 gui.ic2additions.cost=Cost: %s EU
+gui.ic2additions.time=Time: %.0f%%
+
+gui.ic2additions.eut=Stored: %.0f EU
+
 
 gui.ic2additions.inputMA=Input:
 gui.ic2additions.outputItemMA=Output:

@@ -4,6 +4,7 @@ import com.ic2additions.init.BlockInit;
 import com.ic2additions.init.OreDict;
 import com.ic2additions.init.TesRegistry;
 import com.ic2additions.proxy.CommonProxy;
+import com.ic2additions.recipes.breeding.BreederReactorRecipes;
 import com.ic2additions.recipes.molecular.MolecularAssemblerRecipes;
 import com.ic2additions.recipes.Recipes;
 import com.ic2additions.tilentity.*;
@@ -47,10 +48,13 @@ public class IC2Additions {
     public void init(FMLInitializationEvent event) {
         TesRegistry.buildDummies();
         proxy.init(event);
+
         Recipes.addCraftingRecipes();
         Recipes.addMachineRecipe();
         Recipes.addFurnaceRecipe();
+
         MolecularAssemblerRecipes.init();
+        BreederReactorRecipes.init();
         BlockInit.registerOres();
     }
 

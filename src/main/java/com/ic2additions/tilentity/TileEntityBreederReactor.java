@@ -1,4 +1,5 @@
 package com.ic2additions.tilentity;
+
 import com.ic2additions.recipes.breeding.BreederReactorRecipesHandler;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.event.EnergyTileUnloadEvent;
@@ -14,6 +15,7 @@ import ic2.core.gui.dynamic.DynamicContainer;
 import ic2.core.gui.dynamic.DynamicGui;
 import ic2.core.gui.dynamic.GuiParser;
 import ic2.core.gui.dynamic.IGuiValueProvider;
+import ic2.core.network.GuiSynced;
 import ic2.core.util.StackUtil;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,29 +27,32 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class TileEntityBreederReactor extends TileEntityInventory implements IEnergySink, IHasGui, IGuiValueProvider {
 
-    // === Inventory ===
     public final InvSlot input;
     public final InvSlotOutput output;
 
-    // === Energy/Recipe variables ===
     private static final int DEFAULT_SINK_TIER = 12;
+    private static final double MAX_EU_PER_TICK = 128.0;
 
     private boolean addedToEnet;
-    private double energyBuffer; // energy received but not yet used
-    private double energyUsed;   // total EU used for current recipe
-    private int progressTicks;   // elapsed ticks for current recipe
+
+    @GuiSynced private double energyBuffer;
+    @GuiSynced private int progressTicks;
+    @GuiSynced private int currentRecipeTotalTime;
+    @GuiSynced private ItemStack currentInput = ItemStack.EMPTY;
 
     private BreederReactorRecipesHandler.Recipe currentRecipe;
-    private ItemStack currentInput = ItemStack.EMPTY;
 
-    // === Constructor ===
+    @GuiSynced private String currentInputName = "-";
+    @GuiSynced private String currentOutputName = "-";
+    @GuiSynced private int currentRecipeCostEu = 0;
+
     public TileEntityBreederReactor() {
         super();
         this.input = new InvSlot(this, "input", InvSlot.Access.I, 1, InvSlot.InvSide.TOP);
         this.output = new InvSlotOutput(this, "output", 1);
     }
 
-    // === EnergyNet Registration ===
+    // === EnergyNet registration ===
     @Override
     protected void onLoaded() {
         super.onLoaded();
@@ -66,7 +71,7 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         }
     }
 
-    // === Main Update Logic ===
+    // === Server tick ===
     @Override
     protected void updateEntityServer() {
         super.updateEntityServer();
@@ -74,49 +79,52 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         boolean active = getActive();
         boolean dirty = false;
 
-        // If no recipe is active, try to start one
         if (currentRecipe == null) {
             ItemStack in = input.get();
             BreederReactorRecipesHandler.Recipe recipe = BreederReactorRecipesHandler.find(in);
 
             if (recipe != null && canAcceptOutput(recipe.output)) {
-                currentRecipe = recipe;
-                currentInput = in.copy();
-                in.shrink(1);
-                if (in.getCount() <= 0) input.clear();
+                // Only start when enough EU is stored
+                if (energyBuffer >= recipe.totalEU) {
+                    in.shrink(1);
+                    if (in.getCount() <= 0) input.clear();
 
-                energyUsed = 0;
-                progressTicks = 0;
-                active = true;
-                dirty = true;
+                    energyBuffer -= recipe.totalEU;
+
+                    currentRecipe = recipe;
+                    currentInput = recipe.input.copy();
+                    progressTicks = 0;
+                    currentRecipeTotalTime = recipe.totalTime;
+
+                    currentInputName = recipe.input.getDisplayName();
+                    currentOutputName = recipe.output.getDisplayName();
+                    currentRecipeCostEu = recipe.totalEU;
+
+                    active = true;
+                    dirty = true;
+                }
             } else {
+                currentInputName = "-";
+                currentOutputName = "-";
+                currentRecipeCostEu = 0;
+                currentRecipeTotalTime = 0;
                 active = false;
             }
         }
 
-        // If we have a running recipe, consume energy & time
+        // Handle active recipe progress
         if (currentRecipe != null) {
-            double neededEnergy = currentRecipe.totalEU - energyUsed;
+            progressTicks++;
+            active = true;
+            dirty = true;
 
-            // consume a portion of energy each tick (simulate slow charging)
-            double perTickUsage = Math.min(energyBuffer, Math.min(neededEnergy, 128)); // max 128 EU/tick
-            energyBuffer -= perTickUsage;
-            energyUsed += perTickUsage;
-
-            // Only advance time if energy is being consumed
-            if (perTickUsage > 0) {
-                progressTicks++;
-            }
-
-            // Check for completion
-            if (energyUsed >= currentRecipe.totalEU && progressTicks >= currentRecipe.totalTime) {
+            if (progressTicks >= currentRecipe.totalTime) {
                 finishRecipe();
-                dirty = true;
                 active = false;
+                dirty = true;
             }
         }
 
-        // Update block active state
         if (getActive() != active) {
             setActive(active);
             world.checkLightFor(EnumSkyBlock.BLOCK, pos);
@@ -125,7 +133,30 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         if (dirty) markDirty();
     }
 
-    // === Recipe Completion ===
+    // === Energy sink behavior ===
+    @Override
+    public double injectEnergy(EnumFacing from, double amount, double voltage) {
+        energyBuffer += amount;
+        return 0;
+    }
+
+    @Override
+    public double getDemandedEnergy() {
+        ItemStack in = input.get();
+        BreederReactorRecipesHandler.Recipe recipe = BreederReactorRecipesHandler.find(in);
+        if (recipe == null) return 0;
+        if (canAcceptOutput(recipe.output) && currentRecipe == null) {
+            return Math.max(0, recipe.totalEU - energyBuffer);
+        }
+        return 0;
+    }
+
+    @Override
+    public boolean acceptsEnergyFrom(IEnergyEmitter emitter, EnumFacing side) { return true; }
+    @Override
+    public int getSinkTier() { return DEFAULT_SINK_TIER; }
+
+    // === Recipe completion ===
     private void finishRecipe() {
         if (currentRecipe == null) return;
         if (canAcceptOutput(currentRecipe.output)) {
@@ -133,8 +164,12 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         }
         currentRecipe = null;
         currentInput = ItemStack.EMPTY;
-        energyUsed = 0;
         progressTicks = 0;
+        currentRecipeTotalTime = 0;
+
+        currentInputName = "-";
+        currentOutputName = "-";
+        currentRecipeCostEu = 0;
     }
 
     private boolean canAcceptOutput(ItemStack stack) {
@@ -153,78 +188,61 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
     }
 
     @Override
-    public void onGuiClosed(EntityPlayer entityPlayer) {
+    public void onGuiClosed(EntityPlayer entityPlayer) {}
 
-    }
-
+    // === Value provider ===
     @Override
     public double getGuiValue(String key) {
         switch (key) {
-            case "progress01": return getProgress01();
-            case "progress": return getProgressPercent();
-            case "time01": return getTimeProgress01();
-            case "time": return getTimeProgressPercent();
-            default: return 0;
+            case "progress01":
+            case "time01":
+                return currentRecipeTotalTime <= 0 ? 0 : (double) progressTicks / currentRecipeTotalTime;
+            case "progress":
+            case "time":
+                return currentRecipeTotalTime <= 0 ? 0 : Math.round(((double) progressTicks / currentRecipeTotalTime) * 100.0);
+            case "eut":
+                return energyBuffer;
+            default:
+                return 0;
         }
     }
 
-    // === Progress getters ===
-    public double getProgress01() {
-        if (currentRecipe == null || currentRecipe.totalEU <= 0) return 0;
-        return Math.min(1.0, energyUsed / currentRecipe.totalEU);
-    }
+    // === Getters used by %base ===
+    public double getEutNow() { return energyBuffer; }
 
     public double getProgressPercent() {
-        return Math.round(getProgress01() * 100.0);
-    }
-
-    public double getTimeProgress01() {
-        if (currentRecipe == null || currentRecipe.totalTime <= 0) return 0;
-        return Math.min(1.0, (double) progressTicks / currentRecipe.totalTime);
+        if (currentRecipeTotalTime <= 0) return 0;
+        return Math.round(((double) progressTicks / currentRecipeTotalTime) * 100.0);
     }
 
     public double getTimeProgressPercent() {
-        return Math.round(getTimeProgress01() * 100.0);
+        if (currentRecipeTotalTime <= 0) return 0;
+        return Math.round(((double) progressTicks / currentRecipeTotalTime) * 100.0);
     }
 
-    // === Energy Sink ===
-    @Override
-    public boolean acceptsEnergyFrom(IEnergyEmitter emitter, EnumFacing side) { return true; }
-
-    @Override
-    public int getSinkTier() { return DEFAULT_SINK_TIER; }
-
-    @Override
-    public double getDemandedEnergy() {
-        if (currentRecipe == null) return 0;
-        return Math.max(0, currentRecipe.totalEU - energyUsed);
+    // This is what %base.getTime()% calls
+    public double getTime() {
+        return getTimeProgressPercent();
     }
 
-    @Override
-    public double injectEnergy(EnumFacing from, double amount, double voltage) {
-        double need = getDemandedEnergy();
-        if (need <= 0) return amount;
-        if (amount <= need) {
-            energyBuffer += amount;
-            return 0;
-        } else {
-            energyBuffer += need;
-            return amount - need;
-        }
-    }
+    public String getCurrentInputName() { return currentInputName; }
+    public String getCurrentOutputName() { return currentOutputName; }
+    public int getRecipeCostEu() { return currentRecipeCostEu; }
 
-    // === NBT ===
+    // === Save/load ===
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
         energyBuffer = nbt.getDouble("energyBuffer");
-        energyUsed = nbt.getDouble("energyUsed");
         progressTicks = nbt.getInteger("progressTicks");
+        currentRecipeTotalTime = nbt.getInteger("currentRecipeTotalTime");
+        currentInput = new ItemStack(nbt.getCompoundTag("currentInput"));
+        currentInputName = nbt.getString("currentInputName");
+        currentOutputName = nbt.getString("currentOutputName");
+        currentRecipeCostEu = nbt.getInteger("currentRecipeCostEu");
 
-        if (nbt.hasKey("currentInput")) {
-            currentInput = new ItemStack(nbt.getCompoundTag("currentInput"));
-            BreederReactorRecipesHandler.Recipe r = BreederReactorRecipesHandler.find(currentInput);
-            if (r != null) currentRecipe = r;
+        if (!currentInput.isEmpty()) {
+            currentRecipe = BreederReactorRecipesHandler.find(currentInput);
         }
     }
 
@@ -232,13 +250,14 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         super.writeToNBT(nbt);
         nbt.setDouble("energyBuffer", energyBuffer);
-        nbt.setDouble("energyUsed", energyUsed);
         nbt.setInteger("progressTicks", progressTicks);
-        if (!currentInput.isEmpty()) {
-            NBTTagCompound itemTag = new NBTTagCompound();
-            currentInput.writeToNBT(itemTag);
-            nbt.setTag("currentInput", itemTag);
-        }
+        nbt.setInteger("currentRecipeTotalTime", currentRecipeTotalTime);
+        NBTTagCompound inputTag = new NBTTagCompound();
+        currentInput.writeToNBT(inputTag);
+        nbt.setTag("currentInput", inputTag);
+        nbt.setString("currentInputName", currentInputName);
+        nbt.setString("currentOutputName", currentOutputName);
+        nbt.setInteger("currentRecipeCostEu", currentRecipeCostEu);
         return nbt;
     }
 }
