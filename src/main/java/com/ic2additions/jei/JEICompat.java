@@ -2,11 +2,9 @@ package com.ic2additions.jei;
 
 import com.ic2additions.gui.TransparentDynamicGUI;
 import com.ic2additions.init.TesRegistry;
-import com.ic2additions.recipes.MolecularAssemblerRecipesHandler;
-import ic2.core.recipe.dynamic.RecipeInputItemStack;
+import com.ic2additions.recipes.molecular.MolecularAssemblerRecipesHandler;
 import mezz.jei.api.JEIPlugin;
 import ic2.api.recipe.IRecipeInput;
-import ic2.api.recipe.MachineRecipe;
 import ic2.core.block.ITeBlock;
 import ic2.core.init.Localization;
 import ic2.core.recipe.RecipeInputOreDict;

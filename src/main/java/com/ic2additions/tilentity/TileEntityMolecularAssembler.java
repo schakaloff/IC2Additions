@@ -1,18 +1,13 @@
 package com.ic2additions.tilentity;
 
-import com.ic2additions.gui.TransparentDynamicGUI;
-import com.ic2additions.recipes.MolecularAssemblerRecipesHandler;
+import com.ic2additions.recipes.molecular.MolecularAssemblerRecipesHandler;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.event.EnergyTileUnloadEvent;
 import ic2.api.energy.tile.IEnergyEmitter;
 import ic2.api.energy.tile.IEnergySink;
 import ic2.api.energy.tile.IEnergyTile;
 import ic2.core.ContainerBase;
-import ic2.core.IC2;
 import ic2.core.IHasGui;
-import ic2.core.audio.AudioSource;
-import ic2.core.audio.PositionSpec;
-import ic2.core.block.ITeBlock;
 import ic2.core.block.TileEntityInventory;
 import ic2.core.block.invslot.InvSlot;
 import ic2.core.block.invslot.InvSlotOutput;

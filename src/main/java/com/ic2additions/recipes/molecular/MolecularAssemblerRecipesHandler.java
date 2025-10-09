@@ -1,4 +1,4 @@
-package com.ic2additions.recipes;
+package com.ic2additions.recipes.molecular;
 
 import net.minecraft.item.ItemStack;
 

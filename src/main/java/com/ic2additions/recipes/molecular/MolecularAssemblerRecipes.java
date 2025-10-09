@@ -1,10 +1,9 @@
-package com.ic2additions.recipes;
+package com.ic2additions.recipes.molecular;
 
 import com.ic2additions.init.ItemInit;
 import ic2.api.item.IC2Items;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 
