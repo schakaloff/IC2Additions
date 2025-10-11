@@ -37,6 +37,7 @@ item.tritanium_plate.name=Tritanium Plate
 item.thermosil_plate.name=Thermosil Plate
 item.purified_thorium.name=Purified Crashed Thorium Ore
 item.crushed_thorium.name=Crushed Thorium Ore
+item.plutonium_fuel.name=Plutonium Fuel
 
 item.duritanium_ingot.name=Duritanium Ingot
 item.raw_tritanium_ingot.name=Raw Tritanium Ingot
@@ -96,12 +97,10 @@ gui.ic2additions.input=Input: %s
 gui.ic2additions.outputItem=Output: %s
 gui.ic2additions.cost=Cost: %s EU
 gui.ic2additions.time=Time: %.0f%%
-
 gui.ic2additions.countdown=Time Left: %s
-
 gui.ic2additions.eut=Stored: %.0f EU
 
-
+#jei
 gui.ic2additions.inputMA=Input:
 gui.ic2additions.outputItemMA=Output:
 gui.ic2additions.costMA=Cost:
@@ -145,6 +144,8 @@ ic2additions.te.hybrid_solar_panel=Hybrid Solar Panel
 ic2additions.te.quantum_solar_panel=Quantum Solar Panel
 ic2additions.te.ultimate_solar_panel=Ultimate Solar Panel
 
+ic2additions.te.breeding_reactor=Breeding Reactor
+
 #others
 ic2additions.te.molecular_assembler=Molecular Assembler
 
@@ -160,8 +161,8 @@ tile.thorium_ore.name=Thorium Ore
 
 #tab
 itemGroup.ic2additions.tab=IC2 Additions
-#crystals
 
+#crystals
 item.plasmatron_crystal.name=Plasmatron Crystal
 item.quantum_crystal.name=Quantum Crystal
 item.auraton_crystal.name=Auraton Crystal

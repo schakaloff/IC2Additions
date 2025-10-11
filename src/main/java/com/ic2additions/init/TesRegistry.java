@@ -34,9 +34,7 @@
         quantum_solar_panel(TileEntityQuantumSolarPanel.class, 5, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC),
 
         molecular_assembler(TileEntityMolecularAssembler.class, 6, true,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC, Material.IRON,false),
-        breeding_reactor(TileEntityBreederReactor.class, 16, true,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC, Material.IRON,false),
 
-        //rf_to_eu_converter(TileEntityRFtoEU.class, 15, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC, Material.IRON,false)
 
         plasmatronmfe(TileEntityPlasmatronMFE.class, 7, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.EPIC),
         auratonmfe(TileEntityAuratonMFE.class, 8, false, Util.allFacings, true, HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10, EnumRarity.EPIC),
@@ -46,7 +44,10 @@
         iv_transformer(TileEntityTransformerIV .class, 11, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10,EnumRarity.RARE),
         ov_transformer(TileEntityTransformerOV .class, 12, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10,EnumRarity.RARE),
         cv_transformer(TileEntityTransformerCV .class, 13, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10,EnumRarity.RARE),
-        uv_transformer(TileEntityTransformerUV .class, 14, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10,EnumRarity.EPIC);
+        uv_transformer(TileEntityTransformerUV .class, 14, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10,EnumRarity.EPIC),
+
+        //rf_to_eu_converter(TileEntityRFtoEU.class, 15, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC, Material.IRON,false),
+        breeding_reactor(TileEntityBreederReactor.class, 16, true,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.UNCOMMON, Material.IRON,false);
 
         public static final ResourceLocation IDENTITY = new ResourceLocation(Reference.MODID, "te");
 

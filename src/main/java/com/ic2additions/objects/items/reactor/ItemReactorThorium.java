@@ -20,7 +20,7 @@ public class ItemReactorThorium extends ItemReactorUranium implements IReactorCo
 
     @Override
     public boolean acceptUraniumPulse(ItemStack stack, IReactor reactor, ItemStack pulsingStack, int youX, int youY, int pulseX, int pulseY, boolean heatrun) {
-        if (!heatrun) reactor.addOutput(1.3F);
+        if (!heatrun) reactor.addOutput(0.9F);
         return true;
     }
 

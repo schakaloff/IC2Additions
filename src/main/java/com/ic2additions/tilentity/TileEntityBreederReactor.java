@@ -7,7 +7,10 @@ import ic2.api.energy.tile.IEnergyEmitter;
 import ic2.api.energy.tile.IEnergySink;
 import ic2.api.energy.tile.IEnergyTile;
 import ic2.core.ContainerBase;
+import ic2.core.IC2;
 import ic2.core.IHasGui;
+import ic2.core.audio.AudioSource;
+import ic2.core.audio.PositionSpec;
 import ic2.core.block.TileEntityInventory;
 import ic2.core.block.invslot.InvSlot;
 import ic2.core.block.invslot.InvSlotOutput;
@@ -26,6 +29,9 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraftforge.common.MinecraftForge;
 
 public class TileEntityBreederReactor extends TileEntityInventory implements IEnergySink, IHasGui, IGuiValueProvider {
+
+    private AudioSource audioSourceMain;
+    private AudioSource audioSourceOperation;
 
     public final InvSlot input;
     public final InvSlotOutput output;
@@ -54,7 +60,6 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         this.output = new InvSlotOutput(this, "output", 1);
     }
 
-    // === EnergyNet registration ===
     @Override
     protected void onLoaded() {
         super.onLoaded();
@@ -73,7 +78,6 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         }
     }
 
-    // === Server tick ===
     @Override
     protected void updateEntityServer() {
         super.updateEntityServer();
@@ -114,8 +118,6 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
                 active = false;
             }
         }
-
-        // Handle active recipe progress
         if (currentRecipe != null) {
             progressTicks++;
             ticksRemaining = Math.max(0, currentRecipeTotalTime - progressTicks); // countdown
@@ -137,7 +139,6 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         if (dirty) markDirty();
     }
 
-    // === Energy sink behavior ===
     @Override
     public double injectEnergy(EnumFacing from, double amount, double voltage) {
         energyBuffer += amount;
@@ -160,7 +161,7 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
     @Override
     public int getSinkTier() { return DEFAULT_SINK_TIER; }
 
-    // === Recipe completion ===
+
     private void finishRecipe() {
         if (currentRecipe == null) return;
         if (canAcceptOutput(currentRecipe.output)) {
@@ -181,7 +182,6 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         return !StackUtil.isEmpty(stack) && output.canAdd(stack);
     }
 
-    // === GUI ===
     @Override
     public ContainerBase<? extends TileEntityBreederReactor> getGuiContainer(EntityPlayer player) {
         return DynamicContainer.create(this, player, GuiParser.parse(this.teBlock));
@@ -195,7 +195,6 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
     @Override
     public void onGuiClosed(EntityPlayer entityPlayer) {}
 
-    // === Value provider ===
     @Override
     public double getGuiValue(String key) {
         switch (key) {
@@ -214,7 +213,6 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         }
     }
 
-    // === Getters used by %base ===
     public double getEutNow() { return energyBuffer; }
 
     public double getProgressPercent() {
@@ -235,7 +233,7 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
     public String getCurrentOutputName() { return currentOutputName; }
     public int getRecipeCostEu() { return currentRecipeCostEu; }
 
-    // Returns countdown as MM:SS string
+
     public String getCountdown() {
         int seconds = ticksRemaining / 20;
         int minutes = seconds / 60;
@@ -243,7 +241,7 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         return String.format("%d:%02d", minutes, seconds);
     }
 
-    // === Save/load ===
+
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);

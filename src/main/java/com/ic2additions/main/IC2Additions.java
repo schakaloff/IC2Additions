@@ -55,6 +55,7 @@ public class IC2Additions {
 
         MolecularAssemblerRecipes.init();
         BreederReactorRecipes.init();
+
         BlockInit.registerOres();
     }
 

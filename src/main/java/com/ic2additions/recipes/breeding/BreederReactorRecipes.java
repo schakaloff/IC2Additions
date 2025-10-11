@@ -7,15 +7,11 @@ public class BreederReactorRecipes {
     private BreederReactorRecipes() {}
 
     public static void init(){
-//        // Example: Depleted Uranium Rod -> Plutonium Rod
-//        // Takes 35 minutes (35 * 60 * 20 = 42,000 ticks)
-        BreederReactorRecipesHandler.add(
-                new ItemStack(ItemInit.THORIUM_232), // input
-                1_000_000,  // total EU
-                42_000,     // time in ticks
-                new ItemStack(ItemInit.THORIUM_ROD_SINGLE) // output
-        );
-//
+        // Takes 35 minutes (35 * 60 * 20 = 42,000 ticks)
+        BreederReactorRecipesHandler.add(new ItemStack(ItemInit.PLUTONIUM_ROD), 1_000_000, 36_000, new ItemStack(ItemInit.NEPTUNIUM_ROD));
+        BreederReactorRecipesHandler.add(new ItemStack(ItemInit.PLUTONIUM_DUAL), 1_000_000, 48_000, new ItemStack(ItemInit.NEPTUNIUM_DUAL_ROD));
+        BreederReactorRecipesHandler.add(new ItemStack(ItemInit.PLUTONIUM_QUAD), 1_000_000, 60_000, new ItemStack(ItemInit.NEPTUNIUM_QUAD_ROD));
+
 
     }
 }

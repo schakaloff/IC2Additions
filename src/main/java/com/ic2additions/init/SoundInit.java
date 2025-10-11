@@ -12,6 +12,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public final class SoundInit {
     public static SoundEvent COMMUNISM;
     public static SoundEvent MOLECULAR_PUNCH;
+    public static SoundEvent BREEDING_REACTOR;
 
     private SoundInit() {}
 
@@ -27,5 +28,6 @@ public final class SoundInit {
         IForgeRegistry<SoundEvent> r = e.getRegistry();
         r.register(COMMUNISM = create("record.communism"));
         r.register(MOLECULAR_PUNCH = create("molecular.punch"));
+//        r.register(BREEDING_REACTOR = create("breeding.reactor"));
     }
 }

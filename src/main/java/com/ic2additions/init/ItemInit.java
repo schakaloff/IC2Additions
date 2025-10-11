@@ -5,6 +5,7 @@ import com.ic2additions.objects.items.*;
 import com.ic2additions.objects.items.armor.*;
 import com.ic2additions.objects.items.reactor.ItemReactorCalifornium;
 import com.ic2additions.objects.items.reactor.ItemReactorNeptunium;
+import com.ic2additions.objects.items.reactor.ItemReactorPlutonium;
 import com.ic2additions.objects.items.reactor.ItemReactorThorium;
 import com.ic2additions.objects.items.tool.*;
 import net.minecraft.client.resources.I18n;
@@ -34,18 +35,9 @@ public class ItemInit {
 
 
     // Materials
-    public static final Item SANARIUM = register(new ItemHot("sanarium"));
     public static final Item SANARIUM_SHARD = register(new ItemHot("sanarium_shard"));
+    public static final Item SANARIUM = register(new ItemHot("sanarium"));
     public static final Item SANARIUM_ALLOY = register(new ItemHot("sanarium_alloy"));
-    public static final Item IRRADIANT_PURIFIED_URANIUM = register(new ItemBase("irradiant_purified_uranium"));
-    public static final Item IRRADIANT_URANIUM_INGOT = register(
-            new ItemBaseRadioactive("irradiant_uranium_ingot", 30, 50) {
-                @Override
-                public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-                    tooltip.add(TextFormatting.GREEN + I18n.format("Your new best friend"));
-                }
-            }
-    );
     public static final Item ENRICHTED_SANARIUM = register(new ItemRadioactiveHot("enrichted_sanarium",30,60));
     public static final Item ENRICHTED_SANARIUM_ALLOY = register(new ItemRadioactiveHot("enrichted_sanarium_alloy",30,60));
 
@@ -53,6 +45,8 @@ public class ItemInit {
     public static final Item IRIDIUM_IRON_PLATE = register(new ItemBaseUncommon("iridium_iron_plate"));
     public static final Item REINFORCED_IRIDIUM_IRON_PLATE = register(new ItemBaseRare("reinforced_iridium_iron_plate"));
     public static final Item IRRADIANT_REINFORCED_PLATE = register(new ItemBaseEpic("irradiant_reinforced_plate"));
+    public static final Item BREEDER_CORE = register(new ItemBaseUncommon("breeder_core"));
+
 
     public static final Item MT_CORE = register(new ItemBaseRare("mt_core"));
     public static final Item QUANTUM_CORE = register(new ItemBaseEpic("quantum_core"));
@@ -79,13 +73,22 @@ public class ItemInit {
     public static final Item PHOTON = register(new ItemBaseRare("photon"));
     public static final Item FULLERITE = register(new ItemBaseEpic("fullerite"));
 
+    public static final Item IRRADIANT_PURIFIED_URANIUM = register(new ItemBase("irradiant_purified_uranium"));
+    public static final Item IRRADIANT_URANIUM_INGOT = register(
+            new ItemBaseRadioactive("irradiant_uranium_ingot", 30, 50) {
+                @Override
+                public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+                    tooltip.add(TextFormatting.GREEN + I18n.format("Your new best friend"));
+                }
+            }
+    );
+    public static final Item NETHERSTAR_URANIUM = register(new ItemBaseRadioactive("netherstar_uranium",200,75));
+    public static final Item RAW_TRITANIUM_INGOT = register(new ItemDangerousDrop("raw_tritanium_ingot",16,true,true));
+    public static final Item TRITANIUM_INGOT = register(new ItemDangerousDrop("tritanium_ingot",16,true,true));
+    public static final Item DURITANIUM_INGOT = register(new ItemDangerousDrop("duritanium_ingot",16,true,true));
+
     public static final Item DURITANIUM_PLATE = register(new ItemDangerousDrop("duritanium_plate",16,true,true));
     public static final Item RAW_TRITANIUM_PLATE = register(new ItemDangerousDrop("raw_tritanium_plate",16,true,true));
-
-    public static final Item DURITANIUM_INGOT = register(new ItemDangerousDrop("duritanium_ingot",16,true,true));
-    public static final Item RAW_TRITANIUM_INGOT = register(new ItemDangerousDrop("raw_tritanium_ingot",16,true,true));
-
-    public static final Item TRITANIUM_INGOT = register(new ItemDangerousDrop("tritanium_ingot",16,true,true));
     public static final Item TRITANIUM_PLATE = register(new ItemDangerousDrop("tritanium_plate",16,true,true));
 
     public static final Item THERMOSIL_PLATE = register(new ItemBase("thermosil_plate"){
@@ -102,21 +105,33 @@ public class ItemInit {
     public static final Item CRUSHED_THORIUM = register(new ItemBase("crushed_thorium"));
     public static final Item PURIFIED_THORIUM = register(new ItemBase("purified_thorium"));
 
-
-    public static final Item NETHERSTAR_URANIUM = register(new ItemBaseRadioactive("netherstar_uranium",200,75));
     //public static final Item NEPTUNIUM_INGOT = register(new ItemBaseRadioactive("neptunium_ingot", 100, 70));
    //public static final Item THORIUM_INGOT = register(new ItemBaseRadioactive("thorium_ingot", 30, 75));
     //public static final Item CALIFORNIUM_INGOT = register(new ItemBaseRadioactive("californium_ingot", 50, 100));
 
 
     //public static final Item GOLD_250 = register(new ItemBaseRadioactive("gold_250", 180, 100));
+    public static final Item THORIUM_232 = register(new ItemBaseRadioactive("thorium_232", 30, 75));
     public static final Item URANIUM_233 = register(new ItemBaseRadioactive("uranium_233", 180, 100));
     public static final Item CALIFORNIUM_252 = register(new ItemBaseRadioactive("californium_252", 200, 90));
-    public static final Item THORIUM_232 = register(new ItemBaseRadioactive("thorium_232", 30, 75));
-    //public static final Item NEPTUNIUM_237 = register(new ItemBaseRadioactive("neptunium_237", 200, 100));
+    public static final Item NEPTUNIUM_237 = register(new ItemBaseRadioactive("neptunium_237", 200, 100));
     public static final Item NEPTUNIUM_239 = register(new ItemBaseRadioactive("neptunium_239", 200, 100));
+    public static final Item PLUTONIUM_FUEL = register(new ItemBaseRadioactive("plutonium_fuel", 200, 100));
+
 
     // Reactor rods
+    public static final Item PLUTONIUM_ROD_SINGLE = register(new ItemReactorPlutonium("plutonium_fuel_rod", 1));
+    public static final Item PLUTONIUM_ROD_DOUBLE = register(new ItemReactorPlutonium("plutonium_double_fuel_rod", 2));
+    public static final Item PLUTONIUM_ROD_QUAD = register(new ItemReactorPlutonium("plutonium_quad_fuel_rod", 4));
+
+    public static final Item PLUTONIUM_ROD = register(new ItemBaseRadioactive("plutonium_rod",200,90));
+    public static final Item PLUTONIUM_DUAL = register(new ItemBaseRadioactive("plutonium_double_rod",200,90));
+    public static final Item PLUTONIUM_QUAD = register(new ItemBaseRadioactive("plutonium_quad_rod",200,90));
+
+    public static final Item DEPLETED_PLUTONIUM = register(new ItemRadioactiveHot("depleted_plutonium",200,90));
+    public static final Item DEPLETED_PLUTONIUM_DUAL = register(new ItemRadioactiveHot("depleted_dual_plutonium",200,90));
+    public static final Item DEPLETED_PLUTONIUM_QUAD = register(new ItemRadioactiveHot("depleted_quad_plutonium",200,90));
+
     public static final Item THORIUM_ROD_SINGLE = register(new ItemReactorThorium("thorium_fuel_rod", 1));
     public static final Item THORIUM_ROD_DOUBLE = register(new ItemReactorThorium("thorium_double_fuel_rod", 2));
     public static final Item THORIUM_ROD_QUAD = register(new ItemReactorThorium("thorium_quad_fuel_rod", 4));
@@ -132,6 +147,10 @@ public class ItemInit {
     public static final Item DEPLETED_NEPTUNIUM = register(new ItemRadioactiveHot("depleted_neptunium",200,90));
     public static final Item DEPLETED_NEPTUNIUM_DUAL = register(new ItemRadioactiveHot("depleted_dual_neptunium",200,90));
     public static final Item DEPLETED_NEPTUNIUM_QUAD = register(new ItemRadioactiveHot("depleted_quad_neptunium",200,90));
+
+    public static final Item NEPTUNIUM_ROD = register(new ItemBaseRadioactive("neptunium_rod",200,90));
+    public static final Item NEPTUNIUM_DUAL_ROD = register(new ItemBaseRadioactive("neptunium_dual_rod",200,90));
+    public static final Item NEPTUNIUM_QUAD_ROD = register(new ItemBaseRadioactive("neptunium_quad_rod",200,90));
 
     public static final Item CALIFORNIUM_ROD_SINGLE = register(new ItemReactorCalifornium("californium_fuel_rod", 1));
     public static final Item CALIFORNIUM_ROD_DOUBLE = register(new ItemReactorCalifornium("californium_double_fuel_rod", 2));

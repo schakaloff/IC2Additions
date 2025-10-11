@@ -9,8 +9,8 @@ import ic2.core.item.reactor.ItemReactorUranium;
 import ic2.core.ref.ItemName;
 import net.minecraft.item.ItemStack;
 
-public class ItemReactorNeptunium extends ItemReactorUranium implements IReactorComponent, ICustomDamageItem {
-    public ItemReactorNeptunium(String name, int cells) {
+public class ItemReactorPlutonium extends ItemReactorUranium implements IReactorComponent, ICustomDamageItem {
+    public ItemReactorPlutonium(String name, int cells) {
         super((ItemName) null, cells, 20000);
         setUnlocalizedName(name);
         setRegistryName(name);
@@ -20,16 +20,16 @@ public class ItemReactorNeptunium extends ItemReactorUranium implements IReactor
 
     @Override
     public boolean acceptUraniumPulse(ItemStack stack, IReactor reactor, ItemStack pulsingStack, int youX, int youY, int pulseX, int pulseY, boolean heatrun) {
-        if (!heatrun) reactor.addOutput(3.0F);
+        if (!heatrun) reactor.addOutput(1.5F);
         return true;
     }
 
     @Override
     protected ItemStack getDepletedStack(ItemStack stack, IReactor reactor) {
         switch (this.numberOfCells) {
-            case 1: return new ItemStack(ItemInit.DEPLETED_NEPTUNIUM);
-            case 2: return new ItemStack(ItemInit.DEPLETED_NEPTUNIUM_DUAL);
-            case 4: return new ItemStack(ItemInit.DEPLETED_NEPTUNIUM_QUAD);
+            case 1: return new ItemStack(ItemInit.DEPLETED_PLUTONIUM);
+            case 2: return new ItemStack(ItemInit.DEPLETED_PLUTONIUM_DUAL);
+            case 4: return new ItemStack(ItemInit.DEPLETED_PLUTONIUM_QUAD);
             default: throw new RuntimeException("invalid cell count: " + this.numberOfCells);
         }
     }

@@ -70,7 +70,6 @@ public final class JEICompat implements IModPlugin {
         }
 
         private static IRecipeInput wrap(final ItemStack stack) {
-            // Minimal inline IRecipeInput to satisfy IORecipeWrapper without external helpers
             return new IRecipeInput() {
                 public boolean matches(ItemStack other) {
                     if (other == null) return false;

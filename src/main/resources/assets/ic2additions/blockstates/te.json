@@ -11,6 +11,7 @@
       "ov_transformer": { "model": "ic2additions:ov_transformer" },
       "cv_transformer": { "model": "ic2additions:cv_transformer" },
       "uv_transformer": { "model": "ic2additions:uv_transformer" },
+      "breeding_reactor": { "model": "ic2additions:breeding_reactor" },
       "molecular_assembler":  { "model": "ic2additions:molecular_assembler" },
       "molecular_assembler_active":  { "model": "ic2additions:molecular_assembler_active" },
       "rf_to_eu_converter":  { "model": "ic2additions:rf_to_eu_converter" },
