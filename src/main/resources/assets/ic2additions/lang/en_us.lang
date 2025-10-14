@@ -38,6 +38,7 @@ item.thermosil_plate.name=Thermosil Plate
 item.purified_thorium.name=Purified Crashed Thorium Ore
 item.crushed_thorium.name=Crushed Thorium Ore
 item.plutonium_fuel.name=Plutonium Fuel
+item.breeder_core.name=Breeder Reactor Core
 
 item.duritanium_ingot.name=Duritanium Ingot
 item.raw_tritanium_ingot.name=Raw Tritanium Ingot
@@ -104,6 +105,12 @@ gui.ic2additions.eut=Stored: %.0f EU
 gui.ic2additions.inputMA=Input:
 gui.ic2additions.outputItemMA=Output:
 gui.ic2additions.costMA=Cost:
+
+gui.ic2additions.inputBR=Input:
+gui.ic2additions.outputItemBR=Output:
+gui.ic2additions.costBR=Cost:
+gui.ic2additions.countdownBR=Required Time:
+
 
 tooltip.ic2additions.thermolsil=Made for space ships...
 tooltip.ic2additions.fall_damage_neutralization=Fall Damage Neutralization
@@ -226,6 +233,15 @@ item.ic2additions.molecular_leggings=Molecular Leggings
 item.ic2additions.molecular_boots=Molecular Boots
 
 #reactor
+
+item.plutonium_rod.name=Rod (Plutonium)
+item.plutonium_double_rod.name=Dual Rod (Plutonium)
+item.plutonium_quad_rod.name=Quad Rod (Plutonium)
+
+item.neptunium_rod.name=Rod (Neptunium)
+item.neptunium_dual_rod.name=Dual Rod (Neptunium)
+item.neptunium_quad_rod.name=Quad Rod (Neptunium)
+
 ic2.thorium_fuel_rod=Fuel Road (Thorium)
 ic2.thorium_double_fuel_rod=Dual Fuel Rod (Thorium)
 ic2.thorium_quad_fuel_rod=Quad Fuel Rod (Thorium)
@@ -248,10 +264,17 @@ ic2.californium_quad_fuel_rod=Quad Fuel Rod (Californium)
 
 item.depleted_californium.name=Fuel Rod (Depleted Californium)
 item.depleted_dual_californium.name=Dual Fuel Rod (Depleted Californium)
-item.depleted_quad_californium.name=Quad Fuel Rod (Depleted Californium)
+item.depleted_quad_californium.name=Quad Rod (Depleted Californium)
+
+ic2.plutonium_fuel_rod=Fuel Rod (Plutonium)
+ic2.plutonium_double_fuel_rod=Dual Fuel Rod (Plutonium)
+ic2.plutonium_quad_fuel_rod=Quad Fuel Rod (Plutonium)
+
+item.depleted_plutonium.name=Fuel Rod (Depleted Plutonium)
+item.depleted_dual_plutonium.name=Dual Rod (Depleted Plutonium)
+item.depleted_quad_plutonium.name=Quad Rod (Depleted Plutonium)
 
 item.uranium_233.name=Uranium-233
-
 item.californium_252.name=Californium-252
 item.californium_ingot.name=Californium Ingot
 

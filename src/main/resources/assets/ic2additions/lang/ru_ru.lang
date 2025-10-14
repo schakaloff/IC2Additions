@@ -1,4 +1,4 @@
-#items
+# items
 item.sanarium.name=Саннариум
 item.sanarium_shard.name=Осколок Саннариума
 item.sanarium_alloy.name=Сплав Саннария
@@ -37,10 +37,13 @@ item.tritanium_plate.name=Тританиевая Пластина
 item.thermosil_plate.name=Плита Термосила
 item.purified_thorium.name=Очищенная Измельчённая Ториевая Руда
 item.crushed_thorium.name=Измельчённая Ториевая Руда
+item.breeder_core.name=Ядро Реактора Размножителя
+
 item.duritanium_ingot.name=Слиток Дюританиума
 item.raw_tritanium_ingot.name=Слиток Сырого Тританиума
 item.tritanium_ingot.name=Слиток Тританиума
 item.netherstar_uranium.name=Слиток Незерстар-Урана
+
 item.duritanium_plate.name=Дюританиевая Пластина
 item.raw_tritanium_plate.name=Сырая Тританиевая Пластина
 
@@ -67,12 +70,12 @@ ic2additions.hud.suit_normal=Режим Костюма: Обычный
 ic2additions.message.suit_fire_mode=Режим Костюма: %s
 ic2additions.message.suit_fire_mode_auto_off=Огненный Режим Выключен (Недостаточно Энергии)
 ic2additions.message.kill_protection=Ты Не Можешь Убить Создателя...
-
 tooltip.ic2additions.armor_cannotbekilled=Режим Бога
 tooltip.ic2additions.armor_firemode=Огненный Режим
 tooltip.ic2additions.armor_fastbreak=Быстрое Копание
 tooltip.ic2additions.armor_fastbreaksilk=Быстрое Копание[Шёлк]
 tooltip.ic2additions.armor_hardpunch=Яростные Кулаки
+
 
 ic2additions.message.suit_mode=Режим Костюма: %s
 ic2additions.mode.fire=Огненный Щит
@@ -83,26 +86,39 @@ ic2additions.mode.none=Обычный
 
 ic2additions.advancedChainsaw.shear=Стрижка: %s
 
-#music discs
+# music discs
 item.ic2additions.music_disc_communism.name=Музыкальный Диск
 item.record.music_disc_communism.desc=Егор Летов - Новая Патриотическая
 
-#gui
+# gui
 gui.ic2additions.output=Выход: %s EU/t
 gui.ic2additions.progress=Прогресс: %.0f%%
 gui.ic2additions.input=Вход: %s
 gui.ic2additions.outputItem=Выход: %s
 gui.ic2additions.cost=Стоимость: %s EU
+gui.ic2additions.time=Time: %.0f%%
+gui.ic2additions.countdown=Time Left: %s
+gui.ic2additions.eut=Stored: %.0f EU
+
 gui.ic2additions.inputMA=Вход:
 gui.ic2additions.outputItemMA=Выход:
 gui.ic2additions.costMA=Стоимость:
 
+gui.ic2additions.inputBR=Input:
+gui.ic2additions.outputItemBR=Output:
+gui.ic2additions.costBR=Cost:
+gui.ic2additions.countdownBR=Required Time:
+
+
 tooltip.ic2additions.thermolsil=Изготовлен Для Космических Кораблей...
 tooltip.ic2additions.fall_damage_neutralization=Нейтрализация Урона От Падения
+
 tooltip.ic2additions.firefull_set=Бонус Комплекта:
 tooltip.ic2additions.fire_prox.protects_fire=Защита От Огня
+
 tooltip.ic2additions.thermohazmat_set=Бонус Комплекта:
 tooltip.ic2additions.radiation_protection=Защита От Радиации
+
 tooltip.ic2additions.dangerous_drop=Опасно Выкидывать
 tooltip.ic2additions.haste_2=Спешка II
 tooltip.ic2additions.strength_2=Сила II
@@ -112,111 +128,157 @@ tooltip.ic2additions.jetpack=Встроенный Ранец
 tooltip.ic2additions.highjump=Встроенный Высокий Прыжок
 tooltip.ic2additions.fastwalk=Встроенное Быстрое Движение
 tooltip.ic2additions.waterbreathing=Встроенное Подводное Дыхание
+
 tooltip.ic2additions.hot=Пирофорный / Горячий
 tooltip.ic2additions.radioactive=Радиоактивный / Опасно Держать
 
-#tiles
+# tiles
 ic2additions.te.plasmatronmfe=Плазматронная МФЕ
 ic2additions.te.auratonmfe=Ауратонная МФЕ
 ic2additions.te.quantummfe=Квантовая МФЕ
 ic2additions.te.photonmfe=Фотонная МФЕ
+
 ic2additions.te.iv_transformer=IV Трансформатор
 ic2additions.te.ov_transformer=OV Трансформатор
 ic2additions.te.cv_transformer=CV Трансформатор
 ic2additions.te.uv_transformer=UV Трансформатор
+
 ic2additions.te.better_solar_panel=Улучшенная Солнечная Панель
 ic2additions.te.hybrid_solar_panel=Гибридная Солнечная Панель
 ic2additions.te.quantum_solar_panel=Квантовая Солнечная Панель
 ic2additions.te.ultimate_solar_panel=Ультимейтная Солнечная Панель
+
+ic2additions.te.breeding_reactor=Breeding Reactor
+
 ic2additions.te.molecular_assembler=Молекулярный Преобразователь
 
 tile.ic2additions.plasma_cable.name=Сверхпроводящий Кабель
 tile.ic2additions.quantum_cable.name=Улучшенный Сверхпроводящий Кабель
 tile.ic2additions.photon_cable.name=Photon Cable
 tile.ic2additions.arc_cable.name=Arc Cable
+
 tile.eu_to_rf_converter.name=EU to RF Converter
+
 tile.thorium_ore.name=Ториевая Руда
 
-#tab
+
+# tab
 itemGroup.ic2additions.tab=IC2 Additions
 
-#crystals
+# crystals
 item.plasmatron_crystal.name=Плазматроновый Кристалл
 item.quantum_crystal.name=Квантовый Кристалл
 item.auraton_crystal.name=Ауратонный Кристалл
 item.photon_crystal.name=Фотонный Кристал
 
-#tools
+# tools
 item.ic2additions.gravitool=Мульти Инструмент
+
 ic2.advanced_drill=Улучшенный Бур
 ic2.nano_drill=Нано Бур
 ic2.quantum_drill=Квантовый Бур
 ic2.advanced_chainsaw=Улучшенная Электропила
+
 ic2.vajra=Ваджра
 ic2.advanced_vajra=Улучшенная Ваджра
 
-#weapons
+# weapons
 ic2.advanced_saber=Улучшенная Наносабля
 ic2.quantum_saber=Плазмасабля
 
-#armor
+# armor
 item.ic2additions.advanced_pack=Улучшенный Мультиранец
 item.ic2additions.ultimate_pack=Ультимейтный Мультиранец
 item.ic2additions.unreal_pack=Нереальный Мультиранец
+
 ic2.advanced_electric_jetpack=Улучшенный Реактивный Ранец
+
 item.ic2additions.advanced_nano_helmet=Улучшенный Нано-Шлем
 item.ic2additions.advanced_nano_chestplate=Улучшенный Нано-Нагрудник
 item.ic2additions.advanced_nano_leggings=Улучшенные Нано-Поножи
 item.ic2additions.advanced_nano_boots=Улучшенные Нано-Ботинки
+
 item.ic2additions.seraphim_mk2_helmet=Шлем Серафим MK2
 item.ic2additions.seraphim_mk2_chestplate=Нагрудник Серафим MK2
 item.ic2additions.seraphim_mk2_leggings=Поножи Серафим MK2
 item.ic2additions.seraphim_mk2_boots=Ботинки Серафим MK2
+
 item.ic2additions.fire_proximity_helmet.name=Огнеупорный Шлем
 item.ic2additions.fire_proximity_chest.name=Огнеупорный Нагрудник
 item.ic2additions.fire_proximity_leggings.name=Огнеупорные Поножи
 item.ic2additions.fire_proximity_boots.name=Огнеупорные Ботинки
+
 item.ic2additions.thermo_hazmat_helmet.name=Огнеупорный-Защитный Шлем
 item.ic2additions.thermo_hazmat_chest.name=Огнеупорный-Защитный Нагрудник
 item.ic2additions.thermo_hazmat_leggings.name=Огнеупорные-Защитные Поножи
 item.ic2additions.thermo_hazmat_boots.name=Огнеупорные-Защитные Ботинки
+
 item.ic2additions.prototype_quant_helmet=Прототип Квантового Шлема
 item.ic2additions.prototype_quant_chest=Прототип Квантового Нагрудника
 item.ic2additions.prototype_quant_leggings=Прототип Квантовых Поножей
 item.ic2additions.prototype_quant_boots=Прототип Квантовых Ботинок
+
 item.ic2additions.advanced_quantum_helmet=Улучшенный Квантовый Шлем
 item.ic2additions.advanced_quantum_chestplate=Улучшенный Квантовый Нагрудник
 item.ic2additions.advanced_quantum_leggings=Улучшенные Квантовые Поножи
 item.ic2additions.advanced_quantum_boots=Улучшенные Квантовые Ботинки
+
 item.ic2additions.molecular_helmet=Молекулярный Шлем
 item.ic2additions.molecular_chestplate=Молекулярный Нагрудник
 item.ic2additions.molecular_leggings=Молекулярные Поножи
 item.ic2additions.molecular_boots=Молекулярные Ботинки
 
-#reactor
+# reactor
+item.plutonium_rod.name=Стержень (Плутоний)
+item.plutonium_double_rod.name=Двойной Стержень (Плутоний)
+item.plutonium_quad_rod.name=Четверной Стержень (Плутоний)
+
+item.neptunium_rod.name=Стержень (Нептуний)
+item.neptunium_dual_rod.name=Двойной Стержень (Нептуний)
+item.neptunium_quad_rod.name=Четверной Стержень (Нептуний)
+
 ic2.thorium_fuel_rod=Топливный Стержень (Торий)
 ic2.thorium_double_fuel_rod=Двойной Топливный Стержень (Торий)
 ic2.thorium_quad_fuel_rod=Четверной Топливный Стержень (Торий)
+
 item.depleted_thorium.name=Топливный Стержень (Обеднённый Торий)
 item.depleted_dual_thorium.name=Двойной Топливный Стержень (Обеднённый Торий)
 item.depleted_quad_thorium.name=Четверной Топливный Стержень (Обеднённый Торий)
+
 ic2.neptunium_fuel_rod=Топливный Стержень (Нептуний)
 ic2.neptunium_double_fuel_rod=Двойной Топливный Стержень (Нептуний)
 ic2.neptunium_quad_fuel_rod=Четверной Топливный Стержень (Нептуний)
+
 item.depleted_neptunium.name=Топливный Стержень (Обеднённый Нептуний)
 item.depleted_dual_neptunium.name=Двойной Топливный Стержень (Обеднённый Нептуний)
 item.depleted_quad_neptunium.name=Четверной Топливный Стержень (Обеднённый Нептуний)
+
 ic2.californium_fuel_rod=Топливный Стержень (Калифорний)
 ic2.californium_double_fuel_rod=Двойной Топливный Стержень (Калифорний)
 ic2.californium_quad_fuel_rod=Четверной Топливный Стержень (Калифорний)
+
 item.depleted_californium.name=Топливный Стержень (Обеднённый Калифорний)
 item.depleted_dual_californium.name=Двойной Топливный Стержень (Обеднённый Калифорний)
 item.depleted_quad_californium.name=Четверной Топливный Стержень (Обеднённый Калифорний)
+
+ic2.plutonium_fuel_rod=Топливный Стержень(Плутоний)
+ic2.plutonium_double_fuel_rod=Двойной Топливный Стержень (Плутоний)
+ic2.plutonium_quad_fuel_rod=Четверной Топливный Стержень (Плутоний)
+
+item.depleted_plutonium.name=Топливный Стержень(Обеднённый Плутоний)
+item.depleted_dual_plutonium.name=Двойной Топливный Стержень (Обеднённый Плутоний)
+item.depleted_quad_plutonium.name=Четверной Топливный (Обеднённый Плутоний)
+
 item.uranium_233.name=Уран-233
 item.californium_252.name=Калифорний-252
 item.californium_ingot.name=Слиток Калифорния
+
 item.thorium_232.name=Торий-232
 item.thorium_ingot.name=Слиток Тория
+
 item.neptunium_ingot.name=Слиток Нептуния
 item.neptunium_237.name=Нептуний-237
 item.neptunium_239.name=Нептуний-239
+
+
+item.plutonium_fuel.name=Плутониевое Топливо

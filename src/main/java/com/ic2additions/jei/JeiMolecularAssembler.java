@@ -25,7 +25,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 
 @JEIPlugin
-public final class JEICompat implements IModPlugin {
+public final class JeiMolecularAssembler implements IModPlugin {
     public void register(IModRegistry registry) {
         registry.addRecipeClickArea(TransparentDynamicGUI.class, 23, 48, 10, 15, new String[]{TesRegistry.molecular_assembler.getName()});
         this.addMachineRecipes(registry, (IORecipeCategory)new MolecularAssemblerCategory(registry.getJeiHelpers().getGuiHelper()), (IRecipeWrapperGenerator)MolecularAssemblerRecipeWrapper.RECIPE_WRAPPER);

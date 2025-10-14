@@ -24,7 +24,7 @@ public class ItemReactorCalifornium extends ItemReactorMOX implements IReactorCo
     public boolean acceptUraniumPulse(ItemStack stack, IReactor reactor, ItemStack pulsingStack, int youX, int youY, int pulseX, int pulseY, boolean heatrun) {
         if (!heatrun) {
             float breedereffectiveness = (float)reactor.getHeat() / (float)reactor.getMaxHeat();
-            float ReaktorOutput = 10.0F * breedereffectiveness + 4.0F;
+            float ReaktorOutput = 16.0F * breedereffectiveness + 8.0F;
             reactor.addOutput(ReaktorOutput);
         }
 

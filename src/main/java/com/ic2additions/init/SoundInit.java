@@ -28,6 +28,6 @@ public final class SoundInit {
         IForgeRegistry<SoundEvent> r = e.getRegistry();
         r.register(COMMUNISM = create("record.communism"));
         r.register(MOLECULAR_PUNCH = create("molecular.punch"));
-//        r.register(BREEDING_REACTOR = create("breeding.reactor"));
+        r.register(BREEDING_REACTOR = create("breeding.reactor"));
     }
 }

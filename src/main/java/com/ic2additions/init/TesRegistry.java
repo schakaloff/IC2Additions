@@ -47,7 +47,7 @@
         uv_transformer(TileEntityTransformerUV .class, 14, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 1, 10,EnumRarity.EPIC),
 
         //rf_to_eu_converter(TileEntityRFtoEU.class, 15, false,Util.onlyNorth, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.EPIC, Material.IRON,false),
-        breeding_reactor(TileEntityBreederReactor.class, 16, true,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.UNCOMMON, Material.IRON,false);
+        breeding_reactor(TileEntityBreederReactor.class, 16, false,Util.allFacings, true,HarvestTool.Pickaxe, DefaultDrop.Self, 2F, 5F,EnumRarity.UNCOMMON, Material.IRON,false);
 
         public static final ResourceLocation IDENTITY = new ResourceLocation(Reference.MODID, "te");
 

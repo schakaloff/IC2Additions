@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gui width="176" height="166">
+
+    <environment name="game">
     <image x="0" y="0" width="176" height="166" basesize="256" u="0" v="0" src="ic2additions:textures/gui/breeding_reactor.png"/>
-    <text x="19" y="4" width="176">%name%</text>
+    <text x="46" y="4" width="176">%name%</text>
 
-    <slot name="input"  x="16" y="32"/>
-    <slot name="output" x="140" y="32"/>
+    <slot name="input"  x="17" y="19" style="plain"/>
+    <slot name="output" x="17" y="54" style="plain"/>
 
-    <text x="10" y="60">{gui.ic2additions.countdown,%base.getCountdown()%}</text>
-<!--    <text x="60" y="30">{gui.ic2additions.output,%base.getEutNow()%}</text>-->
-<!--    <text x="60" y="40">{gui.ic2additions.input,%base.getCurrentInputName()%}</text>-->
-<!--    <text x="60" y="50">{gui.ic2additions.outputItem,%base.getCurrentOutputName()%}</text>-->
-<!--    <text x="60" y="60">{gui.ic2additions.cost,%base.getRecipeCostEu()%}</text>-->
-<!--    <text x="60" y="70">{gui.ic2additions.time,%base.getTime()%}</text>-->
+    <button type="recipe" x="16" y="35" width="16" height="16" event="breeding_reactor"/>
 
+    </environment>
 
+    <environment name="jei">
+        <image x="-5" y="16" width="170" height="64" u="3" v="12" basesize="256" src="ic2additions:textures/gui/breeding_reactor.png"/>
+        <slot name="input" x="8" y="22" style="plain"/>
+        <slot name="output" x="8" y="57" style="plain"/>
+    </environment>
+
+    <text x="60" y="20">{gui.ic2additions.countdown,%base.getCountdown()%}</text>
+    <text x="60" y="30">{gui.ic2additions.output,%base.getEutNow()%}</text>
+    <text x="60" y="40">{gui.ic2additions.input,%base.getCurrentInputName()%}</text>
+    <text x="60" y="50">{gui.ic2additions.outputItem,%base.getCurrentOutputName()%}</text>
+    <text x="60" y="60">{gui.ic2additions.cost,%base.getRecipeCostEu()%}</text>
+<!--    <text x="70" y="70">{gui.ic2additions.time,%base.getTime()%}</text>-->
 
     <playerInventory x="7" y="83" title="false"/>
 </gui>

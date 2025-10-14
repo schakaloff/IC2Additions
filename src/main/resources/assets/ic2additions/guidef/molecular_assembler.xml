@@ -3,8 +3,8 @@
     <environment name="game">
         <image x="0" y="0" width="176" height="166" basesize="256" u="0" v="0" src="ic2additions:textures/gui/molecular_transformer_gui.png"/>
         <text x="19" y="4" width="176">%name%</text>
-        <slot name="input"  x="16" y="19" style="plain"/>
-        <slot name="output" x="16" y="54" style="plain"/>
+        <slot name="input"  x="17" y="19" style="plain"/>
+        <slot name="output" x="17" y="54" style="plain"/>
         <button type="recipe" x="16" y="35" width="16" height="16" event="molecular_assembler"/>
     </environment>
 

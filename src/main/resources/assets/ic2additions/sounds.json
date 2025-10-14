@@ -11,5 +11,12 @@
       { "name": "ic2additions:molecular_punch", "stream": false, "preload": true }
     ],
     "attenuation_distance": 32
+  },
+  "breeding.reactor": {
+    "sounds": [
+      { "name": "ic2additions:breeding_reactor", "stream": true }
+    ],
+    "category": "block",
+    "subtitle": "subtitles.breeding_reactor.play"
   }
 }

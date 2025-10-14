@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "side": "ic2additions:blocks/breeding_reactor/breeding_reactor_sides",
+    "bottom": "ic2additions:blocks/breeding_reactor/breeding_reactor_bottom",
+    "top": "ic2additions:blocks/breeding_reactor/breeding_reactor_top"
+  }
+}

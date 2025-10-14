@@ -24,9 +24,11 @@ public class Recipes {
     public static final ItemStack iron_plate = IC2Items.getItem("plate","iron");
     public static final ItemStack dense_lapis = IC2Items.getItem("plate","dense_lapis");
     public static final ItemStack dense_steel = IC2Items.getItem("plate","dense_steel");
+    public static final ItemStack lead_plate = IC2Items.getItem("plate","lead");
     public static final ItemStack dense_obsidian = IC2Items.getItem("plate","dense_obsidian");
     public static final ItemStack iridium_plate = IC2Items.getItem("crafting","iridium");
     public static final ItemStack small_uranium_238 = IC2Items.getItem("nuclear", "small_uranium_238");
+    public static final ItemStack small_uranium_2381 = IC2Items.getItem("nuclear", "small_uranium_238");
     public static final ItemStack uranium_238 = IC2Items.getItem("nuclear", "uranium_238");
     public static final ItemStack uranium = IC2Items.getItem("purified", "uranium");
     public static final ItemStack reinforced_glass = IC2Items.getItem("glass", "reinforced");
@@ -50,6 +52,10 @@ public class Recipes {
     public static final ItemStack neptunium237x2 = new ItemStack(ItemInit.NEPTUNIUM_237,2);
     public static final ItemStack neptunium237x3 = new ItemStack(ItemInit.NEPTUNIUM_237,3);
 
+    public static final ItemStack neptunium239 = new ItemStack(ItemInit.NEPTUNIUM_239);
+    public static final ItemStack neptunium239x2 = new ItemStack(ItemInit.NEPTUNIUM_239,2);
+    public static final ItemStack neptunium239x3 = new ItemStack(ItemInit.NEPTUNIUM_239,3);
+
     public static final ItemStack stone = IC2Items.getItem("dust", "stone");
     public static final ItemStack iron_dust = IC2Items.getItem("dust", "iron");
     public static final ItemStack iron_dustx2 = IC2Items.getItem("dust", "iron");
@@ -57,10 +63,15 @@ public class Recipes {
     public static final ItemStack plutonium = IC2Items.getItem("nuclear", "plutonium");
     public static final ItemStack plutoniumx2 = IC2Items.getItem("nuclear", "plutonium");
     public static final ItemStack plutoniumx3 = IC2Items.getItem("nuclear", "plutonium");
+    public static final ItemStack plutoniumx4 = IC2Items.getItem("nuclear", "plutonium");
     public static final ItemStack small_plutonium = IC2Items.getItem("nuclear", "small_plutonium");
     public static final ItemStack small_plutoniumx2 = IC2Items.getItem("nuclear", "small_plutonium");
+    public static final ItemStack small_plutoniumx3 = IC2Items.getItem("nuclear", "small_plutonium");
     public static final ItemStack small_plutoniumx4 = IC2Items.getItem("nuclear", "small_plutonium");
     public static final ItemStack small_uranium_235 = IC2Items.getItem("nuclear", "small_uranium_235");
+    public static final ItemStack uranium_235 = IC2Items.getItem("nuclear", "uranium_235");
+    public static final ItemStack mox = IC2Items.getItem("nuclear", "mox");
+    public static final ItemStack reactor_chamber = IC2Items.getItem("te", "reactor_chamber");
     public static final ItemStack neutron_reflector = IC2Items.getItem("thick_neutron_reflector");
     public static final ItemStack advanced_pack = IC2Items.getItem("energy_pack");
     public static final ItemStack jetpack_electric = IC2Items.getItem("jetpack_electric");
@@ -98,12 +109,14 @@ public class Recipes {
 
 
     public static void addCraftingRecipes(){
-        small_uranium_238.setCount(9);
+        small_uranium_2381.setCount(9);
         small_plutoniumx2.setCount(2);
+        small_plutoniumx3.setCount(3);
         small_plutoniumx4.setCount(4);
 
         plutoniumx2.setCount(2);
         plutoniumx3.setCount(3);
+        plutoniumx4.setCount(4);
 
         iron_dustx2.setCount(2);
         iron_dustx4.setCount(4);
@@ -222,6 +235,10 @@ public class Recipes {
         addShapedRecipe(new ItemStack(ItemInit.PLUTONIUM_ROD_QUAD), " T ", "CPC", " T ", 'T', ItemInit.PLUTONIUM_ROD_DOUBLE, 'C', copper_plate, 'P', iron_plate);
         addShapedRecipe(new ItemStack(ItemInit.PLUTONIUM_ROD_QUAD), "TPT", "CPC", "TPT", 'T', ItemInit.PLUTONIUM_ROD_SINGLE, 'P', iron_plate, 'C', copper_plate);
 
+        addShapedRecipe(new ItemStack(ItemInit.PLUTONIUM_DUAL), "   ", "IPI", "   ", 'I', ItemInit.PLUTONIUM_ROD, 'P', iron_plate);
+        addShapedRecipe(new ItemStack(ItemInit.PLUTONIUM_QUAD), " T ", "CPC", " T ", 'T', ItemInit.PLUTONIUM_DUAL, 'C', copper_plate, 'P', iron_plate);
+        addShapedRecipe(new ItemStack(ItemInit.PLUTONIUM_QUAD), "TPT", "CPC", "TPT", 'T', ItemInit.PLUTONIUM_ROD, 'P', iron_plate, 'C', copper_plate);
+
         addShapedRecipe(new ItemStack(ItemInit.THORIUM_ROD_DOUBLE), "   ", "IPI", "   ", 'I', ItemInit.THORIUM_ROD_SINGLE, 'P', iron_plate);
         addShapedRecipe(new ItemStack(ItemInit.THORIUM_ROD_QUAD), " T ", "CPC", " T ", 'T', ItemInit.THORIUM_ROD_DOUBLE, 'C', copper_plate, 'P', iron_plate);
         addShapedRecipe(new ItemStack(ItemInit.THORIUM_ROD_QUAD), "TPT", "CPC", "TPT", 'T', ItemInit.THORIUM_ROD_SINGLE, 'P', iron_plate, 'C', copper_plate);
@@ -234,18 +251,22 @@ public class Recipes {
         addShapedRecipe(new ItemStack(ItemInit.CALIFORNIUM_ROD_QUAD), " T ", "CPC", " T ", 'T', ItemInit.CALIFORNIUM_ROD_DOUBLE, 'C', copper_plate, 'P', iron_plate);
         addShapedRecipe(new ItemStack(ItemInit.CALIFORNIUM_ROD_QUAD), "TPT", "CPC", "TPT", 'T', ItemInit.CALIFORNIUM_ROD_DOUBLE, 'P', iron_plate, 'C', copper_plate);
 
-        addShapedRecipe(new ItemStack(ItemInit.NEPTUNIUM_239), "III", "CCC", "III", 'I', plutonium, 'C', small_plutonium);
-        addShapedRecipe(new ItemStack(ItemInit.CALIFORNIUM_252), "LUL", "UCU", "LUL", 'U', ItemInit.URANIUM_233, 'C', ItemInit.NEPTUNIUM_239, 'L', lithium);
+        //addShapedRecipe(new ItemStack(ItemInit.CALIFORNIUM_252), "LUL", "UCU", "LUL", 'U', ItemInit.URANIUM_233, 'C', ItemInit.NEPTUNIUM_239, 'L', lithium);
 
-        addShapelessRecipe(small_uranium_238, uranium_238);
-
+        addShapelessRecipe(small_uranium_2381, uranium_238);
 
         addShapedRecipe(new ItemStack(ItemInit.PLASMA_CABLE, 6), "III", "CCC", "III", 'I', ItemInit.SUPER_CONDUCTOR, 'C', glass_fibre_cable);
         addShapedRecipe(new ItemStack(ItemInit.QUANTUM_CABLE,6), "MMM", "CCC", "MMM", 'M', ItemInit.MAGNETRON, 'C', ItemInit.PLASMA_CABLE);
 
+        addShapedRecipe(new ItemStack(ItemInit.BREEDER_CORE), "LPL", "PCP", "LPL", 'L', lead_plate, 'P', small_plutonium, 'C', ItemInit.COOLING_CORE);
+        addShapedRecipe(block.getItemStack(TesRegistry.breeding_reactor), "CHC", "IBI", "CHC", 'C', reactor_chamber, 'H', ItemInit.HYBRID_CIRCUIT, 'I', ItemInit.IRRADIANT_GLASS_PANE, 'B', ItemInit.BREEDER_CORE);
 
         addShapedRecipe(new ItemStack(ItemInit.PLUTONIUM_FUEL), "III", "CCC", "III", 'I', small_plutonium, 'C', plutonium);
         addShapedRecipe((plutonium), "III", "UUU", "UUU", 'I', uranium_238, 'U', small_uranium_235);
+
+        addShapedRecipe(new ItemStack(ItemInit.NEPTUNIUM_237), "UNU", "NIN", "UNU", 'U', small_uranium_238, 'N', ItemInit.NEPTUNIUM_239, 'I', small_uranium_235);
+        addShapedRecipe(new ItemStack(ItemInit.CALIFORNIUM_252), "MUM", "UIU", "MUM", 'M', mox, 'U', ItemInit.URANIUM_233, 'I',uranium_235);
+
     }
 
     private static void addShapedRecipe(ItemStack output, Object... input){
@@ -269,14 +290,10 @@ public class Recipes {
         //canning
         addCanningRecipe(input.forStack(fuel_rod), input.forStack(new ItemStack(ItemInit.PLUTONIUM_FUEL)), new ItemStack(ItemInit.PLUTONIUM_ROD_SINGLE));
         addCanningRecipe(input.forStack(fuel_rod), input.forStack(new ItemStack(ItemInit.THORIUM_232)), new ItemStack(ItemInit.THORIUM_ROD_SINGLE));
-        addCanningRecipe(input.forStack(fuel_rod), input.forStack(new ItemStack(ItemInit.NEPTUNIUM_239)), new ItemStack(ItemInit.NEPTUNIUM_ROD_SINGLE));
+        addCanningRecipe(input.forStack(fuel_rod), input.forStack(new ItemStack(ItemInit.NEPTUNIUM_237)), new ItemStack(ItemInit.NEPTUNIUM_ROD_SINGLE));
         addCanningRecipe(input.forStack(fuel_rod), input.forStack(new ItemStack(ItemInit.CALIFORNIUM_252)), new ItemStack(ItemInit.CALIFORNIUM_ROD_SINGLE));
 
-        addCanningRecipe(input.forStack(fuel_rod), input.forStack(new ItemStack(ItemInit.PLUTONIUM_ROD)), new ItemStack(ItemInit.NEPTUNIUM_ROD));
-        addCanningRecipe(input.forStack(fuel_rod), input.forStack(new ItemStack(ItemInit.PLUTONIUM_DUAL)), new ItemStack(ItemInit.NEPTUNIUM_DUAL_ROD));
-        addCanningRecipe(input.forStack(fuel_rod), input.forStack(new ItemStack(ItemInit.PLUTONIUM_QUAD)), new ItemStack(ItemInit.NEPTUNIUM_QUAD_ROD));
-
-
+        addCanningRecipe(input.forStack(fuel_rod), input.forStack(plutonium), new ItemStack(ItemInit.PLUTONIUM_ROD));
 
         //comp
         //addCompressorsRecipe(input.forStack(new ItemStack(Items.SLIME_BALL),9), new ItemStack(Block.getBlockById(165)));
@@ -285,30 +302,25 @@ public class Recipes {
         addMedCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.CRUSHED_THORIUM)), thorium232x4, stone, nbt);
         addMinCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.PURIFIED_THORIUM)), thorium232x6, nbt);
 
-
-
         addAdvCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.DEPLETED_THORIUM)), small_plutonium, uranium233x2, iron_dust, nbt);
         addAdvCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.DEPLETED_THORIUM_DUAL)), small_plutoniumx2, uranium233x3, iron_dustx2, nbt);
         addAdvCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.DEPLETED_THORIUM_QUAD)), small_plutoniumx4, uranium233x6, iron_dustx4, nbt);
 
-        addAdvCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.DEPLETED_NEPTUNIUM)), plutonium, small_plutonium, iron_dust, nbt);
-        addAdvCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.DEPLETED_NEPTUNIUM_DUAL)), plutoniumx2, small_plutoniumx2, iron_dustx2, nbt);
-        addAdvCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.DEPLETED_NEPTUNIUM_QUAD)), plutoniumx3, small_plutoniumx4, iron_dustx4, nbt);
+        addMedCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.DEPLETED_NEPTUNIUM)), neptunium239, iron_dust, nbt);
+        addAdvCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.DEPLETED_NEPTUNIUM_DUAL)), neptunium239x2, small_plutoniumx2, iron_dustx2, nbt);
+        addAdvCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.DEPLETED_NEPTUNIUM_QUAD)), neptunium239x3, small_plutoniumx4, iron_dustx4, nbt);
 
         addMinCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.DEPLETED_CALIFORNIUM)), iron_dust, nbt);
         addMedCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.DEPLETED_CALIFORNIUM_DUAL)), iron_dust, iron_dust, nbt);
         addAdvCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.DEPLETED_CALIFORNIUM_QUAD)), iron_dustx2, iron_dust, iron_dust, nbt);
 
-        addAdvCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.NEPTUNIUM_ROD)), iron_dustx2, iron_dust, iron_dust, nbt);
-        addAdvCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.NEPTUNIUM_DUAL_ROD)), iron_dustx2, iron_dust, iron_dust, nbt);
-        addAdvCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.NEPTUNIUM_QUAD_ROD)), iron_dustx2, iron_dust, iron_dust, nbt);
-
+        addMedCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.NEPTUNIUM_ROD)), neptunium239, iron_dust, nbt);
+        addAdvCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.NEPTUNIUM_DUAL_ROD)), neptunium239x2, small_plutonium, iron_dustx2, nbt);
+        addAdvCentrifugeRecipe(input.forStack(new ItemStack(ItemInit.NEPTUNIUM_QUAD_ROD)), neptunium239x3, small_plutoniumx3, iron_dustx4, nbt);
 
         addRollingRecipe(input.forStack(new ItemStack(ItemInit.DURITANIUM_INGOT)), new ItemStack(ItemInit.DURITANIUM_PLATE));
         addRollingRecipe(input.forStack(new ItemStack(ItemInit.RAW_TRITANIUM_INGOT)), new ItemStack(ItemInit.RAW_TRITANIUM_PLATE));
         addRollingRecipe(input.forStack(new ItemStack(ItemInit.TRITANIUM_INGOT)), new ItemStack(ItemInit.TRITANIUM_PLATE));
-
-
 
         //macerator
         addMaceratorRecipe(input.forStack(new ItemStack(BlockInit.THORIUM_ORE)), new ItemStack(ItemInit.CRUSHED_THORIUM,2));

@@ -7,6 +7,7 @@ import ic2.api.energy.tile.IEnergyEmitter;
 import ic2.api.energy.tile.IEnergySink;
 import ic2.api.energy.tile.IEnergyTile;
 import ic2.core.ContainerBase;
+import ic2.core.ExplosionIC2;
 import ic2.core.IC2;
 import ic2.core.IHasGui;
 import ic2.core.audio.AudioSource;
@@ -30,17 +31,13 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class TileEntityBreederReactor extends TileEntityInventory implements IEnergySink, IHasGui, IGuiValueProvider {
 
-    private AudioSource audioSourceMain;
-    private AudioSource audioSourceOperation;
-
+    // inventory
     public final InvSlot input;
     public final InvSlotOutput output;
 
     private static final int DEFAULT_SINK_TIER = 12;
-    private static final double MAX_EU_PER_TICK = 128.0;
 
     @GuiSynced private int ticksRemaining;
-
     private boolean addedToEnet;
 
     @GuiSynced private double energyBuffer;
@@ -54,12 +51,18 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
     @GuiSynced private String currentOutputName = "-";
     @GuiSynced private int currentRecipeCostEu = 0;
 
+    public AudioSource audioSourceMain;
+
+    private static final String AUDIO_PATH = "Generators/NuclearReactor/NuclearReactorLoop.ogg";
+
+
     public TileEntityBreederReactor() {
         super();
         this.input = new InvSlot(this, "input", InvSlot.Access.I, 1, InvSlot.InvSide.TOP);
         this.output = new InvSlotOutput(this, "output", 1);
     }
 
+    // lifecycle
     @Override
     protected void onLoaded() {
         super.onLoaded();
@@ -71,13 +74,20 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
 
     @Override
     protected void onUnloaded() {
-        super.onUnloaded();
-        if (addedToEnet) {
+        // remove client audio sources like IC2 reactor
+        if (IC2.platform.isRendering()) {
+            IC2.audioManager.removeSources(this);
+            this.audioSourceMain = null;
+        }
+        // energy net
+        if (IC2.platform.isSimulating() && addedToEnet) {
             MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent((IEnergyTile) this));
             addedToEnet = false;
         }
+        super.onUnloaded();
     }
 
+    // server tick
     @Override
     protected void updateEntityServer() {
         super.updateEntityServer();
@@ -118,9 +128,10 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
                 active = false;
             }
         }
+
         if (currentRecipe != null) {
             progressTicks++;
-            ticksRemaining = Math.max(0, currentRecipeTotalTime - progressTicks); // countdown
+            ticksRemaining = Math.max(0, currentRecipeTotalTime - progressTicks);
             active = true;
             dirty = true;
 
@@ -132,13 +143,41 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         }
 
         if (getActive() != active) {
-            setActive(active);
+            setActive(active); // IC2 network will sync and fire onNetworkUpdate("active") on client
             world.checkLightFor(EnumSkyBlock.BLOCK, pos);
         }
 
         if (dirty) markDirty();
     }
 
+    // client network update, mirror IC2’s reactor pattern
+    @Override
+    public void onNetworkUpdate(String field) {
+        if ("active".equals(field)) {
+            if (this.getActive()) {
+                if (this.audioSourceMain == null) {
+                    this.audioSourceMain = IC2.audioManager.createSource(
+                            this,
+                            PositionSpec.Center,
+                            AUDIO_PATH,
+                            true,   // loop
+                            false,  // not globally pausable
+                            IC2.audioManager.getDefaultVolume()
+                    );
+                }
+                if (this.audioSourceMain != null) {
+                    this.audioSourceMain.play();
+                }
+            } else {
+                if (this.audioSourceMain != null) {
+                    this.audioSourceMain.stop();
+                }
+            }
+        }
+        super.onNetworkUpdate(field);
+    }
+
+    // energy sink
     @Override
     public double injectEnergy(EnumFacing from, double amount, double voltage) {
         energyBuffer += amount;
@@ -161,7 +200,7 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
     @Override
     public int getSinkTier() { return DEFAULT_SINK_TIER; }
 
-
+    // recipe handling
     private void finishRecipe() {
         if (currentRecipe == null) return;
         if (canAcceptOutput(currentRecipe.output)) {
@@ -182,6 +221,7 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         return !StackUtil.isEmpty(stack) && output.canAdd(stack);
     }
 
+    // GUI
     @Override
     public ContainerBase<? extends TileEntityBreederReactor> getGuiContainer(EntityPlayer player) {
         return DynamicContainer.create(this, player, GuiParser.parse(this.teBlock));
@@ -193,7 +233,7 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
     }
 
     @Override
-    public void onGuiClosed(EntityPlayer entityPlayer) {}
+    public void onGuiClosed(EntityPlayer player) {}
 
     @Override
     public double getGuiValue(String key) {
@@ -207,7 +247,7 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
             case "eut":
                 return energyBuffer;
             case "countdownSeconds":
-                return ticksRemaining / 20.0; // ticks → seconds
+                return ticksRemaining / 20.0;
             default:
                 return 0;
         }
@@ -241,7 +281,7 @@ public class TileEntityBreederReactor extends TileEntityInventory implements IEn
         return String.format("%d:%02d", minutes, seconds);
     }
 
-
+    // persistence
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);

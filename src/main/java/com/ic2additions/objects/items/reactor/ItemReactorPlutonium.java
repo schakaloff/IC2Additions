@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemReactorPlutonium extends ItemReactorUranium implements IReactorComponent, ICustomDamageItem {
     public ItemReactorPlutonium(String name, int cells) {
-        super((ItemName) null, cells, 20000);
+        super((ItemName) null, cells, 55000);
         setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(IC2AdditionsCreativeTabs.tab);
@@ -20,7 +20,7 @@ public class ItemReactorPlutonium extends ItemReactorUranium implements IReactor
 
     @Override
     public boolean acceptUraniumPulse(ItemStack stack, IReactor reactor, ItemStack pulsingStack, int youX, int youY, int pulseX, int pulseY, boolean heatrun) {
-        if (!heatrun) reactor.addOutput(1.5F);
+        if (!heatrun) reactor.addOutput(1.1F);
         return true;
     }
 
